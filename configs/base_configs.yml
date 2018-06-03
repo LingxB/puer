@@ -1,0 +1,5 @@
+symbol_dict:
+  file_name:
+    symbol_dict
+  start_idx:
+    2 # 0 for padding, 1 for <UNK>
