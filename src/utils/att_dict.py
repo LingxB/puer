@@ -17,6 +17,9 @@ class AttributeDict(object):
 			else:
 				self.__dict__[key] = value
 
+	def list_keys(self):
+		return [i for i in self.__dict__.keys() if i[:1] != '_']
+
 	def __getitem__(self, key):
 		"""
 		Provides dict-style access to attributes
