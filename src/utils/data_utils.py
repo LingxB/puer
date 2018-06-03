@@ -20,7 +20,7 @@ def create_symbol_dict(corpus, start_idx=2):
 
     Parameters
     ----------
-    corpus : ``list`` or ``pandas.Series``
+    corpus : ``list`` or ``pandas.Series`` or ``numpy.ndarray``
         An iterable (corpus) contains sentences and tokens. i.e. [['hello','world'], ['w3','w4'...], ['w8','w9',...], ...]
     start_idx : ``int``
         Start index symbol, 0 reserved for padding, 1 reserved for <UNK>
