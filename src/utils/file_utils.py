@@ -2,6 +2,7 @@ import yaml
 from dotenv import load_dotenv, find_dotenv
 import os
 from src.utils.att_dict import AttributeDict
+from src.utils.data_utils import create_symbol_dict
 
 
 def read_config(config_file, obj_view=True):
@@ -10,8 +11,8 @@ def read_config(config_file, obj_view=True):
         cfg = AttributeDict(**cfg)
     return cfg
 
-def save_yaml(dict, path):
-    with open(path+'.yml', 'w') as outfile:
+def save_yaml(dict, path, mode='w'):
+    with open(path, mode) as outfile:
         yaml.dump(dict, outfile, default_flow_style=False)
 
 def read_yaml(yaml_file):
@@ -40,5 +41,8 @@ def load_symbod_dict_if_exists(path, symbol_dict):
         sd = read_yaml(path + '/' + sd_file)
         return sd
 
-
+def create_dump_symbol_dict(corpus, start_idx, dump_path, file_name):
+    sd, _ = create_symbol_dict(corpus, start_idx)
+    save_yaml(sd, dump_path + '/' + file_name + '.yml', 'x')
+    return sd
 
