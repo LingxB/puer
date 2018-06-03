@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from collections import Counter
 from tensorflow.python.keras.preprocessing.sequence import pad_sequences
 
@@ -16,7 +15,7 @@ def load_corpus(file, **kwargs):
     return _df
 
 
-def create_symbol_dict(corpus, start_idx=1):
+def create_symbol_dict(corpus, start_idx=2):
     """
 
     Parameters
@@ -24,7 +23,7 @@ def create_symbol_dict(corpus, start_idx=1):
     corpus : ``list`` or ``pandas.Series``
         An iterable (corpus) contains sentences and tokens. i.e. [['hello','world'], ['w3','w4'...], ['w8','w9',...], ...]
     start_idx : ``int``
-        Start index symbol
+        Start index symbol, 0 reserved for padding, 1 reserved for <UNK>
     Returns
     -------
     ``dict``
@@ -41,4 +40,4 @@ def create_symbol_dict(corpus, start_idx=1):
 
 
 def symbolize(corpus, symbol_dict, **kwargs):
-    return pad_sequences([[symbol_dict[w] for w in s] for s in corpus], **kwargs)
+    return pad_sequences([[symbol_dict[w] for w in s] for s in corpus], padding='post', **kwargs)
