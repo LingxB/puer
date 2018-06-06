@@ -4,10 +4,7 @@ data = DataManager(*args, **kwargs)
 
 data.batch # batch generator to feed data into model
 
-
 X, asp, lex, y
-
-
 
 # pd.options.display.max_colwidth = 80
 """
@@ -15,12 +12,13 @@ X, asp, lex, y
 
 import pandas as pd
 from src.utils import load_corpus, symbolize, load_symbod_dict_if_exists, get_envar, read_config, create_dump_symbol_dict
+from src.utils import Logger, __fn__
 
-
+logger = Logger(__fn__())
 
 class AbsaDataManager(object):
 
-    def __init__(self, dataset=None, x_col=None, y_col=None, asp_col=None, lexicon_manager=None):
+    def __init__(self, dataset=None, lexicon_manager=None, x_col='SENTS', y_col='CLS', asp_col='ASP'):
         self.df = dataset
         self.x_col = x_col
         self.y_col = y_col
@@ -32,13 +30,15 @@ class AbsaDataManager(object):
 
 
     def __initialize(self):
-        self.sd = load_symbod_dict_if_exists(self.config_path, self.configs.symbol_dict.file_name)
+        logger.info('Loadding symbol_dict from {}'.format(self.configs.symbol_dict.file_path))
+        self.sd = load_symbod_dict_if_exists(self.configs.symbol_dict.file_path)
         if self.sd == False:
+            logger.info('symbol_dict not found, creating new on: {}, {}, start_idx: {}'.format(self.x_col, self.asp_col, self.configs.symbol_dict.start_idx))
             self.corpus = pd.concat([self.df[self.x_col], pd.Series(self.df[self.asp_col].unique())],
                                     ignore_index=True
                                     ).str.split()
-            self.sd = create_dump_symbol_dict(self.corpus, self.configs.symbol_dict.start_idx, self.config_path, self.configs.symbol_dict.file_name)
-
+            self.sd = create_dump_symbol_dict(self.corpus, self.configs.symbol_dict.start_idx, self.configs.symbol_dict.file_path)
+            logger.info('symbod_dict saved to {}'.format(self.configs.symbol_dict.file_path))
 
     def token2symbol(self, sents):
         """
@@ -52,17 +52,9 @@ class AbsaDataManager(object):
         ``numpy.ndarray``
             Symbollized sentences padded with max length
         """
+        return symbolize(sents, self.sd)
 
-
-    def mask_unk(self):
-        pass
-
-
-    def bucketing(self):
-        pass
-
-
-    def padding(self):
+    def class2symbol(self, labels):
         pass
 
 
@@ -76,52 +68,25 @@ class AbsaDataManager(object):
 
 
 
-df = load_corpus(['data/processed/ATAE-LSTM/train.csv',
-                     'data/processed/ATAE-LSTM/dev.csv',
-                     'data/processed/ATAE-LSTM/test.csv'])
+# df = load_corpus(['data/processed/ATAE-LSTM/train.csv',
+#                      'data/processed/ATAE-LSTM/dev.csv',
+#                      'data/processed/ATAE-LSTM/test.csv'])
 
 train_df = load_corpus('data/processed/ATAE-LSTM/train.csv')
 
 
+dm = AbsaDataManager()
 
-dm = AbsaDataManager(dataset=df, x_col='SENT', y_col='CLS', asp_col='ASP')
+batch1_x = train_df.SENT[:5].str.split()
+batch2_x = train_df.SENT[5:10].str.split()
 
+dm.token2symbol(batch1_x)
 
-
-
-
-
-
-
+dm.token2symbol(batch2_x)
 
 
+batch1_a = train_df.ASP[:5].str.split()
+dm.token2symbol(batch1_a)
 
 
-
-
-
-
-
-
-
-df = load_corpus(['data/processed/ATAE-LSTM/train.csv',
-                     'data/processed/ATAE-LSTM/dev.csv',
-                     'data/processed/ATAE-LSTM/test.csv'])
-
-
-
-
-
-
-d, c = create_symbol_dict(df.SENT.str.split())
-
-train_df = load_corpus('data/processed/ATAE-LSTM/train.csv')
-dev_df = load_corpus('data/processed/ATAE-LSTM/dev.csv')
-test_df = load_corpus('data/processed/ATAE-LSTM/test.csv')
-
-train = symbolize(train_df.SENT.str.split(), d)
-dev = symbolize(dev_df.SENT.str.split(), d)
-test = symbolize(test_df.SENT.str.split(), d)
-
-symbolize(train_df.ASP.str.split(), d)
 
