@@ -1,6 +1,7 @@
 import yaml
 from dotenv import load_dotenv, find_dotenv
 import os
+import inspect
 from src.utils.att_dict import AttributeDict
 from src.utils.data_utils import create_symbol_dict
 
@@ -46,3 +47,20 @@ def create_dump_symbol_dict(corpus, start_idx, dump_path, file_name):
     save_yaml(sd, dump_path + '/' + file_name + '.yml', 'x')
     return sd
 
+def __fn__():
+    """
+    Magic function to return the python file/module name where the function is called. If called in console, return
+    ``'__main__'``.
+
+    Returns
+    -------
+    str
+        File/module name where the function is called, ``'__main__'`` when in console.
+    """
+    frame = inspect.stack()[1]
+    module = inspect.getmodule(frame[0])
+    try:
+        name = os.path.basename(module.__file__)[:-3]
+    except AttributeError:
+        name = '__main__'
+    return name
