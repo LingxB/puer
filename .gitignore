@@ -73,7 +73,7 @@ target/
 .spyproject/
 
 # Jupyter NB Checkpoints
-.ipynb_checkpoints/
+.ipynb_checkpoints/logs/*.log
 
 # exclude data from source control by default
 /data/
@@ -82,4 +82,4 @@ target/
 .DS_Store
 
 # logs
-.log
+logs/*.log
