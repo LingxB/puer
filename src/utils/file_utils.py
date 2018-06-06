@@ -33,18 +33,16 @@ def list_files(path):
     else:
         return l[0][-1]
 
-def load_symbod_dict_if_exists(path, symbol_dict):
-    sd_file = symbol_dict + '.yml'
-    config_files = list_files(path)
-    if sd_file not in config_files:
-        return False
-    else:
-        sd = read_yaml(path + '/' + sd_file)
-        return sd
+def load_symbod_dict_if_exists(load_path):
+    try:
+        sd = read_yaml(load_path)
+    except FileNotFoundError:
+        sd = False
+    return sd
 
-def create_dump_symbol_dict(corpus, start_idx, dump_path, file_name):
+def create_dump_symbol_dict(corpus, start_idx, dump_path):
     sd, _ = create_symbol_dict(corpus, start_idx)
-    save_yaml(sd, dump_path + '/' + file_name + '.yml', 'x')
+    save_yaml(sd, dump_path, 'x')
     return sd
 
 def __fn__():
