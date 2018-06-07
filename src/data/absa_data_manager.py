@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 from src.utils import load_corpus, symbolize, load_symbod_dict_if_exists, get_envar, read_config, create_dump_symbol_dict
 from src.utils import Logger, __fn__
-
+pd.options.display.max_colwidth = 80
 logger = Logger(__fn__())
 
 class AbsaDataManager(object):
@@ -84,8 +84,17 @@ class AbsaDataManager(object):
         elif x == 1:
             a[2] = 1
         else:
-            raise IndexError('Label must between {-1, 0, 1}')
+            raise IndexError('Label must be {-1, 0, 1}')
         return a
+
+    @staticmethod
+    def __loc_update_index(df, index, last_batch=False):
+        if last_batch:
+            _df = df.loc[index[0]:]
+        else:
+            _df = df.loc[index]
+        _index = index + index.shape[0]
+        return _df, _index
 
 
     def batch_generator(self, df, batch_size, shuffle=False, random_state=None):
@@ -93,6 +102,25 @@ class AbsaDataManager(object):
 
         if shuffle:
             _df = _df.sample(frac=1, random_state=random_state).reset_index(drop=True)
+            logger.info('Shuffled dataframe:\n{}'.format(_df.head()))
+
+        n_batches = int(np.ceil(_df.shape[0]/batch_size))
+
+        first_idx = np.arange(batch_size)
+        last_batch = False
+        for n in range(n_batches):
+            if n == n_batches-1:
+                last_batch = True
+
+            batch_df, first_idx = self.__loc_update_index(_df, first_idx, last_batch)
+
+            yield batch_df
+
+
+
+
+
+
 
 
         # TODO:
@@ -110,8 +138,18 @@ df = load_corpus(['data/processed/ATAE-LSTM/train.csv',
 
 train_df = load_corpus('data/processed/ATAE-LSTM/train.csv')
 
+train_df = train_df.head(50)
+
 
 dm = AbsaDataManager()
+
+
+gen = dm.batch_generator(train_df, 32, shuffle=True)
+
+
+
+
+
 
 batch1_y = train_df.CLS[:5]
 
