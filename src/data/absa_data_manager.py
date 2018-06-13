@@ -62,11 +62,11 @@ class AbsaDataManager(object):
 
         Parameters
         ----------
-        labels :
+        labels : iterable
 
         Returns
         -------
-
+        One hot coded label vector/matrix
         """
         _labels = labels
         if not isinstance(labels, pd.Series):
@@ -87,17 +87,29 @@ class AbsaDataManager(object):
             raise IndexError('Label must be {-1, 0, 1}')
         return a
 
-    @staticmethod
-    def __loc_update_index(df, index, last_batch=False):
-        if last_batch:
-            _df = df.loc[index[0]:]
+    def lex2symbol(self, sents):
+        pass
+
+    def batch_symbolizer(self, batch_df):
+
+        _X = self.token2symbol(batch_df[self.x_col].str.split())
+        _y = self.class2symbol(batch_df[self.y_col])
+
+        if self.asp_col is not None:
+            _a = self.token2symbol(batch_df[self.asp_col].str.split())
         else:
-            _df = df.loc[index]
-        _index = index + index.shape[0]
-        return _df, _index
+            _a = None
+
+        if self.lm is not None:
+            # TODO: add lexicon inputs
+            _lx = None
+        else:
+            _lx = None
+
+        return _X, _a, _lx, _y
 
 
-    def batch_generator(self, df, batch_size, shuffle=False, random_state=None):
+    def batch_generator(self, df, batch_size, shuffle=False, random_state=1):
         _df = df.copy()
 
         if shuffle:
@@ -114,7 +126,16 @@ class AbsaDataManager(object):
 
             batch_df, first_idx = self.__loc_update_index(_df, first_idx, last_batch)
 
-            yield batch_df
+            yield batch_df, self.batch_symbolizer(batch_df)
+
+    @staticmethod
+    def __loc_update_index(df, index, last_batch=False):
+        if last_batch:
+            _df = df.loc[index[0]:]
+        else:
+            _df = df.loc[index]
+        _index = index + index.shape[0]
+        return _df, _index
 
 
 
@@ -123,18 +144,12 @@ class AbsaDataManager(object):
 
 
 
-        # TODO:
-        # 1. random shuffle df
-        # 2. slice into batches
-        # 3. iterate over batches
-        pass
 
 
 
-
-df = load_corpus(['data/processed/ATAE-LSTM/train.csv',
-                     'data/processed/ATAE-LSTM/dev.csv',
-                     'data/processed/ATAE-LSTM/test.csv'])
+# df = load_corpus(['data/processed/ATAE-LSTM/train.csv',
+#                      'data/processed/ATAE-LSTM/dev.csv',
+#                      'data/processed/ATAE-LSTM/test.csv'])
 
 train_df = load_corpus('data/processed/ATAE-LSTM/train.csv')
 
@@ -145,6 +160,17 @@ dm = AbsaDataManager()
 
 
 gen = dm.batch_generator(train_df, 32, shuffle=True)
+
+_df, _sym = next(gen)
+
+
+_X = dm.token2symbol(_df.SENT.str.split())
+_a = dm.token2symbol(_df.ASP.str.split())
+_y = dm.class2symbol(_df.CLS.tolist()[0])
+
+
+
+
 
 
 
