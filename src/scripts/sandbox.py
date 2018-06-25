@@ -9,6 +9,12 @@ from time import time
 
 logger = Logger(__fn__())
 
+def length(sequence):
+  used = tf.sign(tf.reduce_max(tf.abs(sequence), 2))
+  length = tf.reduce_sum(used, 1)
+  length = tf.cast(length, tf.int32)
+  return length
+
 
 dm = AbsaDataManager()
 
@@ -38,10 +44,15 @@ embedding = tf.concat([pad_embedding, pre_trained_embedding], axis=0, name='conc
 
 X_ = tf.nn.embedding_lookup(embedding, X)
 
+seq_len = length(X_)
+
 init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
     sess.run(init)
     _, first_batch = next(dm.batch_generator(train_df, batch_size=5))
     _X, _asp, _lx, _y = first_batch
-    lookup = sess.run(X_, feed_dict={X: _X})
+    lookup, s_len = sess.run([X_, seq_len], feed_dict={X: _X})
+
+
+
