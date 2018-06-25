@@ -1,5 +1,5 @@
 symbol_dict:
   file_path:
-    data/processed/ATAE-LSTM/semeval14_symbol_dict.yml
+    data/processed/ATAE-LSTM/glove_symdict.yml
   start_idx:
     2 # 0 for padding, 1 for <UNK>
