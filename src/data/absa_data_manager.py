@@ -15,6 +15,7 @@ import numpy as np
 from src.utils import symbolize, get_envar, read_config, read_yaml
 from src.utils import Logger, __fn__
 pd.options.display.max_colwidth = 80
+
 logger = Logger(__fn__())
 
 class AbsaDataManager(object):
@@ -29,7 +30,7 @@ class AbsaDataManager(object):
 
 
     def __initialize(self):
-        sd_path = self.configs.symbol_dict.file_path
+        sd_path = self.configs.symbol_dict.path
         logger.info('Loading symbol_dict from {}'.format(sd_path))
         self.sd = read_yaml(sd_path)
 
