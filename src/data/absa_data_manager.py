@@ -12,7 +12,7 @@ X, asp, lex, y
 
 import pandas as pd
 import numpy as np
-from src.utils import symbolize, get_envar, read_config, read_yaml
+from src.utils import symbolize, get_envar, read_config, read_yaml, load_embedding
 from src.utils import Logger, __fn__
 pd.options.display.max_colwidth = 80
 
@@ -31,8 +31,11 @@ class AbsaDataManager(object):
 
     def __initialize(self):
         sd_path = self.configs.symbol_dict.path
+        emb_path = self.configs.embedding_table.path
         logger.info('Loading symbol_dict from {}'.format(sd_path))
         self.sd = read_yaml(sd_path)
+        logger.info('Loading emb_table from {}'.format(emb_path))
+        self.emb = load_embedding(emb_path)
 
     def token2symbol(self, sents):
         """
