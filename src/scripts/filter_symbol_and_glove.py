@@ -1,5 +1,12 @@
 """
-Create shrinked sym_dict and glove vector based on datasets
+Create shrinked sym_dict and glove vector based on datasets.
+
+01 Load files and concat into dataframe
+02 Merge all columns as 'tokens'
+03 Get unique words as vocab
+04 Loop raw glove file, take if in vocab
+05 Save shrieked sym_dict and glove_lookup table
+
 """
 
 
@@ -26,7 +33,6 @@ def filter_symbol_and_glove(files, odir, raw_glove, start_idx):
 
     _sym_dict, _ = create_symbol_dict(all_words.str.split())
     vocab = _sym_dict.keys()
-    logger.info('Total tokens: {} (including labels -1,0,1)'.format(len(vocab)))
 
     data = {}
     with open(raw_glove, 'r', encoding='utf-8') as f:
@@ -46,8 +52,8 @@ def filter_symbol_and_glove(files, odir, raw_glove, start_idx):
 
     _df = pd.DataFrame(data).transpose().astype(float)
     _df.columns = _df.columns.astype(str)
+    logger.info('Dataset vocab size: {} (including labels -1,0,1)'.format(len(vocab)))
     logger.info('Filtered embedding table ({}):\n{}'.format(_df.shape, _df.head()))
-    logger.info('Dataset vocab size: {}'.format(len(vocab)))
 
     glove_out = odir+'/glove_lookup.parquet'
     sym_out = odir+'/glove_symdict.yml'
