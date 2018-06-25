@@ -1,4 +1,4 @@
-from src.utils.data_utils import symbolize, load_corpus
+from src.utils.data_utils import symbolize
 from src.utils.file_utils import read_yaml
 from src.data.absa_data_manager import AbsaDataManager
 import numpy as np
