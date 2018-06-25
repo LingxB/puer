@@ -45,7 +45,7 @@ def filter_symbol_and_glove(files, odir, raw_glove, start_idx):
                 try:
                     key = key[0]
                 except IndexError:
-                    logger.debug('Empty key {} at line {}: {}'.format(key, idx+1, line))
+                    logger.debug('Empty key {} at line {}: {}'.format(key, idx+1, line[:100]+'...'))
                     key = ' '
                 if key in vocab:
                     data.update({key: values})
