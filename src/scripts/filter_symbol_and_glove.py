@@ -47,6 +47,7 @@ def filter_symbol_and_glove(files, odir, raw_glove, start_idx):
     _df = pd.DataFrame(data).transpose().astype(float)
     _df.columns = _df.columns.astype(str)
     logger.info('Filtered embedding table ({}):\n{}'.format(_df.shape, _df.head()))
+    logger.info('Dataset vocab size: {}'.format(len(vocab)))
 
     glove_out = odir+'/glove_lookup.parquet'
     sym_out = odir+'/glove_symdict.yml'
