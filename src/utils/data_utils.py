@@ -39,5 +39,5 @@ def create_symbol_dict(corpus, start_idx=2):
     return d, c
 
 
-def symbolize(corpus, symbol_dict, unk=2, **kwargs):
+def symbolize(corpus, symbol_dict, unk=1, **kwargs):
     return pad_sequences([[symbol_dict.get(w, unk) for w in s] for s in corpus], padding='post', **kwargs)
