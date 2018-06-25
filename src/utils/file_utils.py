@@ -4,6 +4,8 @@ import os
 import inspect
 from src.utils.att_dict import AttributeDict
 from src.utils.data_utils import create_symbol_dict
+import warnings
+import pandas as pd
 
 
 def read_config(config_file, obj_view=True):
@@ -34,6 +36,7 @@ def list_files(path):
         return l[0][-1]
 
 def load_symbod_dict_if_exists(load_path):
+    warnings.warn('Decrypted!')
     try:
         sd = read_yaml(load_path)
     except FileNotFoundError:
@@ -41,6 +44,7 @@ def load_symbod_dict_if_exists(load_path):
     return sd
 
 def create_dump_symbol_dict(corpus, start_idx, dump_path):
+    warnings.warn('Decrypted!')
     sd, _ = create_symbol_dict(corpus, start_idx)
     save_yaml(sd, dump_path, 'x')
     return sd
@@ -62,3 +66,16 @@ def __fn__():
     except AttributeError:
         name = '__main__'
     return name
+
+def load_corpus(file, **kwargs):
+    if isinstance(file, str):
+        _df = pd.read_csv(file, **kwargs)
+    elif isinstance(file, list):
+        _df = pd.concat([pd.read_csv(f, **kwargs) for f in file], ignore_index=True)
+    else:
+        raise AttributeError('File type not valid, path or list of paths only.')
+    return _df
+
+def load_embedding(file, **kwargs):
+    df = pd.read_parquet(file, **kwargs)
+    return df

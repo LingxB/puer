@@ -1,18 +1,7 @@
-import pandas as pd
 from collections import Counter
 from tensorflow.python.keras.preprocessing.sequence import pad_sequences
 
 
-
-
-def load_corpus(file, **kwargs):
-    if isinstance(file, str):
-        _df = pd.read_csv(file, **kwargs)
-    elif isinstance(file, list):
-        _df = pd.concat([pd.read_csv(f, **kwargs) for f in file], ignore_index=True)
-    else:
-        raise AttributeError('File type not valid, path or list of paths only.')
-    return _df
 
 
 def create_symbol_dict(corpus, start_idx=2):
