@@ -11,8 +11,8 @@ Create shrinked sym_dict and glove vector based on datasets.
 
 
 import pandas as pd
-from src.utils.file_utils import save_yaml
-from src.utils.data_utils import load_corpus, create_symbol_dict
+from src.utils.file_utils import save_yaml, load_corpus
+from src.utils.data_utils import create_symbol_dict
 import click
 from src.utils import Logger, __fn__
 pd.options.display.max_colwidth = 80
