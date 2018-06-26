@@ -1,8 +1,8 @@
 """
 
-data = DataManager(*args, **kwargs)
+dm = DataManager(*args, **kwargs)
 
-data.batch # batch generator to feed data into model
+dm.batch # batch generator to feed data into model
 
 X, asp, lex, y
 
