@@ -41,7 +41,7 @@ def filter_symbol_and_glove(files, odir, raw_glove, start_idx):
                 values = _line[-300:]
                 key = _line[:-300]
                 if len(key) > 1:
-                    key = [' '.join(key)][0]
+                    key = ' '.join(key)
                 try:
                     key = key[0]
                 except IndexError:
