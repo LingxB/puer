@@ -83,3 +83,6 @@ target/
 
 # logs
 logs/*.log
+
+# pytest
+.pytest_cache
