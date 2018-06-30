@@ -27,19 +27,26 @@ test_df = load_corpus('data/processed/ATAE-LSTM/test.csv')
 X = tf.placeholder(tf.int32, shape=(None, None), name='X')
 
 
-pre_trained_embedding = tf.get_variable(name="pre_trained_embedding",
-                                        shape=dm.emb.shape,
-                                        dtype=tf.float32,
-                                        initializer=tf.constant_initializer(dm.emb.values),
-                                        trainable=True)
+glove = tf.get_variable(name='glove',
+                        shape=dm.emb.shape,
+                        dtype=tf.float32,
+                        initializer=tf.constant_initializer(dm.emb.values),
+                        trainable=True)
 
-pad_embedding = tf.get_variable(name='pad_embedding',
-                                shape=(2, 300),
-                                dtype=tf.float32,
-                                initializer=tf.zeros_initializer(),
-                                trainable=False)
+pad = tf.get_variable(name='pad',
+                      shape=(1, glove.shape[1].value),
+                      dtype=tf.float32,
+                      initializer=tf.zeros_initializer(),
+                      trainable=False)
 
-embedding = tf.concat([pad_embedding, pre_trained_embedding], axis=0, name='concat_embedding')
+
+unk = tf.get_variable(name='unk',
+                      shape=(1, glove.shape[1].value),
+                      dtype=tf.float32,
+                      initializer=tf.random_uniform_initializer(seed=None),
+                      trainable=True) # TODO: CAREFULL WITH SEEDS
+
+embedding = tf.concat([pad, unk, glove], axis=0, name='embedding')
 
 
 X_ = tf.nn.embedding_lookup(embedding, X)
