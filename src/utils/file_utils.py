@@ -36,7 +36,7 @@ def list_files(path):
         return l[0][-1]
 
 def load_symbod_dict_if_exists(load_path):
-    warnings.warn('Decrypted!')
+    warnings.warn('Function is deprecated!')
     try:
         sd = read_yaml(load_path)
     except FileNotFoundError:
@@ -44,7 +44,7 @@ def load_symbod_dict_if_exists(load_path):
     return sd
 
 def create_dump_symbol_dict(corpus, start_idx, dump_path):
-    warnings.warn('Decrypted!')
+    warnings.warn('Function is deprecated!')
     sd, _ = create_symbol_dict(corpus, start_idx)
     save_yaml(sd, dump_path, 'x')
     return sd
