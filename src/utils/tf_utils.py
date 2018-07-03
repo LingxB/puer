@@ -22,7 +22,27 @@ def matmul_2_3(tensor_2d, tensor_3d):
     # reshape 2d to 3d
 
     left = tf.reshape(tensor_2d, (1, tensor_2d.shape[0], tensor_2d.shape[1]))
-    left = tf.tile(left, [tensor_3d.shape[0], 1, 1])
+    left = tf.tile(left, [tf.shape(tensor_3d)[0], 1, 1])
 
     return tf.matmul(left, tensor_3d)
+
+
+def seq_length(sequence):
+    """
+    Compute real sequence length on 3d tensor where 0 is used for padding. i.e. Tensor with shape (batch, N, d),
+    sequence is padded with 0 vectors to form N as max_length of batch. This function computes the real length of each
+    example in batch.
+
+    Parameters
+    ----------
+    sequence : tensor
+        3D tensor with shape (batch, N, d) where empty time steps are padded with 0 vector
+
+    Returns
+    -------
+    """
+    used = tf.sign(tf.reduce_max(tf.abs(sequence), 2))
+    length = tf.reduce_sum(used, 1)
+    length = tf.cast(length, tf.int32)
+    return length
 
