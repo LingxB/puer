@@ -13,15 +13,16 @@ logger = Logger(__fn__())
 # Hyper parameters
 # ----------------
 hyparams = dict(
+    epochs=10,
     random_state=None, # TODO: TEST FIXED RANDOM SEED
-    batch_size=5,
+    batch_size=25,
     cell_num=300, # d
     layer_num=1,
     dropout_keep_prob=0.5,
     epsilon=0.01,
     momentum=0.9, # TODO: Momentum + AdaGrad = Adam?
     learning_rate=0.01, # AdaGrad initial
-    lambta = 0.01  # L2
+    lambta=0.01  # L2
 )
 
 
@@ -132,31 +133,59 @@ with tf.name_scope('Output'):
 
 # Loss
 # ----
-# TODO: Check loss, use reduce_sum instead of reduce_mean correct?
-# TODO: Check L2, current implenmentation loss is not normalized by batch_size
-cross_entropy = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
+with tf.name_scope('Loss'):
+    # TODO: Check loss, use reduce_sum instead of reduce_mean
+    # TODO: Check L2, current implenmentation loss is not normalized by batch_size
+    # TODO: Check embedding params, current implementation includes embedding params in L2 regularization
+    cross_entropy = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
+    regularizer = hyparams['lambta'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
+    loss = cross_entropy + regularizer
 
-regularizer = hyparams['lambta'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
-
-loss = cross_entropy + regularizer
 
 # Train Op
 # --------
-#train_op = tf.train.AdagradOptimizer(0.01).minimize(loss)
-train_op = tf.train.AdamOptimizer(learning_rate=0.01)
+with tf.name_scope('TrainOp'):
+    #optimizer = tf.train.AdagradOptimizer(0.01).minimize(loss)
+    optimizer = tf.train.AdamOptimizer(learning_rate=hyparams['learning_rate'], beta1=hyparams['momentum'])
+    train_op = optimizer.minimize(loss)
 
 
+# Evaluation during training
+with tf.name_scope('Evaluation'):
+    correct_prediction = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+
+# Run
+# ---
 init = tf.global_variables_initializer()
-
-
-
 
 with tf.Session() as sess:
     sess.run(init)
-    _, first_batch = next(dm.batch_generator(train_df, batch_size=hyparams['batch_size']))
-    _X, _asp, _lx, _y = first_batch
+    logger.info('---- Training started ----')
+    logger.info('hyper params: {}'.format(hyparams))
+    for epoch in range(hyparams['epochs']):
+        batch_generator = dm.batch_generator(train_df, batch_size=hyparams['batch_size'], shuffle=False)
+        for i, (_, batch) in enumerate(batch_generator):
+            _X, _asp, _lx, _y = batch
 
-    sess.run()
+            _cross_entropy, _regularizer, _loss, _accuarcy, _ = \
+                sess.run([cross_entropy, regularizer, loss, accuracy, train_op], feed_dict={X: _X, asp: _asp, y: _y})
+            logger.debug('epoch {epoch:03d}/{epochs:03d} \t'
+                         'batch {i:02d}/{n_batches:02d} \t'
+                         'error={cross_entropy:4.4f} \t'
+                         'l2={l2:4.4f} \t'
+                         'loss={loss:4.2f} \t'
+                         'train_acc/3={acc:.4%}'
+                         .format(epoch=epoch, epochs=hyparams['epochs'], i=i, n_batches=dm.n_batches,
+                                 cross_entropy=_cross_entropy, l2=_regularizer, loss=_loss, acc=_accuarcy))
+    logger.info('---- Training ended ----')
+
+    # _, first_batch = next(dm.batch_generator(train_df, batch_size=hyparams['batch_size']))
+    # _X, _asp, _lx, _y = first_batch
+    #
+    # sess.run()
+
 
     #X_lookup, s_len, asp_lookup = sess.run([X_, seq_len, asp_], feed_dict={X: _X, asp: _asp})
 
@@ -169,3 +198,6 @@ with tf.Session() as sess:
 #
 # _H = H.transpose([2, 1, 0])
 # __H = _H.reshape(300, -1)
+
+
+
