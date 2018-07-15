@@ -113,6 +113,7 @@ class AbsaDataManager(object):
             logger.info('Shuffled dataframe:\n{}'.format(_df.head()))
 
         n_batches = int(np.ceil(_df.shape[0]/batch_size))
+        self.n_batches = n_batches # Save for later use in logging
 
         first_idx = np.arange(batch_size)
         last_batch = False
