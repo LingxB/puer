@@ -1,4 +1,4 @@
-from src.utils import Logger, __fn__, load_corpus, matmul_2_3, seq_length
+from src.utils import Logger, __fn__, load_corpus, matmul_2_3, seq_length, get_envar, read_config, get_timestamp, mkdir
 from src.data import AbsaDataManager
 import numpy as np
 import tensorflow as tf
@@ -9,11 +9,16 @@ from time import time
 
 logger = Logger(__fn__())
 
+# Configs
+# -------
+configs = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=True)
+wdir = configs.model.path + get_timestamp() + '/'
+
 
 # Hyper parameters
 # ----------------
 hyparams = dict(
-    epochs=10,
+    epochs=1, #10
     random_state=None, # TODO: TEST FIXED RANDOM SEED
     batch_size=25,
     cell_num=300, # d
@@ -162,6 +167,7 @@ init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
     sess.run(init)
+    saver = tf.train.Saver()
     logger.info('---- Training started ----')
     logger.info('hyper params: {}'.format(hyparams))
     for epoch in range(hyparams['epochs']):
@@ -170,7 +176,17 @@ with tf.Session() as sess:
             _X, _asp, _lx, _y = batch
 
             _cross_entropy, _regularizer, _loss, _accuarcy, _ = \
-                sess.run([cross_entropy, regularizer, loss, accuracy, train_op], feed_dict={X: _X, asp: _asp, y: _y})
+                sess.run([cross_entropy,
+                          regularizer,
+                          loss,
+                          accuracy,
+                          train_op],
+                         feed_dict={X: _X,
+                                    asp: _asp,
+                                    y: _y,
+                                    dropout_keep: hyparams['dropout_keep_prob']
+                                    })
+
             logger.debug('epoch {epoch:03d}/{epochs:03d} \t'
                          'batch {i:02d}/{n_batches:02d} \t'
                          'error={cross_entropy:4.4f} \t'
@@ -180,6 +196,11 @@ with tf.Session() as sess:
                          .format(epoch=epoch, epochs=hyparams['epochs'], i=i, n_batches=dm.n_batches,
                                  cross_entropy=_cross_entropy, l2=_regularizer, loss=_loss, acc=_accuarcy))
     logger.info('---- Training ended ----')
+    logger.info('Saving model...')
+    mkdir(wdir)
+    saver.save(sess, wdir + configs.model.name)
+    logger.info("Model saved to '{}'".format(wdir))
+
 
     # _, first_batch = next(dm.batch_generator(train_df, batch_size=hyparams['batch_size']))
     # _X, _asp, _lx, _y = first_batch
