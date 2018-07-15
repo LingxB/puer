@@ -6,7 +6,14 @@ from src.utils.att_dict import AttributeDict
 from src.utils.data_utils import create_symbol_dict
 import warnings
 import pandas as pd
+from time import time
+from datetime import datetime
 
+
+def get_timestamp():
+    ts = time()
+    ts = datetime.fromtimestamp(ts).strftime('%Y%m%d_%H%M%S')
+    return ts
 
 def read_config(config_file, obj_view=True):
     cfg = read_yaml(config_file + '.yml')
@@ -79,3 +86,7 @@ def load_corpus(file, **kwargs):
 def load_embedding(file, **kwargs):
     df = pd.read_parquet(file, **kwargs)
     return df
+
+def mkdir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
