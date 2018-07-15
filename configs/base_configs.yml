@@ -6,3 +6,8 @@ symbol_dict:
 embedding_table:
   path:
     data/processed/ATAE-LSTM/glove_lookup.parquet
+model:
+  path:
+    models/
+  name:
+    AT-LSTM
