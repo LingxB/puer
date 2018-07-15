@@ -86,3 +86,8 @@ logs/*.log
 
 # pytest
 .pytest_cache
+
+
+# exclude everything under models but not models itself
+models/*
+!models/.gitkeep
