@@ -17,18 +17,19 @@ wdir = configs.model.path + get_timestamp() + '/'
 
 # Hyper parameters
 # ----------------
-hyparams = dict(
-    epochs=1, #10
-    random_state=None, # TODO: TEST FIXED RANDOM SEED
-    batch_size=25,
-    cell_num=300, # d
-    layer_num=1,
-    dropout_keep_prob=0.5,
-    epsilon=0.01,
-    momentum=0.9, # TODO: Momentum + AdaGrad = Adam?
-    learning_rate=0.01, # AdaGrad initial
-    lambta=0.01  # L2
-)
+# hyparams = dict(
+#     epochs=1, #10
+#     random_state=None, # TODO: TEST FIXED RANDOM SEED
+#     batch_size=25,
+#     cell_num=300, # d
+#     layer_num=1,
+#     dropout_keep_prob=0.5,
+#     epsilon=0.01,
+#     momentum=0.9, # TODO: Momentum + AdaGrad = Adam?
+#     learning_rate=0.01, # AdaGrad initial
+#     lambta=0.01  # L2
+# )
+hyparams = configs.hyperparams
 
 
 # Load data
@@ -143,7 +144,7 @@ with tf.name_scope('Loss'):
     # TODO: Check L2, current implenmentation loss is not normalized by batch_size
     # TODO: Check embedding params, current implementation includes embedding params in L2 regularization
     cross_entropy = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
-    regularizer = hyparams['lambta'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
+    regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
     loss = cross_entropy + regularizer
 
 
