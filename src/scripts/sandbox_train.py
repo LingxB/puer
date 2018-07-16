@@ -29,7 +29,7 @@ wdir = configs.model.path + get_timestamp() + '/'
 #     learning_rate=0.01, # AdaGrad initial
 #     lambta=0.01  # L2
 # )
-hyparams = configs.hyperparams
+hyparams = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=False)['hyperparams']
 
 
 # Load data
