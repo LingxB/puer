@@ -114,7 +114,7 @@ with tf.name_scope('Attention'):
 
     w = tf.get_variable('w', shape=(X_.shape[2]+asp_.shape[2], 1), dtype=tf.float32, initializer=initializer) # (d+da, 1)
     w_T = tf.transpose(w) # (1, d+da)
-    alpha = tf.nn.softmax(matmul_2_3(w_T, M)) # (batch, 1, N)
+    alpha = tf.nn.softmax(matmul_2_3(w_T, M), name='ALPHA') # (batch, 1, N)
     assert alpha.shape.as_list() == tf.TensorShape([X_.shape[0], 1, M.shape[2]]).as_list()
     #alpha = tf.reshape(alpha, (tf.shape(alpha)[0], tf.shape(alpha)[2])) # (batch, N)
 
@@ -133,7 +133,7 @@ with tf.name_scope('Attention'):
 # ------------
 with tf.name_scope('Output'):
     logits = tf.layers.dense(h_star, 3, kernel_initializer=initializer, name='s')
-    pred = tf.nn.softmax(logits)
+    pred = tf.nn.softmax(logits, name='PRED')
 
 
 # Loss
@@ -158,7 +158,7 @@ with tf.name_scope('TrainOp'):
 # Evaluation during training
 with tf.name_scope('Evaluation'):
     correct_prediction = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
-    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='ACC3')
 
 
 # Run
