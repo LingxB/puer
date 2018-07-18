@@ -193,7 +193,7 @@ with tf.Session() as sess:
                          'error={cross_entropy:4.4f} \t'
                          'l2={l2:4.4f} \t'
                          'loss={loss:4.2f} \t'
-                         'train_acc/3={acc:.4%}'
+                         'train_acc/3={acc:.2%}'
                          .format(epoch=epoch, epochs=hyparams['epochs'], i=i, n_batches=dm.n_batches,
                                  cross_entropy=_cross_entropy, l2=_regularizer, loss=_loss, acc=_accuarcy))
     logger.info('---- Training ended ----')
