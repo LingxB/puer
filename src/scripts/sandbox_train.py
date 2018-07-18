@@ -171,6 +171,8 @@ with tf.Session() as sess:
     saver = tf.train.Saver()
     logger.info('---- Training started ----')
     logger.info('hyper params: {}'.format(hyparams))
+    _, test_batch = next(dm.batch_generator(test_df, batch_size=-1))
+    X_test, asp_test, lx_test, y_test = test_batch
     for epoch in range(hyparams['epochs']):
         batch_generator = dm.batch_generator(train_df, batch_size=hyparams['batch_size'], shuffle=False)
         for i, (_, batch) in enumerate(batch_generator):
@@ -195,7 +197,12 @@ with tf.Session() as sess:
                          'loss={loss:4.2f} \t'
                          'train_acc/3={acc:.2%}'
                          .format(epoch=epoch, epochs=hyparams['epochs'], i=i, n_batches=dm.n_batches,
-                                 cross_entropy=_cross_entropy, l2=_regularizer, loss=_loss, acc=_accuarcy))
+                                 cross_entropy=_cross_entropy, l2=_regularizer, loss=_loss, acc=_accuarcy,
+                                 ))
+
+        test_accuarcy = sess.run(accuracy, feed_dict={X: X_test, asp: asp_test, y: y_test})
+        logger.debug('** Test accuarcy: {:.2%} **'.format(test_accuarcy))
+
     logger.info('---- Training ended ----')
     logger.info('Saving model...')
     mkdir(wdir)
