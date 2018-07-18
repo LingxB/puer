@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow.contrib import rnn
 from copy import deepcopy
 from time import time
-
+import pandas as pd
 
 logger = Logger(__fn__())
 
@@ -143,8 +143,11 @@ with tf.name_scope('Loss'):
     # TODO: Check loss, use reduce_sum instead of reduce_mean
     # TODO: Check L2, current implenmentation loss is not normalized by batch_size
     # TODO: Check embedding params, current implementation includes embedding params in L2 regularization
-    cross_entropy = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
-    regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
+    cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
+
+    reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
+    regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
+    #regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
     loss = cross_entropy + regularizer
 
 
@@ -174,7 +177,7 @@ with tf.Session() as sess:
     _, test_batch = next(dm.batch_generator(test_df, batch_size=-1))
     X_test, asp_test, lx_test, y_test = test_batch
     for epoch in range(hyparams['epochs']):
-        batch_generator = dm.batch_generator(train_df, batch_size=hyparams['batch_size'], shuffle=False)
+        batch_generator = dm.batch_generator(train_df, batch_size=hyparams['batch_size'], shuffle=True)
         for i, (_, batch) in enumerate(batch_generator):
             _X, _asp, _lx, _y = batch
 
@@ -201,7 +204,8 @@ with tf.Session() as sess:
                                  ))
 
         test_accuarcy = sess.run(accuracy, feed_dict={X: X_test, asp: asp_test, y: y_test})
-        logger.debug('** Test accuarcy: {:.2%} **'.format(test_accuarcy))
+        logger.info('** Epoch {epoch:03d}/{epochs:03d} '
+                    'Test accuarcy: {ta:.2%} **'.format(epoch=epoch, epochs=hyparams['epochs'], ta=test_accuarcy))
 
     logger.info('---- Training ended ----')
     logger.info('Saving model...')
