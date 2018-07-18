@@ -107,15 +107,16 @@ class AbsaDataManager(object):
 
     def batch_generator(self, df, batch_size, shuffle=False, random_state=1):
         _df = df.copy()
+        _batch_size = _df.shape[0] if batch_size == -1 else batch_size
 
         if shuffle:
             _df = _df.sample(frac=1, random_state=random_state).reset_index(drop=True)
             logger.info('Shuffled dataframe:\n{}'.format(_df.head()))
 
-        n_batches = int(np.ceil(_df.shape[0]/batch_size))
+        n_batches = int(np.ceil(_df.shape[0]/_batch_size))
         self.n_batches = n_batches # Save for later use in logging
 
-        first_idx = np.arange(batch_size)
+        first_idx = np.arange(_batch_size)
         last_batch = False
         for n in range(n_batches):
             if n == n_batches-1:
