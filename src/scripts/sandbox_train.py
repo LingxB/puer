@@ -143,7 +143,7 @@ with tf.name_scope('Loss'):
     # TODO: Check loss, use reduce_sum instead of reduce_mean
     # TODO: Check L2, current implenmentation loss is not normalized by batch_size
     # TODO: Check embedding params, current implementation includes embedding params in L2 regularization
-    cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
+    cross_entropy = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
 
     reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
     regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
@@ -154,8 +154,8 @@ with tf.name_scope('Loss'):
 # Train Op
 # --------
 with tf.name_scope('TrainOp'):
-    #optimizer = tf.train.AdagradOptimizer(0.01).minimize(loss)
-    optimizer = tf.train.AdamOptimizer(learning_rate=hyparams['learning_rate'], beta1=hyparams['momentum'])
+    optimizer = tf.train.AdagradOptimizer(hyparams['learning_rate'])
+    # optimizer = tf.train.AdamOptimizer(learning_rate=hyparams['learning_rate'], beta1=hyparams['momentum'])
     train_op = optimizer.minimize(loss)
 
 

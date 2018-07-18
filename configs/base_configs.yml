@@ -17,7 +17,7 @@ model:
 
 hyperparams:
 # ----------
-  epochs: 25
+  epochs: 35
   random_state:
   batch_size: 25
   cell_num: 300
