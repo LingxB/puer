@@ -111,7 +111,7 @@ class AbsaDataManager(object):
 
         if shuffle:
             _df = _df.sample(frac=1, random_state=random_state).reset_index(drop=True)
-            logger.info('Shuffled dataframe:\n{}'.format(_df.head()))
+            logger.debug('Shuffled dataframe:\n{}'.format(_df.head()))
 
         n_batches = int(np.ceil(_df.shape[0]/_batch_size))
         self.n_batches = n_batches # Save for later use in logging
