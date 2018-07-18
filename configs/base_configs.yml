@@ -26,4 +26,4 @@ hyperparams:
   epsilon: 0.01
   momentum: 0.9
   learning_rate: 0.01
-  lambda: 0.01
+  lambda: 0.001
