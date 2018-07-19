@@ -17,8 +17,8 @@ model:
 
 hyperparams:
 # ----------
-  epochs: 35
-  random_state:
+  epochs: 25
+  random_state: 4
   batch_size: 25
   cell_num: 300
   layer_num: 1
@@ -26,4 +26,5 @@ hyperparams:
   epsilon: 0.01
   momentum: 0.9
   learning_rate: 0.01
-  lambda: 0.001
+  lambda: 0.001 # l2
+  optimizer: adagrad
