@@ -154,8 +154,12 @@ with tf.name_scope('Loss'):
 # Train Op
 # --------
 with tf.name_scope('TrainOp'):
-    optimizer = tf.train.AdagradOptimizer(hyparams['learning_rate'])
-    # optimizer = tf.train.AdamOptimizer(learning_rate=hyparams['learning_rate'], beta1=hyparams['momentum'])
+    if hyparams['optimizer'] == 'adagrad':
+        optimizer = tf.train.AdagradOptimizer(hyparams['learning_rate'])
+    elif hyparams['optimizer'] == 'adam':
+        optimizer = tf.train.AdamOptimizer(learning_rate=hyparams['learning_rate'], beta1=hyparams['momentum'])
+    else:
+        raise NotImplementedError('Invalid optimizer in hyperparams')
     train_op = optimizer.minimize(loss)
 
 
@@ -163,6 +167,18 @@ with tf.name_scope('TrainOp'):
 with tf.name_scope('Evaluation'):
     correct_prediction = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='ACC3')
+
+
+# Test random seed
+# print(hyparams)
+#
+# init = tf.global_variables_initializer()
+#
+# with tf.Session() as sess:
+#     sess.run(init)
+#     _, first_batch = next(dm.batch_generator(train_df, batch_size=hyparams['batch_size']))
+#     _X, _asp, _lx, _y = first_batch
+#     print(sess.run(loss, feed_dict={X: _X, asp: _asp, y: _y})) # reduce_sum, random_state=4, loss=27.483023
 
 
 # Run
@@ -193,13 +209,13 @@ with tf.Session() as sess:
                                     dropout_keep: hyparams['dropout_keep_prob']
                                     })
 
-            logger.debug('epoch {epoch:03d}/{epochs:03d} \t'
+            logger.debug('epoch {epoch:03d}/{epochs:02d} \t'
                          'batch {i:02d}/{n_batches:02d} \t'
                          'error={cross_entropy:4.4f} \t'
                          'l2={l2:4.4f} \t'
-                         'loss={loss:4.2f} \t'
+                         'loss={loss:4.4f} \t'
                          'train_acc/3={acc:.2%}'
-                         .format(epoch=epoch, epochs=hyparams['epochs'], i=i, n_batches=dm.n_batches,
+                         .format(epoch=epoch+1, epochs=hyparams['epochs'], i=i, n_batches=dm.n_batches,
                                  cross_entropy=_cross_entropy, l2=_regularizer, loss=_loss, acc=_accuarcy,
                                  ))
 
