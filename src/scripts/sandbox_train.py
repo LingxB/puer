@@ -11,26 +11,16 @@ logger = Logger(__fn__())
 
 # Configs
 # -------
-configs = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=True)
-wdir = configs.model.path + get_timestamp() + '/'
+base_configs = read_config(get_envar('CONFIG_PATH') + '/' + get_envar('BASE_CONFIG'), obj_view=True)
+wdir = base_configs.model.path + get_timestamp() + '/'
 
 
 # Hyper parameters
 # ----------------
-# hyparams = dict(
-#     epochs=1, #10
-#     random_state=None, # TODO: TEST FIXED RANDOM SEED
-#     batch_size=25,
-#     cell_num=300, # d
-#     layer_num=1,
-#     dropout_keep_prob=0.5,
-#     epsilon=0.01,
-#     momentum=0.9, # TODO: Momentum + AdaGrad = Adam?
-#     learning_rate=0.01, # AdaGrad initial
-#     lambta=0.01  # L2
-# )
-hyparams = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=False)['hyperparams']
-
+exp_num = 'exp_' + input('exp_?')
+exp_configs = read_config(base_configs.exp_configs.path, obj_view=False)[exp_num]
+hyparams = exp_configs['hyperparams']
+description = exp_configs['description']
 
 # Load data
 # ---------
@@ -143,12 +133,19 @@ with tf.name_scope('Loss'):
     # TODO: Check loss, use reduce_sum instead of reduce_mean
     # TODO: Check L2, current implenmentation loss is not normalized by batch_size
     # TODO: Check embedding params, current implementation includes embedding params in L2 regularization
-    cross_entropy = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
+
+    # cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
+    #
+    # reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
+    # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
+    # #regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
+    # loss = cross_entropy + regularizer
 
     reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
     regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
-    #regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
-    loss = cross_entropy + regularizer
+    cross_entropy_by_example = tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits)
+    cross_entropy = tf.reduce_mean(cross_entropy_by_example)
+    loss = tf.reduce_mean(cross_entropy_by_example + regularizer)
 
 
 # Train Op
@@ -158,8 +155,15 @@ with tf.name_scope('TrainOp'):
         optimizer = tf.train.AdagradOptimizer(hyparams['learning_rate'])
     elif hyparams['optimizer'] == 'adam':
         optimizer = tf.train.AdamOptimizer(learning_rate=hyparams['learning_rate'], beta1=hyparams['momentum'])
+    elif hyparams['optimizer'] == 'sgd':
+        optimizer = tf.train.GradientDescentOptimizer(learning_rate=hyparams['learning_rate'])
+    elif hyparams['optimizer'] == 'momentum':
+        optimizer = tf.train.MomentumOptimizer(learning_rate=hyparams['learning_rate'], momentum=hyparams['momentum'])
+    elif hyparams['optimizer'] == 'rmsprop':
+        optimizer = tf.train.RMSPropOptimizer(learning_rate=hyparams['learning_rate'], momentum=hyparams['momentum'])
     else:
         raise NotImplementedError('Invalid optimizer in hyperparams')
+
     train_op = optimizer.minimize(loss)
 
 
@@ -188,8 +192,9 @@ init = tf.global_variables_initializer()
 with tf.Session() as sess:
     sess.run(init)
     saver = tf.train.Saver()
-    logger.info('---- Training started ----')
-    logger.info('hyper params: {}'.format(hyparams))
+    logger.info('---- {} training started ----'.format(exp_num))
+    logger.info('description: {}'.format(description))
+    logger.info('hyperparams: {}'.format(hyparams))
     _, test_batch = next(dm.batch_generator(test_df, batch_size=-1))
     X_test, asp_test, lx_test, y_test = test_batch
     for epoch in range(hyparams['epochs']):
@@ -223,10 +228,10 @@ with tf.Session() as sess:
         logger.info('** Epoch {epoch:03d}/{epochs:03d} '
                     'Test accuarcy: {ta:.2%} **'.format(epoch=epoch, epochs=hyparams['epochs'], ta=test_accuarcy))
 
-    logger.info('---- Training ended ----')
+    logger.info('---- {} training ended ----'.format(exp_num))
     logger.info('Saving model...')
     mkdir(wdir)
-    saver.save(sess, wdir + configs.model.name)
+    saver.save(sess, wdir + base_configs.model.name)
     logger.info("Model saved to '{}'".format(wdir))
 
 

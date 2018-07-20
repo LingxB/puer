@@ -6,7 +6,7 @@ exp_1: &1
   description: >
     This is an description of this experiment.
   # Hyper parameters
-  hyperparams:
+  hyperparams: &h1
     epochs: 35
     random_state: 4
     batch_size: 25
@@ -18,3 +18,20 @@ exp_1: &1
     learning_rate: 0.01
     lambda: 0.001 # l2
     optimizer: adagrad
+
+exp_2: &2 # best 80.99% after 2nd epoch
+  <<: *1
+  description: >
+    try adam 0.001, reduce_mean(ce + l2)
+  hyperparams: &h2
+    <<: *h1
+    epochs: 25
+    learning_rate: 0.001
+    optimizer: adam
+
+exp_3: # This looks pretty bad
+  description: >
+    same as exp_2, try adam 0.01, reduce_mean(ce + l2)
+  hyperparams:
+    <<: *h2
+    learning_rate: 0.01
