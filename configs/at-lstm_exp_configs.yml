@@ -35,3 +35,9 @@ exp_3: # This looks pretty bad
   hyperparams:
     <<: *h2
     learning_rate: 0.01
+
+exp_4: # Manual change of loss function in script was made to test difference
+  description: >
+    same as exp_2, try adam 0.001, reduce_mean(ce) + l2
+  hyperparams:
+    <<: *h2

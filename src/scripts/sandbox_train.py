@@ -134,18 +134,17 @@ with tf.name_scope('Loss'):
     # TODO: Check L2, current implenmentation loss is not normalized by batch_size
     # TODO: Check embedding params, current implementation includes embedding params in L2 regularization
 
-    # cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
-    #
-    # reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
-    # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
-    # #regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
-    # loss = cross_entropy + regularizer
-
+    cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
     reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
     regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
-    cross_entropy_by_example = tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits)
-    cross_entropy = tf.reduce_mean(cross_entropy_by_example)
-    loss = tf.reduce_mean(cross_entropy_by_example + regularizer)
+    # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
+    loss = cross_entropy + regularizer
+
+    # reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
+    # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
+    # cross_entropy_by_example = tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits)
+    # cross_entropy = tf.reduce_mean(cross_entropy_by_example)
+    # loss = tf.reduce_mean(cross_entropy_by_example + regularizer)
 
 
 # Train Op
