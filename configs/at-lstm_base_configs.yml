@@ -4,14 +4,14 @@
 symbol_dict:
 # ----------
   path:
-    data/processed/ATAE-LSTM/glove_symdict.yml
+    data/processed/ATAE-LSTM/glove_symdict
   start_idx:
     2 # 0 for padding, 1 for <UNK>
 
 embedding_table:
 # --------------
   path:
-    data/processed/ATAE-LSTM/glove_lookup.parquet
+    data/processed/ATAE-LSTM/glove_lookup
 
 model:
 # ----

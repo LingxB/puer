@@ -39,5 +39,12 @@ exp_3: # This looks pretty bad
 exp_4: # Manual change of loss function in script was made to test difference
   description: >
     same as exp_2, try adam 0.001, reduce_mean(ce) + l2
-  hyperparams:
+  hyperparams: &h4
     <<: *h2
+
+exp_5:
+  description: >
+    same as exp_5, not using dropout
+  hyperparams: *h4
+    dropout_keep_prob: 1.0
+

@@ -30,8 +30,8 @@ class AbsaDataManager(object):
 
 
     def __initialize(self):
-        sd_path = self.configs.symbol_dict.path
-        emb_path = self.configs.embedding_table.path
+        sd_path = self.configs.symbol_dict.path + '.yml'
+        emb_path = self.configs.embedding_table.path + '.parquet'
         logger.info('Loading symbol_dict from {}'.format(sd_path))
         self.sd = read_yaml(sd_path)
         logger.info('Loading emb_table from {}'.format(emb_path))
