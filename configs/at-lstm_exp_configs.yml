@@ -44,7 +44,8 @@ exp_4: # Manual change of loss function in script was made to test difference
 
 exp_5:
   description: >
-    same as exp_5, not using dropout
-  hyperparams: *h4
+    same as exp_4, not using dropout
+  hyperparams:
+    <<: *h4
     dropout_keep_prob: 1.0
 
