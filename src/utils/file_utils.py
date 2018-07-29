@@ -8,8 +8,6 @@ import warnings
 import pandas as pd
 from time import time
 from datetime import datetime
-from os import walk
-
 
 def get_timestamp():
     ts = time()
@@ -91,10 +89,3 @@ def load_embedding(file, **kwargs):
 def mkdir(path):
     if not os.path.exists(path):
         os.makedirs(path)
-
-def list_file(path):
-    l = list(walk(path))
-    if l == []:
-        return l
-    else:
-        return l[0][-1]
