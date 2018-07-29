@@ -27,4 +27,4 @@ df_neg = pd.DataFrame({'WORD': w_neg, 'OL': [-1] * len(w_neg)})
 
 ol_df = pd.concat([df_pos, df_neg], ignore_index=True)
 
-ol_df.to_csv(output_dir+'/opinion-lexicon-English.csv')
+ol_df.to_csv(output_dir+'/opinion-lexicon-English.csv', index=False)

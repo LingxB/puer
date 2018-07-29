@@ -3,15 +3,16 @@
 
 symbol_dict:
 # ----------
-  path:
-    data/processed/ATAE-LSTM/glove_symdict
-  start_idx:
-    2 # 0 for padding, 1 for <UNK>
+  path: data/processed/ATAE-LSTM/glove_symdict
+  start_idx: 2 # 0 for padding, 1 for <UNK>
 
 embedding_table:
 # --------------
-  path:
-    data/processed/ATAE-LSTM/glove_lookup
+  path: data/processed/ATAE-LSTM/glove_lookup
+
+lexicon_table:
+# ------------
+  path: data/processed/lexicon/lx_table
 
 model:
 # ----

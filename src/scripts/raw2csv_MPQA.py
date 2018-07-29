@@ -37,4 +37,4 @@ mpqa_df['MPQA'] = mpqa_df['PP'].apply(lambda x: converter[x])
 
 mpqa_df = mpqa_df[['WORD','MPQA','TYPE','LEN','POS','STEM','P','PP','MP']]
 
-mpqa_df.to_csv(out_dir + '/MPQA.csv')
+mpqa_df.to_csv(out_dir + '/MPQA.csv', index=False)
