@@ -21,6 +21,9 @@ def compose_lexicons(lx_dir, outfile):
     logger.info('Merging lexicons with shapes: {}'.format([df.shape for df in dframes]))
     df = reduce(lambda x,y: pd.merge(x, y, how='outer', on='WORD'), dframes)
     logger.info('Writting merged lexicon to {}, merged shape: {}'.format(path, df.shape))
+    logger.info('Duplidates: {}'.format(df.duplicated().value_counts().loc[True]))
+    df = df.drop_duplicates()
+    logger.info('Shape after dropping duplicates: {}'.format(df.shape))
     df.to_csv(path + outfile + '.csv', index=False)
     logger.info('Merged lexicon saved to {}'.format(path + outfile + '.csv'))
 
