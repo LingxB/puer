@@ -13,6 +13,7 @@ embedding_table:
 lexicon_table:
 # ------------
   path: data/processed/lexicon/lexicon_table
+  usecol: -1
 
 model:
 # ----
