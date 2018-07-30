@@ -1,6 +1,7 @@
 from src.utils.data_utils import symbolize
 from src.utils.file_utils import read_yaml
 from src.data.absa_data_manager import AbsaDataManager
+from src.data.lexicon_manager import LexiconManager
 import numpy as np
 import pandas as pd
 pd.options.display.max_colwidth = 80
@@ -59,3 +60,30 @@ def test_dm():
     assert (_asp==asp).all()
     assert _lx==lx
     assert (_y==y).all()
+
+
+def test_lm():
+
+    test_sents = ['hello world abnormal ! abandoned'.split(),
+                  'wobble abhor wasting whore'.split()]
+
+    lm = LexiconManager(lx_path='tests/test_data/lexicon_table', usecol=[0, 1])
+
+    lx = lm.pad_transform(test_sents)
+
+    _lx = np.array([[[ 0,  0],
+                     [ 0,  0],
+                     [-1, -1],
+                     [ 0,  0],
+                     [-1,  0]],
+
+                    [[ 0, -1],
+                     [-1,  0],
+                     [ 0, -1],
+                     [ 0, -1],
+                     [ 0,  0]]])
+
+    assert (lx==_lx).all()
+
+
+
