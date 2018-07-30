@@ -12,7 +12,7 @@ embedding_table:
 
 lexicon_table:
 # ------------
-  path: data/processed/lexicon/lx_table
+  path: data/processed/lexicon/lexicon_table
 
 model:
 # ----
