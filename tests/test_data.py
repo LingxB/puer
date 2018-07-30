@@ -34,7 +34,8 @@ def test_dm():
                                  'SENT': [' '.join(s) for s in test_sent]
                                  })
 
-    dm = AbsaDataManager()
+    lm = LexiconManager(lx_path='tests/test_data/lexicon_table', usecol=[0, 1])
+    dm = AbsaDataManager(lexicon_manager=lm)
 
     dm.token2symbol(test_sent)
 
@@ -50,7 +51,23 @@ def test_dm():
                     [227],
                     [  1]])
 
-    _lx = None
+    _lx = np.array([[[ 0,  0],
+                     [ 0,  0],
+                     [-1, -1],
+                     [ 0,  0],
+                     [ 0,  0]],
+
+                    [[ 0,  0],
+                     [-1, -1],
+                     [ 0,  0],
+                     [ 0,  0],
+                     [ 0,  0]],
+
+                    [[ 0,  0],
+                     [ 0,  0],
+                     [ 0,  0],
+                     [ 0,  0],
+                     [ 0,  0]]])
 
     _y = np.array([[1., 0., 0.],
                    [0., 1., 0.],
@@ -58,7 +75,7 @@ def test_dm():
 
     assert (X==_X).all()
     assert (_asp==asp).all()
-    assert _lx==lx
+    assert (_lx==lx).all()
     assert (_y==y).all()
 
 
