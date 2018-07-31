@@ -12,6 +12,15 @@ class LexiconManager(object):
 
 
     def __init__(self, lx_path=None, usecol=-1):
+        """
+
+        Parameters
+        ----------
+        lx_path : str
+            path to lexicon table without '.csv' extension
+        usecol : int or list if column indices or list of column names
+            which lexicons to use
+        """
         self.usecol = usecol
         if lx_path is None:
             configs = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=True)
