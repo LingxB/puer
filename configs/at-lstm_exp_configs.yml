@@ -10,6 +10,7 @@ exp_1: &1
     epochs: 35
     random_state: 4
     batch_size: 25
+    shuffle: True
     cell_num: 300
     layer_num: 1
     dropout_keep_prob: 0.5

@@ -138,7 +138,7 @@ with tf.name_scope('Loss'):
     reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
     regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
     # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
-    loss = cross_entropy + regularizer
+    loss = tf.add(cross_entropy, regularizer, name='LOSS') # cross_entropy + regularizer
 
     # reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
     # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
@@ -163,7 +163,7 @@ with tf.name_scope('TrainOp'):
     else:
         raise NotImplementedError('Invalid optimizer in hyperparams')
 
-    train_op = optimizer.minimize(loss)
+    train_op = optimizer.minimize(loss, name='TRAIN_OP')
 
 
 # Evaluation during training
@@ -213,7 +213,7 @@ with tf.Session() as sess:
                                     dropout_keep: hyparams['dropout_keep_prob']
                                     })
 
-            logger.debug('epoch {epoch:03d}/{epochs:02d} \t'
+            logger.debug('epoch {epoch:03d}/{epochs:03d} \t'
                          'batch {i:02d}/{n_batches:02d} \t'
                          'error={cross_entropy:4.4f} \t'
                          'l2={l2:4.4f} \t'
