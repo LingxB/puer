@@ -36,10 +36,9 @@ test_df = load_corpus('data/processed/ATAE-LSTM/test.csv')
 X = tf.placeholder(tf.int32, shape=(None, None), name='X')
 asp = tf.placeholder(tf.int32, shape=(None, 1), name='asp')
 y = tf.placeholder(tf.int32, shape=(None, 3), name='y')
+lx = tf.placeholder(tf.float32, shape=(None, None, None), name='lx')
 
 dropout_keep = tf.placeholder_with_default(1.0, shape=(), name='dropout_keep')
-# TODO: IMPLEMENT LX
-# lx = tf.placeholder(tf.int32, shape=(None, None), name='lx')
 
 
 # Initializer
