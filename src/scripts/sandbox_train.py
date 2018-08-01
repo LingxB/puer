@@ -135,7 +135,8 @@ with tf.name_scope('Loss'):
 
     cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits))
     reg_params = [p for p in tf.trainable_variables() if p.name not in {'glove:0', 'unk:0'}]
-    regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
+    # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
+    regularizer = tf.multiply(hyparams['lambda'], tf.add_n([tf.nn.l2_loss(p) for p in reg_params]), name='REGL')
     # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in tf.trainable_variables()])
     loss = tf.add(cross_entropy, regularizer, name='LOSS') # cross_entropy + regularizer
 
