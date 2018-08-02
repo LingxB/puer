@@ -1,7 +1,7 @@
 import inspect
 
 
-def filter_params(fn: object, params: dict, override: object = None) -> object:
+def filter_params(fn: object, params: dict, override: dict = None) -> dict:
     """Filters `params` and return those in `fn`'s arguments.
 
     # Arguments
