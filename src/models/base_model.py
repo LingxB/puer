@@ -1,6 +1,6 @@
 import abc
 import tensorflow as tf
-from src.utils import Logger, __fn__, get_envar, read_config, get_timestamp, mkdir
+from src.utils import Logger, __fn__, mkdir, filter_params
 import numpy as np
 
 
@@ -31,6 +31,12 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         rmsprop=tf.train.RMSPropOptimizer
     )
 
+    INITIALIZERS = dict(
+        random_uniform=tf.random_uniform_initializer,
+        random_normal=tf.random_normal_initializer,
+        xavier=tf.contrib.layers.xavier_initializer
+    )
+
     def __init__(self, datamanager=None, parameters=None):
         self.graph = None
         self.sess = None
@@ -41,23 +47,13 @@ class BaseModel(object, metaclass=abc.ABCMeta):
     def train(self, train_df, val=None):
 
         if self.graph is None:
-            self.graph = self.build_graph()
+            self.graph = self._build_graph()
 
-        T = self.retrieve_tensors()
+        T = self.__retrieve_tensors()
 
-        run_args = [
-            T['loss'],
-            T['regularizer'],
-            T['train_op'],
-            T['acc3']
-        ]
+        run_args = (T['loss'], T['regularizer'], T['train_op'], T['acc3'])
 
-        placeholders = [
-            T['X'],
-            T['asp'],
-            T['lx'],
-            T['y']
-        ]
+        placeholders = (T['X'], T['asp'], T['lx'], T['y'])
 
         with tf.Session(graph=self.graph) as sess:
             init = tf.global_variables_initializer()
@@ -94,20 +90,23 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                                 .format(epoch=epoch+1, epochs=self.p['epochs'], loss=val_loss_, acc=val_acc3_))
             self.sess = sess
 
-    def retrieve_tensors(self):
+
+    def __retrieve_tensors(self):
         return {k:self.graph.get_tensor_by_name(v+':0') for k,v in self.RETRIEVABLES}
 
 
-    # def feed_dict(self, placeholders, inputs):
-    #     return dict(zip(placeholders, inputs))
+    def __get_optimizer(self):
+        optimizer = self.OPTIMIZERS[self.p['optimizer']]
+        params = filter_params(optimizer, self.p)
+        logger.info('Applying params to {} optimizer: {}'.format(self.p['initializer'], params))
+        return optimizer(**params)
 
 
-    def get_optimizer(self):
-        kwargs = dict(
-            learning_rate=self.p['learning_rate'],
-            momentum=self.p['momentum']
-        )
-        return self.OPTIMIZERS[self.p['optimizer']](**kwargs)
+    def __get_initializer(self):
+        initializer = self.INITIALIZERS[self.p['initializer']]
+        params = filter_params(initializer, self.p)
+        logger.info('Applying params to {} initializer: {}'.format(self.p['initializer'], params))
+        return initializer(**params)
 
 
 
@@ -117,7 +116,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
 
 
     @abc.abstractmethod
-    def build_graph(self):
+    def _build_graph(self):
         # graph = tf.Graph()
         # with graph.as_default():
         #     pass
