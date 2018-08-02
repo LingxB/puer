@@ -45,7 +45,7 @@ dropout_keep = tf.placeholder_with_default(1.0, shape=(), name='dropout_keep')
 # -----------
 initializer = tf.random_uniform_initializer(minval=-hyparams['epsilon'],
                                             maxval=hyparams['epsilon'],
-                                            seed=hyparams['random_state'])
+                                            seed=hyparams['seed'])
 
 # Embedding
 # ---------
@@ -144,7 +144,7 @@ with tf.name_scope('Loss'):
     # regularizer = hyparams['lambda'] * tf.add_n([tf.nn.l2_loss(p) for p in reg_params])
     # cross_entropy_by_example = tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=logits)
     # cross_entropy = tf.reduce_mean(cross_entropy_by_example)
-    # loss = tf.reduce_mean(cross_entropy_by_example + regularizer)
+    # loss = tf.reduce_mean(cross_entropy_by_example + regularizer) # This is wrong
 
 
 # Train Op

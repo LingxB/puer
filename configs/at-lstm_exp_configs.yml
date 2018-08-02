@@ -8,17 +8,18 @@ exp_1: &1
   # Hyper parameters
   hyperparams: &h1
     epochs: 35
-    random_state: 4
     batch_size: 25
     shuffle: True
     cell_num: 300
     layer_num: 1
     dropout_keep_prob: 0.5
-    epsilon: 0.01
+    optimizer: adagrad
     momentum: 0.9
     learning_rate: 0.01
     lambda: 0.001 # l2
-    optimizer: adagrad
+    initializer: random_uniform
+    seed: 4
+    epsilon: 0.01
 
 exp_2: &2 # best 80.99% after 2nd epoch
   <<: *1
