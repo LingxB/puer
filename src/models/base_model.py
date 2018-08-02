@@ -47,7 +47,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
     def train(self, train_df, val=None):
 
         if self.graph is None:
-            self.graph = self._build_graph()
+            self.graph = self.build_graph()
 
         T = self.__retrieve_tensors()
 
@@ -107,7 +107,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         return initializer(**params)
 
     @abc.abstractmethod
-    def _build_graph(self):
+    def build_graph(self):
         # graph = tf.Graph()
         # with graph.as_default():
         #     pass
