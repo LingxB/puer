@@ -94,26 +94,17 @@ class BaseModel(object, metaclass=abc.ABCMeta):
     def __retrieve_tensors(self):
         return {k:self.graph.get_tensor_by_name(v+':0') for k,v in self.RETRIEVABLES}
 
-
-    def __get_optimizer(self):
+    def _get_optimizer(self):
         optimizer = self.OPTIMIZERS[self.p['optimizer']]
         params = filter_params(optimizer, self.p)
         logger.info('Applying params to {} optimizer: {}'.format(self.p['initializer'], params))
         return optimizer(**params)
 
-
-    def __get_initializer(self):
+    def _get_initializer(self):
         initializer = self.INITIALIZERS[self.p['initializer']]
         params = filter_params(initializer, self.p)
         logger.info('Applying params to {} initializer: {}'.format(self.p['initializer'], params))
         return initializer(**params)
-
-
-
-    def predict(self, X):
-        pass
-
-
 
     @abc.abstractmethod
     def _build_graph(self):
@@ -128,15 +119,14 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         # TODO: IMPLEMENT
         pass
 
-
     def save(self, wdir):
         saver = tf.train.Saver()
         mkdir(wdir)
         saver.save(self.sess, wdir + self.NAME)
         logger.info("Model saved to '{}'".format(wdir))
 
-
-
+    def predict(self, X):
+        pass
 
     def score(self):
         pass
