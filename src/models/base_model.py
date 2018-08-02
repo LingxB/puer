@@ -11,16 +11,19 @@ class BaseModel(object, metaclass=abc.ABCMeta):
 
     NAME = 'BaseModel'
 
-    RETRIEVABLES = dict(
+    TENSORS = dict(
         loss='Loss/LOSS',
         regularizer='Loss/REGL',
-        train_op='TrainOp/TRAIN_OP',
         acc3='Evaluation/ACC3',
         X='X',
         asp='asp',
         lx='lx',
         y='y',
         dropout_keep='dropout_keep'
+    )
+
+    OPS = dict(
+        train_op='TrainOp/TRAIN_OP'
     )
 
     OPTIMIZERS = dict(
@@ -50,8 +53,9 @@ class BaseModel(object, metaclass=abc.ABCMeta):
             self.graph = self.build_graph()
 
         T = self.__retrieve_tensors()
+        O = self.__retrieve_ops()
 
-        run_args = (T['loss'], T['regularizer'], T['train_op'], T['acc3'])
+        run_args = (T['loss'], T['regularizer'], O['train_op'], T['acc3'])
 
         placeholders = (T['X'], T['asp'], T['lx'], T['y'])
 
@@ -60,7 +64,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
             sess.run(init)
             for epoch in range(self.p['epochs']):
                 batch_generator = self.dm.batch_generator(train_df, batch_size=self.p['batch_size'], shuffle=self.p['shuffle'])
-                epoch_memory = np.zeros([self.dm.n_batches, 2])
+                epoch_memory = np.zeros([self.p['batch_size'], 2])
 
                 for i,(_, batch) in enumerate(batch_generator):
                     #_X, _asp, _lx, _y = batch
@@ -92,7 +96,10 @@ class BaseModel(object, metaclass=abc.ABCMeta):
 
 
     def __retrieve_tensors(self):
-        return {k:self.graph.get_tensor_by_name(v+':0') for k,v in self.RETRIEVABLES}
+        return {k:self.graph.get_tensor_by_name(v+':0') for k,v in self.TENSORS.items()}
+
+    def __retrieve_ops(self):
+        return {k:self.graph.get_operation_by_name(v) for k,v in self.OPS.items()}
 
     def _get_optimizer(self):
         optimizer = self.OPTIMIZERS[self.p['optimizer']]
