@@ -64,10 +64,12 @@ class BaseModel(object, metaclass=abc.ABCMeta):
             sess.run(init)
             for epoch in range(self.p['epochs']):
                 batch_generator = self.dm.batch_generator(train_df, batch_size=self.p['batch_size'], shuffle=self.p['shuffle'])
-                epoch_memory = np.zeros([self.p['batch_size'], 2])
+                epoch_memory = None
 
                 for i,(_, batch) in enumerate(batch_generator):
-                    #_X, _asp, _lx, _y = batch
+                    if epoch_memory is None:
+                        epoch_memory = np.zeros([self.dm.n_batches, 2])
+                    # _X, _asp, _lx, _y = batch
                     loss_, regl_, _, acc3_ = sess.run(run_args, feed_dict=dict(zip(placeholders, batch)))
                     epoch_memory[i,:] = [loss_, acc3_]
                     logger.debug('epoch {epoch:03d}/{epochs:03d}\t'
@@ -75,7 +77,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                                  'loss={loss:4.4f}\t'
                                  'l2={l2:4.4f}\t'
                                  'train_acc3={acc:.4%}'
-                                 .format(epoch=epoch+1, epochs=self.p['epochs'], i=i, n_batches=self.dm.n_batches,
+                                 .format(epoch=epoch+1, epochs=self.p['epochs'], i=i+1, n_batches=self.dm.n_batches,
                                          loss=loss_, acc=acc3_, l2=regl_))
 
                 epoch_loss, epoch_acc = epoch_memory.mean(axis=0)
