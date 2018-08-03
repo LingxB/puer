@@ -24,7 +24,9 @@ def compose_lexicons(lx_dir, outfile):
     logger.info('Duplidates: {}'.format(df.duplicated().value_counts().loc[True]))
     df = df.drop_duplicates()
     logger.info('Shape after dropping duplicates: {}'.format(df.shape))
-    df.to_csv(path + outfile + '.csv', index=False)
+    df = df.groupby('WORD').mean()
+    logger.info('Shape after groupby: {}'.format(df.shape))
+    df.to_csv(path + outfile + '.csv', index=True)
     logger.info('Merged lexicon saved to {}'.format(path + outfile + '.csv'))
 
 
