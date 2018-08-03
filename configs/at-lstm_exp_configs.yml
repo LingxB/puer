@@ -19,7 +19,8 @@ exp_1: &1
     lambda: 0.001 # l2
     initializer: random_uniform
     seed: 4
-    epsilon: 0.01
+    minval: -0.01
+    maxval: 0.01
 
 exp_2: &2 # best 80.99% after 2nd epoch
   <<: *1

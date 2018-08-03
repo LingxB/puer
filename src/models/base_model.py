@@ -62,6 +62,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         with tf.Session(graph=self.graph) as sess:
             init = tf.global_variables_initializer()
             sess.run(init)
+            self.saver = tf.train.Saver()
             for epoch in range(self.p['epochs']):
                 batch_generator = self.dm.batch_generator(train_df, batch_size=self.p['batch_size'], shuffle=self.p['shuffle'])
                 epoch_memory = None
@@ -133,9 +134,8 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         pass
 
     def save(self, wdir):
-        saver = tf.train.Saver()
         mkdir(wdir)
-        saver.save(self.sess, wdir + self.NAME)
+        self.saver.save(self.sess, wdir + self.NAME)
         logger.info("Model saved to '{}'".format(wdir))
 
     def predict(self, X):
