@@ -76,24 +76,28 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                                  'batch {i:03d}/{n_batches:03d}\t'
                                  'loss={loss:4.4f}\t'
                                  'l2={l2:4.4f}\t'
-                                 'train_acc3={acc:.4%}'
+                                 'train_acc3={acc:4.2%}'
                                  .format(epoch=epoch+1, epochs=self.p['epochs'], i=i+1, n_batches=self.dm.n_batches,
                                          loss=loss_, acc=acc3_, l2=regl_))
 
                 epoch_loss, epoch_acc = epoch_memory.mean(axis=0)
-                logger.info('epoch {epoch:03d}/{epochs:03d}\t'
-                            'train_loss={loss:4.4f}\t'
-                            'train_acc3={acc:.4%}'
-                            .format(epoch=epoch+1, epochs=self.p['epochs'], loss=epoch_loss, acc=epoch_acc))
+
+                epoch_str = 'epoch {epoch:03d}/{epochs:03d}\t ' \
+                            'train_loss={loss:4.4f}\t ' \
+                            'train_acc3={acc:4.2%}'\
+                    .format(epoch=epoch+1, epochs=self.p['epochs'], loss=epoch_loss, acc=epoch_acc)
 
                 if val is not None:
                     _, val_batch = next(self.dm.batch_generator(val, batch_size=-1))
                     # X_val, asp_val, lx_val, y_val = val_batch
                     val_acc3_, val_loss_ = sess.run([T['acc3'], T['loss']], feed_dict=dict(zip(placeholders, val_batch)))
-                    logger.info('epoch {epoch:03d}/{epochs:03d}\t'
-                                'val_loss={loss:4.4f}\t'
-                                'val_acc3={acc:.4%}'
-                                .format(epoch=epoch+1, epochs=self.p['epochs'], loss=val_loss_, acc=val_acc3_))
+                    val_str = 'val_loss={loss:4.4f}\t ' \
+                              'val_acc3={acc:4.2%}'\
+                        .format(loss=val_loss_, acc=val_acc3_)
+                    epoch_str += ' \t' + val_str
+
+                logger.info(epoch_str)
+
             self.sess = sess
 
 
