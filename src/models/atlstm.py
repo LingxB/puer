@@ -12,7 +12,7 @@ class ATLSTM(BaseModel):
 
     NAME = 'ATLSTM'
 
-    def __init__(self, datamanager, parameters):
+    def __init__(self, datamanager=None, parameters=None):
         super().__init__(datamanager=datamanager, parameters=parameters)
 
 
