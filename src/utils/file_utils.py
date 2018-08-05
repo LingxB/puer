@@ -8,6 +8,7 @@ import warnings
 import pandas as pd
 from time import time
 from datetime import datetime
+import pickle
 
 def get_timestamp():
     ts = time()
@@ -89,3 +90,11 @@ def load_embedding(file, **kwargs):
 def mkdir(path):
     if not os.path.exists(path):
         os.makedirs(path)
+
+def pickle_dump(to_dump, path):
+    with open(path, 'wb') as handle:
+        pickle.dump(to_dump, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+def pickle_load(path):
+    with open(path, 'rb') as handle:
+        return pickle.load(handle)
