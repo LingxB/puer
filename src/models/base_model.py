@@ -1,6 +1,6 @@
 import abc
 import tensorflow as tf
-from src.utils import Logger, __fn__, mkdir, filter_params
+from src.utils import Logger, __fn__, mkdir, filter_params, pickle_dump, pickle_load
 import numpy as np
 
 
@@ -48,20 +48,49 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         self.dm = datamanager
         self.p = parameters
 
+    @abc.abstractmethod
+    def build_graph(self):
+        # graph = tf.Graph()
+        # with graph.as_default():
+        #     pass
+        # return graph
+        raise NotImplementedError
 
-    def train(self, train_df, val=None, save_path=None):
+    def __retrieve_tensors(self):
+        return {k: self.graph.get_tensor_by_name(v + ':0') for k, v in self.TENSORS.items()}
+
+    def __retrieve_ops(self):
+        return {k: self.graph.get_operation_by_name(v) for k, v in self.OPS.items()}
+
+    def _get_optimizer(self):
+        optimizer = self.OPTIMIZERS[self.p['optimizer']]
+        params = filter_params(optimizer, self.p)
+        logger.info('Applying params to {} optimizer: {}'.format(self.p['initializer'], params))
+        return optimizer(**params)
+
+    def _get_initializer(self):
+        initializer = self.INITIALIZERS[self.p['initializer']]
+        params = filter_params(initializer, self.p)
+        logger.info('Applying params to {} initializer: {}'.format(self.p['initializer'], params))
+        return initializer(**params)
+
+    def train(self, train_df, val_df=None):
 
         if self.graph is None:
             self.graph = self.build_graph()
+
+        if val_df is not None:
+            _, val_batch = next(self.dm.batch_generator(val_df, batch_size=-1))
+            # X_val, asp_val, lx_val, y_val = val_batch
 
         T = self.__retrieve_tensors()
         O = self.__retrieve_ops()
 
         run_args = (T['loss'], T['regularizer'], O['train_op'], T['acc3'])
-
         placeholders = (T['X'], T['asp'], T['lx'], T['y'])
 
-        with tf.Session(graph=self.graph) as sess:
+        with self.graph.as_default():
+            sess = tf.Session(graph=self.graph)
             init = tf.global_variables_initializer()
             sess.run(init)
             self.saver = tf.train.Saver()
@@ -90,9 +119,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                             'train_acc3={acc:.2%}'\
                     .format(epoch=epoch+1, epochs=self.p['epochs'], loss=epoch_loss, acc=epoch_acc)
 
-                if val is not None:
-                    _, val_batch = next(self.dm.batch_generator(val, batch_size=-1))
-                    # X_val, asp_val, lx_val, y_val = val_batch
+                if val_df is not None:
                     val_acc3_, val_loss_ = sess.run([T['acc3'], T['loss']], feed_dict=dict(zip(placeholders, val_batch)))
                     val_str = 'val_loss={loss:.4f} ' \
                               'val_acc3={acc:.2%}'\
@@ -100,61 +127,43 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                     epoch_str += ' ' + val_str
 
                 logger.info(epoch_str)
+            self.sess = sess
 
-            if save_path is not None:
-                self.__save(sess, save_path)
-
-
-
-    def __retrieve_tensors(self):
-        return {k:self.graph.get_tensor_by_name(v+':0') for k,v in self.TENSORS.items()}
-
-    def __retrieve_ops(self):
-        return {k:self.graph.get_operation_by_name(v) for k,v in self.OPS.items()}
-
-    def __save(self, sess, path):
+    def save(self, path):
         mkdir(path)
-        self.saver.save(sess, path + self.NAME)
+        self.saver.save(self.sess, path + self.NAME)
+        pickle_dump(self.dm, path + 'dm.pkl')
         logger.info("Model saved to '{}'".format(path))
 
-    def _get_optimizer(self):
-        optimizer = self.OPTIMIZERS[self.p['optimizer']]
-        params = filter_params(optimizer, self.p)
-        logger.info('Applying params to {} optimizer: {}'.format(self.p['initializer'], params))
-        return optimizer(**params)
-
-    def _get_initializer(self):
-        initializer = self.INITIALIZERS[self.p['initializer']]
-        params = filter_params(initializer, self.p)
-        logger.info('Applying params to {} initializer: {}'.format(self.p['initializer'], params))
-        return initializer(**params)
-
-    @abc.abstractmethod
-    def build_graph(self):
-        # graph = tf.Graph()
-        # with graph.as_default():
-        #     pass
-        # return graph
-        raise NotImplementedError
-
-
-    def load_graph(self, path):
-        # TODO: IMPLEMENT
-        pass
+    def load(self, ckpt_dir):
+        dm_path = ckpt_dir + '/dm.pkl'
+        self.dm = pickle_load(dm_path)
+        logger.info('Datamanager restored form {}'.format(dm_path))
+        meta_file = ckpt_dir + '/' + self.NAME + '.meta'
+        if self.graph is None and self.sess is None:
+            self.sess = tf.Session()
+            saver = tf.train.import_meta_graph(meta_file)
+            self.graph = tf.get_default_graph()
+            logger.info('Graph restored from {}'.format(meta_file))
+            saver.restore(self.sess, tf.train.latest_checkpoint(ckpt_dir))
+        else:
+            raise AttributeError('Graph/Session alreay exist!')
 
     def predict(self, pred_df):
-
-
-
-
         T = self.__retrieve_tensors()
-        run_args = (T['pred'], T['alpha'])#, T['acc3'])
-        placeholders = (T['X'], T['asp'], T['lx'], T['y'])
-        with tf.Session(graph=self.graph) as sess:
-            _, pred_batch = next(self.dm.batch_generator(pred_df, batch_size=-1))
-            _X, _asp, _lx, _y = pred_batch
-            pred_, alpha_ = sess.run(run_args, feed_dict={T['X']: _X, T['asp']: _asp, T['lx']: _lx})
-        return pred_, alpha_
+        run_args = (T['pred'], T['alpha'], T['loss'])
+        _, batch = next(self.dm.batch_generator(pred_df, batch_size=-1))
+        _X, _asp, _lx, _y = batch
+        pred_, alpha_, loss_ = self.sess.run(run_args, feed_dict={T['X']: _X, T['asp']: _asp, T['lx']: _lx})
+        return pred_, alpha_, loss_
 
-    def score(self):
-        pass
+    def score(self, pred_df):
+        T = self.__retrieve_tensors()
+        run_args = (T['pred'], T['alpha'], T['loss'], T['acc3'])
+        placeholders = (T['X'], T['asp'], T['lx'], T['y'])
+        _, batch = next(self.dm.batch_generator(pred_df, batch_size=-1))
+        pred_, alpha_, loss_, acc3_ = self.sess.run(run_args, feed_dict=dict(zip(placeholders, batch)))
+        return pred_, alpha_, loss_, acc3_
+
+    def close_session(self):
+        self.sess.close()
