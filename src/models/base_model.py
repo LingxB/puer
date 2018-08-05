@@ -15,6 +15,8 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         loss='Loss/LOSS',
         regularizer='Loss/REGL',
         acc3='Evaluation/ACC3',
+        pred='Output/PRED',
+        alpha='Attention/ALPHA',
         X='X',
         asp='asp',
         lx='lx',
@@ -47,7 +49,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         self.p = parameters
 
 
-    def train(self, train_df, val=None):
+    def train(self, train_df, val=None, save_path=None):
 
         if self.graph is None:
             self.graph = self.build_graph()
@@ -73,33 +75,35 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                     # _X, _asp, _lx, _y = batch
                     loss_, regl_, _, acc3_ = sess.run(run_args, feed_dict=dict(zip(placeholders, batch)))
                     epoch_memory[i,:] = [loss_, acc3_]
-                    logger.debug('epoch {epoch:03d}/{epochs:03d}\t'
-                                 'batch {i:03d}/{n_batches:03d}\t'
-                                 'loss={loss:4.4f}\t'
-                                 'l2={l2:4.4f}\t'
-                                 'train_acc3={acc:4.2%}'
+                    logger.debug('epoch {epoch:03d}/{epochs:03d} '
+                                 'batch {i:03d}/{n_batches:03d} '
+                                 'loss={loss:.4f} '
+                                 'l2={l2:.4f} '
+                                 'train_acc3={acc:.2%}'
                                  .format(epoch=epoch+1, epochs=self.p['epochs'], i=i+1, n_batches=self.dm.n_batches,
                                          loss=loss_, acc=acc3_, l2=regl_))
 
                 epoch_loss, epoch_acc = epoch_memory.mean(axis=0)
 
-                epoch_str = 'epoch {epoch:03d}/{epochs:03d}\t ' \
-                            'train_loss={loss:4.4f}\t ' \
-                            'train_acc3={acc:4.2%}'\
+                epoch_str = 'epoch {epoch:03d}/{epochs:03d} ' \
+                            'train_loss={loss:.4f} ' \
+                            'train_acc3={acc:.2%}'\
                     .format(epoch=epoch+1, epochs=self.p['epochs'], loss=epoch_loss, acc=epoch_acc)
 
                 if val is not None:
                     _, val_batch = next(self.dm.batch_generator(val, batch_size=-1))
                     # X_val, asp_val, lx_val, y_val = val_batch
                     val_acc3_, val_loss_ = sess.run([T['acc3'], T['loss']], feed_dict=dict(zip(placeholders, val_batch)))
-                    val_str = 'val_loss={loss:4.4f}\t ' \
-                              'val_acc3={acc:4.2%}'\
+                    val_str = 'val_loss={loss:.4f} ' \
+                              'val_acc3={acc:.2%}'\
                         .format(loss=val_loss_, acc=val_acc3_)
-                    epoch_str += ' \t' + val_str
+                    epoch_str += ' ' + val_str
 
                 logger.info(epoch_str)
 
-            self.sess = sess
+            if save_path is not None:
+                self.__save(sess, save_path)
+
 
 
     def __retrieve_tensors(self):
@@ -107,6 +111,11 @@ class BaseModel(object, metaclass=abc.ABCMeta):
 
     def __retrieve_ops(self):
         return {k:self.graph.get_operation_by_name(v) for k,v in self.OPS.items()}
+
+    def __save(self, sess, path):
+        mkdir(path)
+        self.saver.save(sess, path + self.NAME)
+        logger.info("Model saved to '{}'".format(path))
 
     def _get_optimizer(self):
         optimizer = self.OPTIMIZERS[self.p['optimizer']]
@@ -133,15 +142,19 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         # TODO: IMPLEMENT
         pass
 
-    def save(self, wdir):
-        mkdir(wdir)
-        self.saver.save(self.sess, wdir + self.NAME)
-        logger.info("Model saved to '{}'".format(wdir))
+    def predict(self, pred_df):
 
-    def predict(self, X):
-        pass
+
+
+
+        T = self.__retrieve_tensors()
+        run_args = (T['pred'], T['alpha'])#, T['acc3'])
+        placeholders = (T['X'], T['asp'], T['lx'], T['y'])
+        with tf.Session(graph=self.graph) as sess:
+            _, pred_batch = next(self.dm.batch_generator(pred_df, batch_size=-1))
+            _X, _asp, _lx, _y = pred_batch
+            pred_, alpha_ = sess.run(run_args, feed_dict={T['X']: _X, T['asp']: _asp, T['lx']: _lx})
+        return pred_, alpha_
 
     def score(self):
         pass
-
-
