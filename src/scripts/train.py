@@ -28,6 +28,9 @@ model = ATLSTM(datamanager=dm, parameters=hyparams)
 
 model.train(train_df, test_df)
 
+model.predict(dev_df)
+
+
 model.save(wdir)
 
 
