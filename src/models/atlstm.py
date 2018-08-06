@@ -10,7 +10,7 @@ logger = Logger(__fn__())
 
 class ATLSTM(BaseModel):
 
-    NAME = 'AT-LSTM'
+    NAME = 'ATLSTM'
 
     def __init__(self, datamanager=None, parameters=None):
         super().__init__(datamanager=datamanager, parameters=parameters)
