@@ -17,8 +17,7 @@ lexicon_table:
 
 model:
 # ----
-  path: models/at-lstm/
-  name: AT-LSTM
+  savepath: models/at-lstm/
 
 exp_configs:
 # ----------
