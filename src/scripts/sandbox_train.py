@@ -12,7 +12,7 @@ logger = Logger(__fn__())
 # Configs
 # -------
 base_configs = read_config(get_envar('CONFIG_PATH') + '/' + get_envar('BASE_CONFIG'), obj_view=True)
-wdir = base_configs.model.path + get_timestamp() + '/'
+wdir = base_configs.model.savepath + get_timestamp() + '/'
 
 
 # Hyper parameters
@@ -230,7 +230,7 @@ with tf.Session() as sess:
     logger.info('---- {} training ended ----'.format(exp_num))
     logger.info('Saving model...')
     mkdir(wdir)
-    saver.save(sess, wdir + base_configs.model.name)
+    saver.save(sess, wdir + 'AT-LSTM')
     logger.info("Model saved to '{}'".format(wdir))
 
 
