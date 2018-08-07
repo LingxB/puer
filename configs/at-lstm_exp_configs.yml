@@ -1,7 +1,7 @@
 
 # Experiment_1
 # ------------
-exp_1: &1
+exp_1:
   # Description
   description: >
     First experiment after stable build try to reproduce results in paper by Wang et al.
