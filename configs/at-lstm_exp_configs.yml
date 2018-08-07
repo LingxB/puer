@@ -4,7 +4,7 @@
 exp_1: &1
   # Description
   description: >
-    This is an description of this experiment.
+    First experiment after stable build try to reproduce results in paper by Wang et al.
   # Hyper parameters
   hyperparams: &h1
     epochs: 35
@@ -14,7 +14,7 @@ exp_1: &1
     layer_num: 1
     dropout_keep_prob: 0.5
     optimizer: adagrad
-    momentum: 0.9
+    momentum: 0.9 # not used by adagrad optimizer
     learning_rate: 0.01
     lambda: 0.001 # l2
     initializer: random_uniform
@@ -22,33 +22,50 @@ exp_1: &1
     minval: -0.01
     maxval: 0.01
 
-exp_2: &2 # best 80.99% after 2nd epoch
-  <<: *1
-  description: >
-    try adam 0.001, reduce_mean(ce + l2)
-  hyperparams: &h2
-    <<: *h1
-    epochs: 25
-    learning_rate: 0.001
-    optimizer: adam
 
-exp_3: # This looks pretty bad
-  description: >
-    same as exp_2, try adam 0.01, reduce_mean(ce + l2)
-  hyperparams:
-    <<: *h2
-    learning_rate: 0.01
 
-exp_4: # Manual change of loss function in script was made to test difference
-  description: >
-    same as exp_2, try adam 0.001, reduce_mean(ce) + l2
-  hyperparams: &h4
-    <<: *h2
 
-exp_5:
-  description: >
-    same as exp_4, not using dropout
-  hyperparams:
-    <<: *h4
-    dropout_keep_prob: 1.0
+
+
+
+
+#exp_2: &2 # best 80.99% after 2nd epoch
+#  <<: *1
+#  description: >
+#    try adam 0.001, reduce_mean(ce + l2)
+#  hyperparams: &h2
+#    <<: *h1
+#    epochs: 25
+#    learning_rate: 0.001
+#    optimizer: adam
+#
+#exp_3: # This looks pretty bad
+#  description: >
+#    same as exp_2, try adam 0.01, reduce_mean(ce + l2)
+#  hyperparams:
+#    <<: *h2
+#    learning_rate: 0.01
+#
+#exp_4: # Manual change of loss function in script was made to test difference
+#  description: >
+#    same as exp_2, try adam 0.001, reduce_mean(ce) + l2
+#  hyperparams: &h4
+#    <<: *h2
+#    epochs: 2
+#
+#exp_5:
+#  description: >
+#    same as exp_4, not using dropout
+#  hyperparams:
+#    <<: *h4
+#    dropout_keep_prob: 1.0
+#
+#exp_6:
+#  description: >
+#    same as exp_4, train on both train and dev, test on test, longer epochs
+#  hyperparams:
+#    <<: *h4
+#    epochs: 25
+#    optimizer: adagrad
+#    learning_rate: 0.01
 
