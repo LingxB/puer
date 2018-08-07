@@ -65,7 +65,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
     def _get_optimizer(self):
         optimizer = self.OPTIMIZERS[self.p['optimizer']]
         params = filter_params(optimizer, self.p)
-        logger.info('Applying params to {} optimizer: {}'.format(self.p['initializer'], params))
+        logger.info('Applying params to {} optimizer: {}'.format(self.p['optimizer'], params))
         return optimizer(**params)
 
     def _get_initializer(self):
