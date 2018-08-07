@@ -43,8 +43,8 @@ dropout_keep = tf.placeholder_with_default(1.0, shape=(), name='dropout_keep')
 
 # Initializer
 # -----------
-initializer = tf.random_uniform_initializer(minval=-hyparams['epsilon'],
-                                            maxval=hyparams['epsilon'],
+initializer = tf.random_uniform_initializer(minval=hyparams['minval'],
+                                            maxval=hyparams['maxval'],
                                             seed=hyparams['seed'])
 
 # Embedding

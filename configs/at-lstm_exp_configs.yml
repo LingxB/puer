@@ -23,7 +23,14 @@ exp_1:
     maxval: 0.01
 
 
-
+exp_2:
+  description: >
+    Try use adam with learning rate of 0.001
+  hyperparams:
+    <<: *h1
+    epochs: 25
+    learning_rate: 0.001
+    optimizer: adam
 
 
 
