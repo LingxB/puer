@@ -89,7 +89,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         O = self.__retrieve_ops()
 
         run_args = (T['loss'], T['regularizer'], O['train_op'], T['acc3'])
-        placeholders = (T['X'], T['asp'], T['lx'], T['y'])
+        placeholders = (T['X'], T['asp'], T['lx'], T['y'], T['dropout_keep'])
 
         with self.graph.as_default():
             sess = tf.Session(graph=self.graph)
@@ -103,7 +103,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                 for i,(_, batch) in enumerate(batch_generator):
                     if epoch_memory is None:
                         epoch_memory = np.zeros([self.dm.n_batches, 2])
-                    # _X, _asp, _lx, _y = batch
+                    batch += (self.p['dropout_keep_prob'],)
                     loss_, regl_, _, acc3_ = sess.run(run_args, feed_dict=dict(zip(placeholders, batch)))
                     epoch_memory[i,:] = [loss_, acc3_]
                     logger.debug('epoch {epoch:03d}/{epochs:03d} '
