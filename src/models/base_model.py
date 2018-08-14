@@ -74,7 +74,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         logger.info('Applying params to {} initializer: {}'.format(self.p['initializer'], params))
         return initializer(**params)
 
-    def train(self, train_df, val_df=None):
+    def train(self, train_df, val_df=None, test_df=None):
 
         if self.graph is None:
             self.graph = self.build_graph()
@@ -82,6 +82,8 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         if val_df is not None:
             _, val_batch = next(self.dm.batch_generator(val_df, batch_size=-1))
             # X_val, asp_val, lx_val, y_val = val_batch
+        if test_df is not None:
+            _, test_batch = next(self.dm.batch_generator(test_df, batch_size=-1))
 
         T = self.__retrieve_tensors()
         O = self.__retrieve_ops()
@@ -125,6 +127,13 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                               'val_acc3={acc:.2%}'\
                         .format(loss=val_loss_, acc=val_acc3_)
                     epoch_str += ' ' + val_str
+
+                if test_df is not None:
+                    test_acc3_, test_loss_ = sess.run([T['acc3'], T['loss']], feed_dict=dict(zip(placeholders, test_batch)))
+                    test_str = 'test_loss={loss:.4f}' \
+                               'test_acc3={acc:.2%}'\
+                        .format(loss=test_loss_, acc=test_acc3_)
+                    epoch_str += ' ' + test_str
 
                 logger.info(epoch_str)
             self.sess = sess

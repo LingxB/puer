@@ -63,12 +63,13 @@ def train(train_files, val_files, test_files, model_name, exp):
     model = model(datamanager=dm, parameters=hyparams)
 
     # Train
-    model.train(train_df, val_df)
+    model.train(train_df, val_df, test_df)
 
     # Predict and score on test
     if test_df is not None:
         _, _, loss_, acc3_ = model.score(test_df)
-        logger.info('test_loss={loss:.4f} ' \
+        logger.info('Final score on test set: '
+                    'test_loss={loss:.4f} ' \
                     'test_acc3={acc:.2%}'\
                     .format(loss=loss_, acc=acc3_))
 
@@ -79,6 +80,9 @@ def train(train_files, val_files, test_files, model_name, exp):
     model.close_session()
 
     logger.info('---------- Training {} on {} end ----------'.format(model_name, exp_num))
+
+
+
 
 if __name__ == '__main__':
     train()
