@@ -130,7 +130,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
 
                 if test_df is not None:
                     test_acc3_, test_loss_ = sess.run([T['acc3'], T['loss']], feed_dict=dict(zip(placeholders, test_batch)))
-                    test_str = 'test_loss={loss:.4f}' \
+                    test_str = 'test_loss={loss:.4f} ' \
                                'test_acc3={acc:.2%}'\
                         .format(loss=test_loss_, acc=test_acc3_)
                     epoch_str += ' ' + test_str
