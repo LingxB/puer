@@ -14,7 +14,6 @@ exp_1:
     layer_num: 1
     dropout_keep_prob: 0.5
     optimizer: adagrad
-    momentum: 0.9 # not used by adagrad optimizer
     learning_rate: 0.01
     lambda: 0.001 # l2
     initializer: random_uniform
@@ -22,19 +21,36 @@ exp_1:
     minval: -0.01
     maxval: 0.01
 
-exp_1.1:
+exp_1.1: #82.43%
   description: >
     try initial_accumulator_value (epsilon) in adagrad on loss sum version.
   hyperparams: &h1-1
     <<: *h1
     initial_accumulator_value: 0.0000000001 #1e-10
 
-exp_1.2:
+exp_1.2: #81.91%
   description: >
     Same as exp_1.1, not using dropout
   hyperparams:
     <<: *h1-1
     dropout_keep_prob: 1
+
+exp_1.3:
+  description: >
+    Based on exp_1, try use adam setting epsilon to 1e-10
+  hyperparams: &h1-3
+    <<: *h1
+    optimizer: adam
+    epsilon: 0.0000000001 #1e-10
+    beta1: 0.9
+
+exp_1.4:
+  description: >
+    Same as exp_1.3, try droupout = 1
+  hyperparams:
+    <<: *h1-3
+    dropout_keep_prob: 1
+
 
 
 exp_2:
