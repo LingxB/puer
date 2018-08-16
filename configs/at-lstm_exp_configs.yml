@@ -25,9 +25,16 @@ exp_1:
 exp_1.1:
   description: >
     try initial_accumulator_value (epsilon) in adagrad on loss sum version.
-  hyperparams:
+  hyperparams: &h1-1
     <<: *h1
     initial_accumulator_value: 0.0000000001 #1e-10
+
+exp_1.2:
+  description: >
+    Same as exp_1.1, not using dropout
+  hyperparams:
+    <<: *h1-1
+    dropout_keep_prob: 1
 
 
 exp_2:
