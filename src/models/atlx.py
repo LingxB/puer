@@ -97,12 +97,44 @@ class ATLSTM(BaseModel):
                 r = tf.squeeze(_r, 1)  # (batch, d)
                 assert r.shape.as_list() == tf.TensorShape([X_.shape[0], H.shape[2]]).as_list()
 
+            # Lexicon
+            # -------
+            with tf.name_scope('Lexicon'):
+                assert X_.shape.as_list()[:2] == lx.shape.as_list()[:2] # lx.shape = (batch, N, dl)
+                lx_mode = self.p.get('lx_mode')
+
+                Wx = tf.get_variable('Wx', shape=(self.p['cell_num'], tf.shape(lx)[2]), dtype=tf.float32, initializer=initializer)  # (d, dl)
+                lx_T = tf.transpose(lx, [0, 2, 1])  # (batch, dl, N)
+                lx_ = tf.transpose(matmul_2_3(Wx, lx_T), [0, 2, 1])  # (batch, N, d)
+                if self.p['lx_activation']:
+                    lx_ = tf.tanh(lx_)
+
+                if lx_mode == 'linear':
+                    Wl = tf.get_variable('Wl', shape=(tf.shape(lx)[1], 1), dtype=tf.float32, initializer=initializer) # (N, 1)
+                    Wl_T = tf.transpose(Wl) # (1, N)
+                    l = tf.squeeze(matmul_2_3(Wl_T, lx_), 1) # (batch, d)
+                elif lx_mode == 'att':
+                    pass
+
+
+
+
+
+
+                elif lx_mode == 'conv':
+                    pass
+                else:
+                    raise NotImplementedError
+
+            # Merge all as h*
+            # ---------------
+            with tf.name_scope('Hstar'):
                 Wp = tf.get_variable('Wp', shape=(r.shape[1], r.shape[1]), dtype=tf.float32, initializer=initializer)  # (d, d)
                 Wx = tf.get_variable('Wx', shape=(hN.shape[1], hN.shape[1]), dtype=tf.float32, initializer=initializer)  # (d, d)
+                # TODO: Wl = (d,d)
 
-
-                h_star = tf.tanh(tf.matmul(r, Wp) + tf.matmul(hN, Wx))
-                h_star = tf.nn.dropout(h_star, dropout_keep)  # 0.5 dropout on h_star was found in author's code
+                h_star = tf.tanh(tf.matmul(r, Wp) + tf.matmul(hN, Wx) + tf.matmul(l, Wl))
+                h_star = tf.nn.dropout(h_star, dropout_keep)
                 assert h_star.shape.as_list() == tf.TensorShape([H.shape[0], H.shape[2]]).as_list()
 
             # Output Layer
