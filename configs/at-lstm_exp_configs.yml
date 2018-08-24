@@ -35,20 +35,14 @@ exp_1.2: #81.91%
     <<: *h1-1
     dropout_keep_prob: 1
 
-exp_1.3:
+exp_1.3: #82.63% best with adam
   description: >
     Based on exp_1, try use adam setting epsilon to 1e-10
   hyperparams: &h1-3
     <<: *h1
+    learning_rate: 0.001
     optimizer: adam
-    epsilon: 0.0000000001 #1e-10
     beta1: 0.9
-
-exp_1.4:
-  description: >
-    Same as exp_1.3, try droupout = 1
-  hyperparams:
-    <<: *h1-3
     dropout_keep_prob: 1
 
 
