@@ -37,7 +37,7 @@ exp_1.2: #81.91%
 
 exp_1.3: #82.63% best with adam
   description: >
-    Based on exp_1, try use adam setting epsilon to 1e-10
+    Based on exp_1, try use adam
   hyperparams: &h1-3
     <<: *h1
     learning_rate: 0.001
