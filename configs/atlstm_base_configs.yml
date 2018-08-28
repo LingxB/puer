@@ -21,4 +21,4 @@ model:
 
 exp_configs:
 # ----------
-  path: configs/at-lstm_exp_configs
+  path: configs/atlstm_exp_configs
