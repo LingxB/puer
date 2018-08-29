@@ -8,7 +8,7 @@ from copy import deepcopy
 logger = Logger(__fn__())
 
 
-class ATLSTM(BaseModel):
+class ATLX(BaseModel):
 
     NAME = 'ATLX'
 
@@ -26,7 +26,7 @@ class ATLSTM(BaseModel):
             X = tf.placeholder(tf.int32, shape=(None, None), name='X')
             asp = tf.placeholder(tf.int32, shape=(None, 1), name='asp')
             y = tf.placeholder(tf.int32, shape=(None, 3), name='y')
-            lx = tf.placeholder(tf.float32, shape=(None, None, None), name='lx') # (batch, N, dl)
+            lx = tf.placeholder(tf.float32, shape=(None, None, 2), name='lx') # (batch, N, dl)
             dropout_keep = tf.placeholder_with_default(1.0, shape=(), name='dropout_keep')
 
             # Initializer
@@ -103,26 +103,22 @@ class ATLSTM(BaseModel):
                 assert X_.shape.as_list()[:2] == lx.shape.as_list()[:2] # lx.shape = (batch, N, dl)
                 lx_mode = self.p.get('lx_mode')
 
-                Wx = tf.get_variable('Wx', shape=(self.p['cell_num'], tf.shape(lx)[2]), dtype=tf.float32, initializer=initializer)  # (d, dl)
+                Wlx = tf.get_variable('Wlx', shape=(self.p['cell_num'], lx.shape[2]), dtype=tf.float32, initializer=initializer)  # (d, dl)
                 lx_T = tf.transpose(lx, [0, 2, 1])  # (batch, dl, N)
-                lx_ = tf.transpose(matmul_2_3(Wx, lx_T), [0, 2, 1])  # (batch, N, d)
-                if self.p['lx_activation']:
+                lx_ = tf.transpose(matmul_2_3(Wlx, lx_T), [0, 2, 1])  # (batch, N, d)
+                if self.p.get('lx_activation'):
                     lx_ = tf.tanh(lx_)
 
                 if lx_mode == 'linear':
-                    Wl = tf.get_variable('Wl', shape=(tf.shape(lx)[1], 1), dtype=tf.float32, initializer=initializer) # (N, 1)
+                    Wl = tf.get_variable('Wl', shape=(lx_.shape[1], 1), dtype=tf.float32, initializer=initializer) # (N, 1)
                     Wl_T = tf.transpose(Wl) # (1, N)
                     l = tf.squeeze(matmul_2_3(Wl_T, lx_), 1) # (batch, d)
                 elif lx_mode == 'att':
+                    l = tf.squeeze(tf.matmul(alpha, lx_), 1) # (batch, d)
+                elif lx_mode == None:
                     pass
-
-
-
-
-
-
-                elif lx_mode == 'conv':
-                    pass
+                # elif lx_mode == 'conv':
+                #     pass
                 else:
                     raise NotImplementedError
 
@@ -131,10 +127,28 @@ class ATLSTM(BaseModel):
             with tf.name_scope('Hstar'):
                 Wp = tf.get_variable('Wp', shape=(r.shape[1], r.shape[1]), dtype=tf.float32, initializer=initializer)  # (d, d)
                 Wx = tf.get_variable('Wx', shape=(hN.shape[1], hN.shape[1]), dtype=tf.float32, initializer=initializer)  # (d, d)
-                # TODO: Wl = (d,d)
+                if lx_mode is not None:
+                    Wl = tf.get_variable('Wl', shape=(l.shape[1], l.shape[1]), dtype=tf.float32, initializer=initializer) # (d, d)
 
-                h_star = tf.tanh(tf.matmul(r, Wp) + tf.matmul(hN, Wx) + tf.matmul(l, Wl))
-                h_star = tf.nn.dropout(h_star, dropout_keep)
+                merge_mode = self.p.get('merge_mode')
+
+                if merge_mode == 'add':
+                    h_star = tf.tanh(tf.matmul(r, Wp) + tf.matmul(hN, Wx) + tf.matmul(l, Wl)) # (batch, d)
+                elif merge_mode == 'concat':
+                    h_star = tf.tanh(tf.concat([tf.matmul(r, Wp), tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=1)) # (batch, 3d)
+                elif merge_mode == 'att':
+                    H_star = tf.stack([tf.matmul(r, Wp) + tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=2) # (batch, d, 2)
+                    wa = tf.get_variable('wa', shape=(H_star.shape[1], 1), dtype=tf.float32, initializer=initializer) # (d, 1)
+                    wa_T = tf.transpose(wa) # (1, d)
+                    beta = tf.nn.softmax(matmul_2_3(wa_T, H_star), name='BETA') # (batch, 1, 2)
+                    H_star_T = tf.transpose(H_star, [0, 2, 1]) # (batch, 2, d)
+                    h_star = tf.squeeze(tf.matmul(beta, H_star_T), 1) # (batch, d)
+                elif merge_mode == None:
+                    h_star = tf.tanh(tf.matmul(r, Wp) + tf.matmul(hN, Wx))
+                else:
+                    raise NotImplementedError
+
+                h_star = tf.nn.dropout(h_star, dropout_keep, seed=self.p['seed'])
                 assert h_star.shape.as_list() == tf.TensorShape([H.shape[0], H.shape[2]]).as_list()
 
             # Output Layer
