@@ -110,9 +110,9 @@ class ATLX(BaseModel):
                     lx_ = tf.tanh(lx_)
 
                 if lx_mode == 'linear':
-                    Wl = tf.get_variable('Wl', shape=(lx_.shape[1], 1), dtype=tf.float32, initializer=initializer) # (N, 1)
-                    Wl_T = tf.transpose(Wl) # (1, N)
-                    l = tf.squeeze(matmul_2_3(Wl_T, lx_), 1) # (batch, d)
+                    Wli = tf.get_variable('Wli', shape=(X_.shape[1], 1), dtype=tf.float32, initializer=initializer) # (N, 1)
+                    Wli_T = tf.transpose(Wli) # (1, N)
+                    l = tf.squeeze(matmul_2_3(Wli_T, lx_), 1) # (batch, d)
                 elif lx_mode == 'att':
                     l = tf.squeeze(tf.matmul(alpha, lx_), 1) # (batch, d)
                 elif lx_mode == None:

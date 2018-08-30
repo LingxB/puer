@@ -1,7 +1,7 @@
 
 # Experiment_1
 # ------------
-exp_1:
+exp_1: #82.63%
   # Description
   description: >
     Baseline
@@ -25,3 +25,34 @@ exp_1:
     #mgerge_mode:
     #lx_activation: False
 
+exp_2:
+  description: >
+    Test linear add
+  hyperparams:
+    <<: *h1
+    lx_mode: linear
+    merge_mode: add
+
+exp_3:
+  description: >
+    Test att add
+  hyperparams:
+    <<: *h1
+    lx_mode: att
+    merge_mode: add
+
+exp_4:
+  description: >
+    Test att concat
+  hyperparams:
+    <<: *h1
+    lx_mode: att
+    merge_mode: concat
+
+exp_5:
+  description: >
+    Test double att
+  hyperparams:
+    <<: *h1
+    lx_mode: att
+    merge_mode: att
