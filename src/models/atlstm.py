@@ -100,7 +100,7 @@ class ATLSTM(BaseModel):
                 Wp = tf.get_variable('Wp', shape=(r.shape[1], r.shape[1]), dtype=tf.float32, initializer=initializer)  # (d, d)
                 Wx = tf.get_variable('Wx', shape=(hN.shape[1], hN.shape[1]), dtype=tf.float32, initializer=initializer)  # (d, d)
                 h_star = tf.tanh(tf.matmul(r, Wp) + tf.matmul(hN, Wx))
-                h_star = tf.nn.dropout(h_star, dropout_keep, seed=self.p['seed'])  # 0.5 dropout on h_star was found in author's code
+                h_star = tf.nn.dropout(h_star, dropout_keep, seed=self.p['seed']+40)  # 0.5 dropout on h_star was found in author's code
                 assert h_star.shape.as_list() == tf.TensorShape([H.shape[0], H.shape[2]]).as_list()
 
             # Output Layer

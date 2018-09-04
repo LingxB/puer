@@ -148,7 +148,7 @@ class ATLX(BaseModel):
                 else:
                     raise NotImplementedError
 
-                h_star = tf.nn.dropout(h_star, dropout_keep, seed=self.p['seed'])
+                h_star = tf.nn.dropout(h_star, dropout_keep, seed=self.p['seed']+40)
                 #assert h_star.shape.as_list() == tf.TensorShape([H.shape[0], H.shape[2]]).as_list()
 
             # Output Layer
