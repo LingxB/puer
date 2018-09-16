@@ -1,3 +1,7 @@
+"""
+Lexicons must be in csv format, with first column 'WORD' second column as numerical polarity
+"""
+
 import pandas as pd
 import click
 from src.utils import Logger, __fn__, list_files
@@ -17,7 +21,7 @@ def compose_lexicons(lx_dir, outfile):
     path = lx_dir + '/' if lx_dir[-1] not in {'/','\\'} else lx_dir
 
     logger.info('Reading lexicons: {}'.format(read_files))
-    dframes = [pd.read_csv(path + f, usecols=range(2)) for f in read_files]
+    dframes = [pd.read_csv(path + f, usecols=range(2), dtype={'WORD': str}) for f in read_files]
     logger.info('Merging lexicons with shapes: {}'.format([df.shape for df in dframes]))
     df = reduce(lambda x,y: pd.merge(x, y, how='outer', on='WORD'), dframes)
     logger.info('Writting merged lexicon to {}, merged shape: {}'.format(path, df.shape))
@@ -26,6 +30,8 @@ def compose_lexicons(lx_dir, outfile):
     logger.info('Shape after dropping duplicates: {}'.format(df.shape))
     df = df.groupby('WORD').mean()
     logger.info('Shape after groupby: {}'.format(df.shape))
+    logger.info('Filling NaN with mean polarity')
+    df = df.apply(lambda s: s.fillna(s.mean()), axis=1)
     df.to_csv(path + outfile + '.csv', index=True)
     logger.info('Merged lexicon saved to {}'.format(path + outfile + '.csv'))
 
