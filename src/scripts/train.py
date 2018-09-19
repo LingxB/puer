@@ -1,14 +1,8 @@
-from src.models import ATLSTM, ATLSTM_loss_sum, ATLX
+from src.models import VALID_MODELS
 from src.utils import Logger, __fn__, load_corpus, get_envar, read_config, get_timestamp
 from src.data import AbsaDataManager, LexiconManager
 import click
 
-
-VALID_MODELS = dict(
-    atlstm=ATLSTM,
-    atlstm_loss_sum=ATLSTM_loss_sum,
-    atlx=ATLX
-)
 
 
 logger = Logger(__fn__())
