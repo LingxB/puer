@@ -2,7 +2,7 @@ import abc
 import tensorflow as tf
 from src.utils import Logger, __fn__, mkdir, filter_params, pickle_dump, pickle_load
 import numpy as np
-
+import sys
 
 logger = Logger(__fn__())
 
@@ -74,7 +74,7 @@ class BaseModel(object, metaclass=abc.ABCMeta):
         logger.info('Applying params to {} initializer: {}'.format(self.p['initializer'], params))
         return initializer(**params)
 
-    def train(self, train_df, val_df=None, test_df=None):
+    def train(self, train_df, val_df=None, test_df=None, early_stop=False):
 
         if self.graph is None:
             self.graph = self.build_graph()
@@ -90,6 +90,9 @@ class BaseModel(object, metaclass=abc.ABCMeta):
 
         run_args = (T['loss'], T['regularizer'], O['train_op'], T['acc3'])
         placeholders = (T['X'], T['asp'], T['lx'], T['y'], T['dropout_keep'])
+        best_loss = sys.maxsize
+        best_acc = 0
+        recoder = []
 
         with self.graph.as_default():
             sess = tf.Session(graph=self.graph)
@@ -135,8 +138,32 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                         .format(loss=test_loss_, acc=test_acc3_)
                     epoch_str += ' ' + test_str
 
+                if bool(early_stop):
+                    recoder.append(epoch_str)
+                    stop_on = early_stop if isinstance(early_stop, str) else 'loss'
+                    if stop_on == 'loss':
+                        if val_loss_ > best_loss:
+                            logger.info(epoch_str)
+                            logger.info('**EARLY STOP** loss={:.4f} > previous={:.4f}'.format(val_loss_, best_loss))
+                            break
+                        else:
+                            best_loss = val_loss_
+                    elif stop_on == 'acc3':
+                        if val_acc3_ < best_acc:
+                            logger.info(epoch_str)
+                            logger.info('**EARLY STOP** acc3={:.2%} < previous={:.2%}'.format(val_acc3_, best_acc))
+                            break
+                        else:
+                            best_acc = val_acc3_
+                    else:
+                        raise AttributeError('Invalid early_stop argument {}, bool, loss or acc3'.format(stop_on))
+
                 logger.info(epoch_str)
+
             self.sess = sess
+
+            if early_stop:
+                return recoder
 
     def save(self, path):
         mkdir(path)
