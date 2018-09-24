@@ -54,6 +54,9 @@ class ATLX(BaseModel):
                 embedding = tf.concat([pad, unk, glove], axis=0, name='embedding')
 
                 X_ = tf.nn.embedding_lookup(embedding, X)  # (batch, N, d)
+                if self.p.get('concat_emb_lx', False):
+                    X_ = tf.concat([X_, lx], axis=-1)
+                    assert X_.shape.as_list()[-1] == lx.shape.as_list()[-1] + self.dm.emb.shape[1]
                 seq_len = seq_length(X_)
                 asp_ = tf.nn.embedding_lookup(embedding, asp)  # (batch, 1, da)
 
@@ -79,7 +82,7 @@ class ATLX(BaseModel):
                 assert WhH.shape.as_list() == H_T.shape.as_list()
 
                 VaeN = tf.tile(asp_, [1, tf.shape(X_)[1], 1])  # (batch, N, da), da==d in this setting
-                assert VaeN.shape.as_list() == X_.shape.as_list()
+                assert VaeN.shape.as_list()[:-1] == X_.shape.as_list()[:-1]
                 VaeN_T = tf.transpose(VaeN, [0, 2, 1])  # (batch, da, N)
                 Wv = tf.get_variable('Wv', shape=(asp_.shape[2], asp_.shape[2]), dtype=tf.float32, initializer=initializer)  # (da, da)
                 WvVaeN = matmul_2_3(Wv, VaeN_T)  # (batch, da, N)
@@ -87,7 +90,7 @@ class ATLX(BaseModel):
 
                 M = tf.tanh(tf.concat([WhH, WvVaeN], axis=1))  # (batch, d+da, N)
 
-                w = tf.get_variable('w', shape=(X_.shape[2] + asp_.shape[2], 1), dtype=tf.float32, initializer=initializer)  # (d+da, 1)
+                w = tf.get_variable('w', shape=(H.shape[2] + asp_.shape[2], 1), dtype=tf.float32, initializer=initializer)  # (d+da, 1)
                 w_T = tf.transpose(w)  # (1, d+da)
                 alpha = tf.nn.softmax(matmul_2_3(w_T, M), name='ALPHA')  # (batch, 1, N)
                 assert alpha.shape.as_list() == tf.TensorShape([X_.shape[0], 1, M.shape[2]]).as_list()

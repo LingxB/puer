@@ -21,6 +21,7 @@ exp_1: #-v 75.19% -t 82.43%
     seed: 4
     minval: -0.01
     maxval: 0.01
+    #concat_emb_lx:
     #lx_mode:
     #mgerge_mode:
     #lx_activation: False
@@ -36,7 +37,7 @@ exp_2:
 exp_3:
   description: >
     Test att add
-  hyperparams:
+  hyperparams: &h3
     <<: *h1
     lx_mode: att
     merge_mode: add
@@ -44,7 +45,7 @@ exp_3:
 exp_4:
   description: >
     Test att concat
-  hyperparams:
+  hyperparams: &h4
     <<: *h1
     lx_mode: att
     merge_mode: concat
@@ -52,7 +53,21 @@ exp_4:
 exp_5:
   description: >
     Test double att
-  hyperparams:
+  hyperparams: &h5
     <<: *h1
     lx_mode: att
     merge_mode: att
+
+exp_6:
+  description: >
+    Naive lexicon concat with embedding
+  hyperparams:
+    <<: *h1
+    concat_emb_lx: True
+
+exp_7:
+  description: >
+    based on exp_3, att-add with concatenated embedding and lx
+  hyperparams:
+    <<: *h3
+    concat_emb_lx: True
