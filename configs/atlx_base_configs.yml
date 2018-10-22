@@ -3,12 +3,12 @@
 
 symbol_dict:
 # ----------
-  path: data/processed/ATAE-LSTM/glove_symdict
+  path: data/processed/SemEval14/glove_symdict
   start_idx: 2 # 0 for padding, 1 for <UNK>
 
 embedding_table:
 # --------------
-  path: data/processed/ATAE-LSTM/glove_lookup
+  path: data/processed/SemEval14/glove_lookup
 
 lexicon_table:
 # ------------
@@ -17,7 +17,7 @@ lexicon_table:
 
 model:
 # ----
-  savepath: models/atlx/
+  savepath: models/atlx/SemEval14/
 
 exp_configs:
 # ----------
