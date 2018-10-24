@@ -74,6 +74,7 @@ target/
 
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/logs/*.log
+.ipynb_checkpoints/
 
 # exclude data from source control by default
 /data/
@@ -91,3 +92,4 @@ logs/*.log
 # exclude everything under models but not models itself
 models/*
 !models/.gitkeep
+
