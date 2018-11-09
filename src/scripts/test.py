@@ -13,6 +13,9 @@ logger = Logger(__fn__())
 @click.option('--out_file', '-o', default='data/score', type=click.Path())
 def test(model_dir, test_files, out_file):
 
+    # model_dir = 'models/atlx/SemEval14/baseline'
+    # test_files = ['data/processed/SemEval14/SemEval14_test.csv']
+
     # Get model name
     model_files = list_files(model_dir)
     model_name = list(set([n.split('.')[0] for n in model_files if n.split('.')[-1] in {'index','meta'}]))
@@ -42,6 +45,7 @@ def test(model_dir, test_files, out_file):
                   }
     test_df['PRED'] = [label_dict[p] for p in prediction]
     test_df['NEG'], test_df['NEU'], test_df['POS'] = pred_[:,0], pred_[:,1], pred_[:,2]
+    test_df['ALPHA'] = np.squeeze(alpha_).tolist()
 
     logger.info(f'Recomputing in output dataframe: test_acc3={(test_df.CLS == test_df.PRED).value_counts()[True]/len(test_df):.2%}')
 
