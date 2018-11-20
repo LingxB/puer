@@ -141,6 +141,7 @@ class ATLX(BaseModel):
                     h_star = tf.tanh(tf.concat([tf.matmul(r, Wp), tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=1)) # (batch, 3d)
                 elif merge_mode == 'att':
                     H_star = tf.stack([tf.matmul(r, Wp) + tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=2) # (batch, d, 2)
+                    # TODO: Better to name wa as wb
                     wa = tf.get_variable('wa', shape=(H_star.shape[1], 1), dtype=tf.float32, initializer=initializer) # (d, 1)
                     wa_T = tf.transpose(wa) # (1, d)
                     beta = tf.nn.softmax(matmul_2_3(wa_T, H_star), name='BETA') # (batch, 1, 2)
