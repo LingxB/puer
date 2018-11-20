@@ -35,13 +35,21 @@ def plot_sent(tokens: list, alpha: str or list or np.ndarray, lexicon: pd.DataFr
             ax.text(i, j, round(data.iloc[i, j], 2), ha='center', va='center', color='w')
 
 
+# n = 331
 #
-# df = pd.read_csv('data/score/SemEval14_test_baseline_v1.csv')
+# df2 = pd.read_csv('data/score/SemEval14_test_baseline_v1.csv')
 # lexicon = pd.read_csv('data/processed/lexicon/lexicon_table.csv', index_col='WORD')
-# s1 = df.iloc[0]
-# tokens = s1.SENT.split()
+# s2 = df2.iloc[n]
+# tokens = s2.SENT.split()
+# plot_sent(s2.SENT.split(), s2.ALPHA, lexicon)
 #
+# df = pd.read_csv('data/score/SemEval14_test_exp_3_v1.csv')
+# lexicon = pd.read_csv('data/processed/lexicon/lexicon_table.csv', index_col='WORD')
+# s1 = df.iloc[n]
+# tokens = s1.SENT.split()
 # plot_sent(s1.SENT.split(), s1.ALPHA, lexicon)
+
+
 
 
 
