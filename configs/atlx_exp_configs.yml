@@ -7,11 +7,12 @@ exp_1: #-v 75.19% -t 82.43%
     Baseline
   # Hyper parameters
   hyperparams: &h1
-    epochs: 2 # used to be 35, set to 2 to save trained model, 2 is known from early stop
+    epochs: 35 # used to be 35, set to 2 to save trained model, 2 is known from early stop
     batch_size: 25
     shuffle: True
     cell_num: 300
     layer_num: 1
+    lx_dim: 300
     dropout_keep_prob: 0.5
     optimizer: adagrad
     learning_rate: 0.01
@@ -25,6 +26,7 @@ exp_1: #-v 75.19% -t 82.43%
     #lx_mode:
     #mgerge_mode:
     #lx_activation: False
+    #attention_with_lx: False
 
 exp_2:
   description: >
@@ -42,6 +44,13 @@ exp_3: # turns out 2 epochs as baseline early stopping is also best for exp_3
     lx_mode: att
     merge_mode: add
 
+exp_3-1:
+  description: >
+    Add lx into attention (alpha) input
+  hyperparams:
+    <<: *h3
+    attention_with_lx: True
+
 exp_4:
   description: >
     Test att concat
@@ -50,6 +59,13 @@ exp_4:
     lx_mode: att
     merge_mode: concat
 
+exp_4-1:
+  description: >
+    Try lower dx with att concat
+  hyperparams:
+    <<: *h4
+    lx_dim: 5
+
 exp_5:
   description: >
     Test double att
@@ -57,6 +73,12 @@ exp_5:
     <<: *h1
     lx_mode: att
     merge_mode: att
+
+exp_5-1:
+  description: >
+    Same as exp_5, add tanh() to h*', requrie manual interventiono on the code
+  hyperparams:
+    <<: *h5
 
 exp_6:
   description: >

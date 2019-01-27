@@ -73,6 +73,17 @@ class ATLX(BaseModel):
                 hN = s.h  # (batch, d)
                 assert H.shape.as_list() == tf.TensorShape([X_.shape[0], X_.shape[1], self.p['cell_num']]).as_list()
 
+            # Prepare Lexicon input
+            # ---------------------
+            with tf.name_scope('Lexicon'):
+                assert X_.shape.as_list()[:2] == lx.shape.as_list()[:2] # lx.shape = (batch, N, dl)
+
+                Wlx = tf.get_variable('Wlx', shape=(self.p['lx_dim'], lx.shape[2]), dtype=tf.float32, initializer=initializer)  # (dx, dl)
+                lx_T = tf.transpose(lx, [0, 2, 1])  # (batch, dl, N)
+                L = tf.transpose(matmul_2_3(Wlx, lx_T), [0, 2, 1])  # (batch, N, dx)
+                if self.p.get('lx_activation'):
+                    L = tf.tanh(L)
+
             # Attention
             # ---------
             with tf.name_scope('Attention'):
@@ -88,10 +99,19 @@ class ATLX(BaseModel):
                 WvVaeN = matmul_2_3(Wv, VaeN_T)  # (batch, da, N)
                 assert WvVaeN.shape.as_list() == VaeN_T.shape.as_list()
 
-                M = tf.tanh(tf.concat([WhH, WvVaeN], axis=1))  # (batch, d+da, N)
+                attention_with_lx = self.p.get('attention_with_lx')
+                if attention_with_lx:
+                    L_T = tf.transpose(L, [0, 2, 1]) # (batch, dx, N)
+                    WL = tf.get_variable('WL', shape=(L.shape[2], L.shape[2]), dtype=tf.float32, initializer=initializer) # (dx, dx))
+                    WLL = matmul_2_3(WL, L_T) # (batch, dx, N)
 
-                w = tf.get_variable('w', shape=(H.shape[2] + asp_.shape[2], 1), dtype=tf.float32, initializer=initializer)  # (d+da, 1)
-                w_T = tf.transpose(w)  # (1, d+da)
+                    M = tf.tanh(tf.concat([WhH, WvVaeN, WLL], axis=1)) # (batch, d+da+dx, N)
+                    w = tf.get_variable('w', shape=(H.shape[2] + asp_.shape[2] + L.shape[2], 1), dtype=tf.float32, initializer=initializer)  # (d+da+dx, 1)
+                else:
+                    M = tf.tanh(tf.concat([WhH, WvVaeN], axis=1))  # (batch, d+da, N)
+                    w = tf.get_variable('w', shape=(H.shape[2] + asp_.shape[2], 1), dtype=tf.float32, initializer=initializer)  # (d+da, 1)
+
+                w_T = tf.transpose(w)  # (1, d+da/d+da+dx)
                 alpha = tf.nn.softmax(matmul_2_3(w_T, M), name='ALPHA')  # (batch, 1, N)
                 assert alpha.shape.as_list() == tf.TensorShape([X_.shape[0], 1, M.shape[2]]).as_list()
                 # alpha = tf.reshape(alpha, (tf.shape(alpha)[0], tf.shape(alpha)[2])) # (batch, N)
@@ -103,21 +123,13 @@ class ATLX(BaseModel):
             # Lexicon
             # -------
             with tf.name_scope('Lexicon'):
-                assert X_.shape.as_list()[:2] == lx.shape.as_list()[:2] # lx.shape = (batch, N, dl)
                 lx_mode = self.p.get('lx_mode')
-
-                Wlx = tf.get_variable('Wlx', shape=(self.p['cell_num'], lx.shape[2]), dtype=tf.float32, initializer=initializer)  # (d, dl)
-                lx_T = tf.transpose(lx, [0, 2, 1])  # (batch, dl, N)
-                lx_ = tf.transpose(matmul_2_3(Wlx, lx_T), [0, 2, 1])  # (batch, N, d)
-                if self.p.get('lx_activation'):
-                    lx_ = tf.tanh(lx_)
-
-                if lx_mode == 'linear':
-                    Wli = tf.get_variable('Wli', shape=(X_.shape[1], 1), dtype=tf.float32, initializer=initializer) # (N, 1)
-                    Wli_T = tf.transpose(Wli) # (1, N)
-                    l = tf.squeeze(matmul_2_3(Wli_T, lx_), 1) # (batch, d)
-                elif lx_mode == 'att':
-                    l = tf.squeeze(tf.matmul(alpha, lx_), 1) # (batch, d)
+                # if lx_mode == 'linear':
+                #     Wli = tf.get_variable('Wli', shape=(X_.shape[1], 1), dtype=tf.float32, initializer=initializer) # (N, 1)
+                #     Wli_T = tf.transpose(Wli) # (1, N)
+                #     l = tf.squeeze(matmul_2_3(Wli_T, L), 1) # (batch, d)
+                if lx_mode == 'att':
+                    l = tf.squeeze(tf.matmul(alpha, L), 1) # (batch, dx)
                 elif lx_mode == None:
                     pass
                 # elif lx_mode == 'conv':
@@ -140,11 +152,11 @@ class ATLX(BaseModel):
                 elif merge_mode == 'concat':
                     h_star = tf.tanh(tf.concat([tf.matmul(r, Wp), tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=1)) # (batch, 3d)
                 elif merge_mode == 'att':
-                    H_star = tf.stack([tf.matmul(r, Wp) + tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=2) # (batch, d, 2)
-                    # TODO: Better to name wa as wb
-                    wa = tf.get_variable('wa', shape=(H_star.shape[1], 1), dtype=tf.float32, initializer=initializer) # (d, 1)
-                    wa_T = tf.transpose(wa) # (1, d)
-                    beta = tf.nn.softmax(matmul_2_3(wa_T, H_star), name='BETA') # (batch, 1, 2)
+                    # H_star = tf.stack([tf.matmul(r, Wp) + tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=2) # (batch, d, 2)
+                    H_star = tf.tanh(tf.stack([tf.matmul(r, Wp) + tf.matmul(hN, Wx), tf.matmul(l, Wl)], axis=2)) # (batch, d, 2) exp_5.1
+                    wb = tf.get_variable('wb', shape=(H_star.shape[1], 1), dtype=tf.float32, initializer=initializer) # (d, 1)
+                    wb_T = tf.transpose(wb) # (1, d)
+                    beta = tf.nn.softmax(matmul_2_3(wb_T, H_star), name='BETA') # (batch, 1, 2)
                     H_star_T = tf.transpose(H_star, [0, 2, 1]) # (batch, 2, d)
                     h_star = tf.squeeze(tf.matmul(beta, H_star_T), 1) # (batch, d)
                 elif merge_mode == None:
