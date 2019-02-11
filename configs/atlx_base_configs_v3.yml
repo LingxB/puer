@@ -12,8 +12,8 @@ embedding_table:
 
 lexicon_table:
 # ------------
-  path: data/processed/lexicon_v2/lexicon_table_v2
-  usecol: 2
+  path: data/processed/lexicon_v3/lexicon_table_v3
+  usecol: -1
 
 model:
 # ----
