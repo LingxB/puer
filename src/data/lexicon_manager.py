@@ -18,7 +18,7 @@ class LexiconManager(object):
         ----------
         lx_path : str
             path to lexicon table without '.csv' extension
-        usecol : int or list if column indices or list of column names
+        usecol : int () or list (list of column names)
             which lexicons to use
         """
         self.usecol = usecol
@@ -40,10 +40,10 @@ class LexiconManager(object):
         if self.usecol == -1:
             pass
         else:
-            if isinstance(self.usecol[0], str):
+            if isinstance(self.usecol, list):
                 self.lx = self.lx[self.usecol]
-            elif isinstance(self.usecol[0], int):
-                self.lx = self.lx.iloc[:, self.usecol]
+            elif isinstance(self.usecol, int):
+                self.lx = self.lx.iloc[:, :self.usecol]
             else:
                 raise AttributeError('Invalid attribute usecol={}'.format(self.usecol))
         logger.info('Using lexicon: \n{}'.format(self.lx.head()))
