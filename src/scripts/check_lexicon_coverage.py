@@ -62,11 +62,11 @@ check_coverage(corpus_words, mpqa_words) # Data: 5175 tokens, lexicon: 6886 toke
 check_coverage(corpus_words, ol_words) # Data: 5175 tokens, lexicon: 6787 tokens, 732 words in data, coverage: 14.14%
 check_coverage(corpus_words, vader_words) # Data: 5175 tokens, lexicon: 7503 tokens, 656 words in data, coverage: 12.68%
 
-check_coverage(corpus_words, opener_words)
+check_coverage(corpus_words, opener_words) # v4
 # Data: 5175 tokens, lexicon: 6885 tokens, 908 words in data, coverage: 17.55%
-check_coverage(corpus_words, [opener_words, mpqa_words])
+check_coverage(corpus_words, [opener_words, mpqa_words]) # v5
 #Data: 5175 tokens, lexicon: 6886 tokens, 908 words in data, coverage: 17.55%
-check_coverage(corpus_words, [opener_words, mpqa_words, ol_words])
+check_coverage(corpus_words, [opener_words, mpqa_words, ol_words]) # v6
 # Data: 5175 tokens, lexicon: 8259 tokens, 1073 words in data, coverage: 20.73%
-check_coverage(corpus_words, [opener_words, mpqa_words, ol_words, vader_words])
+check_coverage(corpus_words, [opener_words, mpqa_words, ol_words, vader_words]) # v2
 # Data: 5175 tokens, lexicon: 13298 tokens, 1235 words in data, coverage: 23.86%
