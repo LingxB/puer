@@ -11,7 +11,7 @@ logger = Logger(__fn__())
 class LexiconManager(object):
 
 
-    def __init__(self, lx_path=None, usecol=-1):
+    def __init__(self, lx_path=None, usecol=-1, lx_size=-1):
         """
 
         Parameters
@@ -22,6 +22,7 @@ class LexiconManager(object):
             which lexicons to use
         """
         self.usecol = usecol
+        self.lx_size = lx_size
         if lx_path is None:
             configs = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=True)
             self.lx_path = configs.lexicon_table.path + '.csv'
@@ -46,8 +47,14 @@ class LexiconManager(object):
                 self.lx = self.lx.iloc[:, :self.usecol]
             else:
                 raise AttributeError('Invalid attribute usecol={}'.format(self.usecol))
-        logger.info('Using lexicon: \n{}'.format(self.lx.head()))
 
+        if self.lx_size == -1:
+            pass
+        else:
+            self.lx = self.lx.iloc[:self.lx_size, :]
+
+        logger.info('Using lexicon: \n{}'.format(self.lx.head()))
+        logger.info(f'Lexicon size: {self.lx.shape}')
 
     def pad_transform(self, sents):
         return pad_sequences([self.transform(s) for s in sents], padding='post')
