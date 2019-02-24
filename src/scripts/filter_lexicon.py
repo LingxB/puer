@@ -21,3 +21,17 @@ for s in test.SENT.str.split():
 
 corpus_words = set([w for w,_ in c_corpus.most_common()])
 
+w_in_corpus = lx_v2.WORD.apply(lambda w: w in corpus_words)
+
+pd.value_counts(w_in_corpus)
+
+effective_lexicon = lx_v2.loc[w_in_corpus].copy()
+
+effective_lexicon = effective_lexicon.sample(frac=1, random_state=42).reset_index(drop=True)
+
+
+effective_lexicon.loc[effective_lexicon.WORD == 'not'] # 1017
+effective_lexicon.loc[effective_lexicon.WORD == "n't"] # 99
+
+
+effective_lexicon.to_csv('data/processed/effective_lexicon/effective_lexicon.csv', index=False)
