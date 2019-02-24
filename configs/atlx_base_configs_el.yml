@@ -14,8 +14,8 @@ lexicon_table:
 # ------------
   path: data/processed/effective_lexicon/effective_lexicon
   usecol: 4
-  lx_size: -1
-  append_neg: False
+  lx_size: 200
+  append_neg: True
 
 model:
 # ----
