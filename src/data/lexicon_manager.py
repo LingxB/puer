@@ -39,7 +39,7 @@ class LexiconManager(object):
         logger.info('Loading lexicon table from {}'.format(self.lx_path))
         self.lx = pd.read_csv(self.lx_path)
         assert not self.lx.duplicated().any(), 'Lexicon table has duplicated keys.'
-        self.lx = self.lx.set_index('WORD', verify_integrity=True)
+        self.lx = self.lx.set_index('WORD')
 
         if self.usecol == -1:
             pass
@@ -55,18 +55,18 @@ class LexiconManager(object):
             pass
         else:
             self.lx = self.lx.iloc[:self.lx_size, :]
-            logger.info(f'Using lexicon subset, size: {self.lx.shape}')
+            logger.info('Using lexicon subset, size: {}'.format(self.lx.shape))
             if 'not' not in self.lx.index and self.append_neg:
-                self.lx = self.lx.append(pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name='not'),
-                                         ignore_index=True)
+                row = pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name='not')
+                self.lx = pd.concat([self.lx, row.to_frame().transpose()])
                 logger.info("Add 'not' to lexicon")
             if "n't" not in self.lx.index and self.append_neg:
-                self.lx = self.lx.append(pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name="n't"),
-                                         ignore_index=True)
+                row = pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name="n't")
+                self.lx = pd.concat([self.lx, row.to_frame().transpose()])
                 logger.info("Add 'n't' to lexicon")
 
-        logger.info('Using lexicon: \n{}'.format(self.lx.head()))
-        logger.info(f'Lexicon size: {self.lx.shape}')
+        logger.info('Using lexicon: \n{}'.format(self.lx.tail()))
+        logger.info('Lexicon size: {}'.format(self.lx.shape))
 
     def pad_transform(self, sents):
         return pad_sequences([self.transform(s) for s in sents], padding='post')
@@ -86,7 +86,6 @@ class LexiconManager(object):
 
 
 # lm = LexiconManager()
-#
 #
 # sents = ['hello world abnormal ! abandoned'.split(),
 #          'wobble abhor wasting whore'.split()
