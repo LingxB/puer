@@ -11,7 +11,7 @@ logger = Logger(__fn__())
 class LexiconManager(object):
 
 
-    def __init__(self, lx_path=None, usecol=-1, lx_size=-1):
+    def __init__(self, lx_path=None, usecol=-1, lx_size=-1, append_neg=False):
         """
 
         Parameters
@@ -23,10 +23,13 @@ class LexiconManager(object):
         """
         self.usecol = usecol
         self.lx_size = lx_size
+        self.append_neg = append_neg
         if lx_path is None:
             configs = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=True)
             self.lx_path = configs.lexicon_table.path + '.csv'
             self.usecol = configs.lexicon_table.usecol
+            self.lx_size = configs.lexicon_table.lx_size
+            self.append_neg = configs.lexicon_table.append_neg
         else:
             self.lx_path = lx_path + '.csv'
         self.__initialize()
@@ -36,7 +39,7 @@ class LexiconManager(object):
         logger.info('Loading lexicon table from {}'.format(self.lx_path))
         self.lx = pd.read_csv(self.lx_path)
         assert not self.lx.duplicated().any(), 'Lexicon table has duplicated keys.'
-        self.lx = self.lx.set_index('WORD')
+        self.lx = self.lx.set_index('WORD', verify_integrity=True)
 
         if self.usecol == -1:
             pass
@@ -52,6 +55,15 @@ class LexiconManager(object):
             pass
         else:
             self.lx = self.lx.iloc[:self.lx_size, :]
+            logger.info(f'Using lexicon subset, size: {self.lx.shape}')
+            if 'not' not in self.lx.index and self.append_neg:
+                self.lx = self.lx.append(pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name='not'),
+                                         ignore_index=True)
+                logger.info("Add 'not' to lexicon")
+            if "n't" not in self.lx.index and self.append_neg:
+                self.lx = self.lx.append(pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name="n't"),
+                                         ignore_index=True)
+                logger.info("Add 'n't' to lexicon")
 
         logger.info('Using lexicon: \n{}'.format(self.lx.head()))
         logger.info(f'Lexicon size: {self.lx.shape}')
