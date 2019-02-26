@@ -22,6 +22,8 @@ exp_1: #-v 75.19% -t 82.43%
     seed: 4
     minval: -0.01
     maxval: 0.01
+    #att_reg: False
+    #epsilon: 1
     #concat_emb_lx:
     #lx_mode:
     #mgerge_mode:
@@ -93,3 +95,11 @@ exp_7:
   hyperparams:
     <<: *h3
     concat_emb_lx: True
+
+exp_8:
+  description: >
+    based on exp_1 baseline, explore attention regularization
+  hyperparams:
+    <<: *h1
+    att_reg: True
+    epsilon: 0.001

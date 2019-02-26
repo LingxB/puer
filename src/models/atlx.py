@@ -26,7 +26,7 @@ class ATLX(BaseModel):
             X = tf.placeholder(tf.int32, shape=(None, None), name='X')
             asp = tf.placeholder(tf.int32, shape=(None, 1), name='asp')
             y = tf.placeholder(tf.int32, shape=(None, 3), name='y')
-            lx = tf.placeholder(tf.float32, shape=(None, None, 4), name='lx') # (batch, N, dl)
+            lx = tf.placeholder(tf.float32, shape=(None, None, 5), name='lx') # (batch, N, dl)
             dropout_keep = tf.placeholder_with_default(1.0, shape=(), name='dropout_keep')
 
             # Initializer
@@ -181,7 +181,14 @@ class ATLX(BaseModel):
                 #regularizer = tf.multiply(self.p['lambda'], tf.add_n([tf.nn.l2_loss(p) for p in reg_params]), name='REGL')
                 regularizer = tf.divide(self.p['lambda']*tf.add_n([tf.nn.l2_loss(p) for p in reg_params]),
                                         tf.to_float(tf.shape(X_)[0]), name='REGL')
-                loss = tf.add(cross_entropy, regularizer, name='LOSS')
+                if self.p.get('att_reg'):
+                    epsilon = self.p.get('epsilon')
+                    mean, var = tf.nn.moments(tf.squeeze(alpha, 1), [0,1])
+                    std = tf.sqrt(var)
+                    att_regularizer = epsilon * std
+                    loss = tf.add_n([cross_entropy, regularizer, att_regularizer], name='LOSS')
+                else:
+                    loss = tf.add(cross_entropy, regularizer, name='LOSS')
 
             # Train Op
             # --------
