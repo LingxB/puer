@@ -14,6 +14,8 @@ lexicon_table:
 # ------------
   path: data/processed/lexicon/lexicon_table
   usecol: -1
+  lx_size: -1
+  append_neg: False
 
 model:
 # ----
