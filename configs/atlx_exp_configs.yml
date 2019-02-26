@@ -7,7 +7,7 @@ exp_1: #-v 75.19% -t 82.43%
     Baseline
   # Hyper parameters
   hyperparams: &h1
-    epochs: 35 # used to be 35, set to 2 to save trained model, 2 is known from early stop
+    epochs: 35
     batch_size: 25
     shuffle: True
     cell_num: 300
@@ -36,7 +36,7 @@ exp_2:
     lx_mode: linear
     merge_mode: add
 
-exp_3: # turns out 2 epochs as baseline early stopping is also best for exp_3
+exp_3:
   description: >
     Test att add
   hyperparams: &h3
