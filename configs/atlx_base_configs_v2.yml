@@ -13,7 +13,9 @@ embedding_table:
 lexicon_table:
 # ------------
   path: data/processed/lexicon_v2/lexicon_table_v2
-  usecol: 4
+  usecol: 3
+  lx_size: -1
+  append_neg: False
 
 model:
 # ----
