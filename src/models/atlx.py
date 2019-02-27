@@ -185,7 +185,7 @@ class ATLX(BaseModel):
                     epsilon = self.p.get('epsilon')
                     mean, var = tf.nn.moments(tf.squeeze(alpha, 1), [0,1])
                     std = tf.sqrt(var)
-                    att_regularizer = epsilon * std
+                    att_regularizer = tf.divide(epsilon * std, tf.to_float(tf.shape(X_)[0]), name='REGLATT')
                     loss = tf.add_n([cross_entropy, regularizer, att_regularizer], name='LOSS')
                 else:
                     loss = tf.add(cross_entropy, regularizer, name='LOSS')
