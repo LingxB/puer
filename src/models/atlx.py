@@ -183,7 +183,14 @@ class ATLX(BaseModel):
                                         tf.to_float(tf.shape(X_)[0]), name='REGL')
                 if self.p.get('att_reg'):
                     epsilon = self.p.get('epsilon')
-                    mean, var = tf.nn.moments(tf.squeeze(alpha, 1), [0,1])
+
+                    # compute excluding padding positions
+                    condition = tf.sequence_mask(seq_len, tf.reduce_max(seq_len))
+                    a_true = tf.boolean_mask(tf.squeeze(alpha, 1), condition)
+                    mean, var = tf.nn.moments(a_true, [0])
+
+                    # mean, var = tf.nn.moments(tf.squeeze(alpha, 1), [0,1]) # compute on all alpha including padding positions
+
                     std = tf.sqrt(var)
                     att_regularizer = tf.divide(epsilon * std, tf.to_float(tf.shape(X_)[0]), name='REGLATT')
                     loss = tf.add_n([cross_entropy, regularizer, att_regularizer], name='LOSS')
