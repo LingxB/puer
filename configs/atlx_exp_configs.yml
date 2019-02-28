@@ -102,4 +102,12 @@ exp_8:
   hyperparams:
     <<: *h1
     att_reg: True
-    epsilon: 0.001
+    epsilon: 0.05
+
+exp_9:
+  description: >
+    exp_3 + exp_8
+  hyperparams:
+    <<: *h3
+    att_reg: True
+    epsilon: 0.125

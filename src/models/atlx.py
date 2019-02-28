@@ -26,7 +26,7 @@ class ATLX(BaseModel):
             X = tf.placeholder(tf.int32, shape=(None, None), name='X')
             asp = tf.placeholder(tf.int32, shape=(None, 1), name='asp')
             y = tf.placeholder(tf.int32, shape=(None, 3), name='y')
-            lx = tf.placeholder(tf.float32, shape=(None, None, 5), name='lx') # (batch, N, dl)
+            lx = tf.placeholder(tf.float32, shape=(None, None, 3), name='lx') # (batch, N, dl)
             dropout_keep = tf.placeholder_with_default(1.0, shape=(), name='dropout_keep')
 
             # Initializer
