@@ -13,8 +13,8 @@ embedding_table:
 lexicon_table:
 # ------------
   path: data/processed/effective_lexicon/effective_lexicon
-  usecol: 4
-  lx_size: 200
+  usecol: 3
+  lx_size: 1200
   append_neg: True
 
 model:

@@ -57,11 +57,11 @@ class LexiconManager(object):
             self.lx = self.lx.iloc[:self.lx_size, :]
             logger.info('Using lexicon subset, size: {}'.format(self.lx.shape))
             if 'not' not in self.lx.index and self.append_neg:
-                row = pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name='not')
+                row = pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0}, name='not')
                 self.lx = pd.concat([self.lx, row.to_frame().transpose()])
                 logger.info("Add 'not' to lexicon")
             if "n't" not in self.lx.index and self.append_neg:
-                row = pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0, 'VADER': -1.0}, name="n't")
+                row = pd.Series({'MPQA': -1.0, 'OPENER': -1.0, 'OL': -1.0}, name="n't")
                 self.lx = pd.concat([self.lx, row.to_frame().transpose()])
                 logger.info("Add 'n't' to lexicon")
 
