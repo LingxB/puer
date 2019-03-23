@@ -4,6 +4,7 @@ from src.data import AbsaDataManager, LexiconManager
 import click
 from sklearn.model_selection import KFold
 import numpy as np
+import pandas as pd
 
 
 logger = Logger(__fn__())
@@ -31,16 +32,20 @@ def best_val_acc(cv_list):
 
 def best_acc(cv_list):
     """Best based on best val_acc3"""
-    val_score, e = best_val_acc(cv_list)
+    #val_score, e = best_val_acc(cv_list)
+    e = -2
+    val_score = get_acc(cv_list[e], 5)
     test_score = get_acc(cv_list[e], 7)
-    return val_score, test_score
+    train_score = get_acc(cv_list[e], 3)
+    return train_score, val_score, test_score
 
 def best_scores(cv_dict, complete=False):
     a = np.array([best_acc(l) for l in cv_dict.values()])
+    df = pd.DataFrame(dict(zip(cv_dict.keys(), a)), index=['TRAIN', 'DEV', 'TEST']).transpose()
     if complete:
-        return a
+        return a, df
     else:
-        return a.mean(axis=0)
+        return a.mean(axis=0), df
 
 
 
@@ -93,9 +98,10 @@ def cross_validate(train_files, test_files, model_name, exp, kfolds):
         rec = train_validate(model_name, hyparams, train_df.iloc[train_idx], train_df.iloc[val_idx], test_df)
         cv.update({f'CV_{k+1}': rec})
 
-    cv_val, cv_test = best_scores(cv, complete=False)
+    (_, cv_val, cv_test), df = best_scores(cv, complete=False)
     logger.info(f'**CV RESULTS** val_acc3={cv_val:.2%} test_acc3={cv_test:.2%}')
-
+    df.to_clipboard()
+    logger.info(f'CV details copied to clipboard \n{df}')
     logger.info('---------- Cross validation {} on {} end ----------'.format(model_name, exp_num))
 
 

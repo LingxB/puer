@@ -149,12 +149,17 @@ class BaseModel(object, metaclass=abc.ABCMeta):
                         else:
                             best_loss = val_loss_
                     elif stop_on == 'acc3':
-                        if val_acc3_ < best_acc:
+                        if val_acc3_ < best_acc and epoch != 1:
                             logger.info(epoch_str)
                             logger.info('**EARLY STOP** acc3={:.2%} < previous={:.2%}'.format(val_acc3_, best_acc))
                             break
+                        elif val_acc3_ == best_acc and val_loss_ > best_loss and epoch != 1:
+                            logger.info(epoch_str)
+                            logger.info('**EARLY STOP** acc3={:.2%} = previous={:.2%}, stop on smaller loss'.format(val_acc3_, best_acc))
+                            break
                         else:
                             best_acc = val_acc3_
+                            best_loss = val_loss_
                     else:
                         raise AttributeError('Invalid early_stop argument {}, bool, loss or acc3'.format(stop_on))
 
