@@ -111,3 +111,11 @@ exp_9:
     <<: *h3
     att_reg: True
     epsilon: 0.1
+
+exp_10:
+  description: >
+    based on exp_3, explore lexicon attention enhancement
+  hyperparams:
+    <<: *h3
+    att_enh: True
+    gamma: 1
