@@ -118,4 +118,4 @@ exp_10:
   hyperparams:
     <<: *h3
     att_enh: True
-    gamma: 1
+    gamma: 0.5

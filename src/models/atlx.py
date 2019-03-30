@@ -194,6 +194,12 @@ class ATLX(BaseModel):
                     std = tf.sqrt(var)
                     att_regularizer = tf.divide(epsilon * std, tf.to_float(tf.shape(X_)[0]), name='REGLATT')
                     loss = tf.add_n([cross_entropy, regularizer, att_regularizer], name='LOSS')
+                elif self.p.get('att_enh'):
+                    gamma = self.p.get('gamma')
+                    condition = tf.not_equal(tf.reduce_sum(lx, axis=-1), 0) # lx (batch, N, dl)
+                    a_true = tf.boolean_mask(tf.squeeze(alpha, 1), condition)
+                    att_enh = -1 * gamma * tf.reduce_mean(a_true)
+                    loss = tf.add_n([cross_entropy, regularizer, att_enh], name='LOSS')
                 else:
                     loss = tf.add(cross_entropy, regularizer, name='LOSS')
 
