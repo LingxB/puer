@@ -118,4 +118,28 @@ exp_10:
   hyperparams:
     <<: *h3
     att_enh: True
-    gamma: 0.5
+    gamma: 0.1
+
+exp_10-1:
+  description: >
+    attention enhancement with baseline
+  hyperparams:
+    <<: *h1
+    att_enh: True
+    gamma: 1
+
+exp_11:
+  description: >
+    based on exp_1 baseline, explore attention lmax reg
+  hyperparams:
+    <<: *h1
+    att_lmax: True
+    epsilon: 0.08
+
+exp_12:
+  description: >
+    based on exp_1 baseline, explore attention ent reg
+  hyperparams:
+    <<: *h1
+    att_ent: True
+    epsilon: 0.1

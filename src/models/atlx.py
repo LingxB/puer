@@ -183,7 +183,7 @@ class ATLX(BaseModel):
                                         tf.to_float(tf.shape(X_)[0]), name='REGL')
                 if self.p.get('att_reg'):
                     epsilon = self.p.get('epsilon')
-
+                    # TODO: Rewrite this part, not using, reg should be mean std in batch
                     # compute excluding padding positions
                     condition = tf.sequence_mask(seq_len, tf.reduce_max(seq_len))
                     a_true = tf.boolean_mask(tf.squeeze(alpha, 1), condition)
@@ -195,11 +195,24 @@ class ATLX(BaseModel):
                     att_regularizer = tf.divide(epsilon * std, tf.to_float(tf.shape(X_)[0]), name='REGLATT')
                     loss = tf.add_n([cross_entropy, regularizer, att_regularizer], name='LOSS')
                 elif self.p.get('att_enh'):
+                    # TODO: Review
                     gamma = self.p.get('gamma')
                     condition = tf.not_equal(tf.reduce_sum(lx, axis=-1), 0) # lx (batch, N, dl)
                     a_true = tf.boolean_mask(tf.squeeze(alpha, 1), condition)
                     att_enh = -1 * gamma * tf.reduce_mean(a_true)
                     loss = tf.add_n([cross_entropy, regularizer, att_enh], name='LOSS')
+                elif self.p.get('att_lmax'):
+                    # + max
+                    epsilon = self.p.get('epsilon')
+                    _alpha = tf.squeeze(alpha, 1)
+                    lmax = epsilon * tf.reduce_mean(tf.reduce_max(_alpha, axis=1))
+                    loss = tf.add_n([cross_entropy, regularizer, lmax], name='LOSS')
+                elif self.p.get('att_ent'):
+                    # - entropy
+                    epsilon = self.p.get('epsilon')
+                    _alpha = tf.squeeze(alpha, 1)
+                    ent = epsilon * tf.reduce_mean(- tf.reduce_sum(_alpha * tf.log(_alpha), axis=1))
+                    loss = tf.add_n([cross_entropy, regularizer, ent], name='LOSS')
                 else:
                     loss = tf.add(cross_entropy, regularizer, name='LOSS')
 
