@@ -22,6 +22,12 @@ handlers:
         formatter: normal
         filename: logs/info.log
         encoding: utf8
+    file_handler2:
+        class: logging.FileHandler
+        level: 99
+        formatter: simple
+        filename: logs/tuning.log
+        encoding: utf8
     rotating_handler:
       class: logging.handlers.RotatingFileHandler
       level: DEBUG
@@ -33,4 +39,4 @@ handlers:
 
 root:
   level: DEBUG
-  handlers: [console, file_handler, rotating_handler]
+  handlers: [console, file_handler, file_handler2, rotating_handler]
