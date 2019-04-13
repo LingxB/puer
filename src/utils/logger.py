@@ -19,3 +19,6 @@ class Logger(object):
     def debug(self, msg, *args, **kwargs):
         self.logger.debug(msg, *args, **kwargs)
 
+    def log(self, msg, *args, **kwargs):
+        self.logger.log(99, msg, *args, **kwargs)
+
