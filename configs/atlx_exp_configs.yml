@@ -142,7 +142,7 @@ exp_12:
   hyperparams:
     <<: *h1
     att_ent: True
-    epsilon: 0.025
+    epsilon: [0.05, 0.01, 0.005, 0.001]
 
 exp_13:
   description: >
@@ -151,3 +151,11 @@ exp_13:
     <<: *h3
     att_ent: True
     epsilon: 0.00005
+
+exp_14:
+  description: >
+    based on exp_1 baseline, explore attention std reg
+  hyperparams:
+    <<: *h1
+    att_std: True
+    epsilon: 1
