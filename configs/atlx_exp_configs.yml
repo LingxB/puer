@@ -142,4 +142,12 @@ exp_12:
   hyperparams:
     <<: *h1
     att_ent: True
-    epsilon: 0.1
+    epsilon: 0.025
+
+exp_13:
+  description: >
+    exp_3 + att_ent
+  hyperparams:
+    <<: *h3
+    att_ent: True
+    epsilon: 0.00005
