@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.contrib import rnn
 from src.models.base_model import BaseModel
-from src.utils import Logger, __fn__, seq_length, matmul_2_3
+from src.utils import Logger, __fn__, seq_length, matmul_2_3, var_by_len, ent_by_len
 from copy import deepcopy
 
 
@@ -193,6 +193,25 @@ class ATLX(BaseModel):
                     std = tf.sqrt(var)
                     att_regularizer = tf.divide(epsilon * std, tf.to_float(tf.shape(X_)[0]), name='REGLATT')
                     loss = tf.add_n([cross_entropy, regularizer, att_regularizer], name='LOSS')
+                elif self.p.get('ent_reg'):
+                    epsilon = self.p.get('epsilon')
+                    condition = tf.sequence_mask(seq_len, tf.reduce_max(seq_len))
+                    a_true = tf.boolean_mask(tf.squeeze(alpha, 1), condition)
+                    ent = - tf.reduce_sum(a_true * tf.log(a_true))
+                    ent_reg = -1 * epsilon * ent / tf.to_float(tf.shape(X_)[0])
+                    loss = tf.add_n([cross_entropy, regularizer, ent_reg], name='LOSS')
+                elif self.p.get('att_std_mask'):
+                    epsilon = self.p.get('epsilon')
+                    a = tf.squeeze(alpha, 1)
+                    batch_var = var_by_len(a, tf.reshape(seq_len, [-1,1]))
+                    att_std_mask = epsilon * tf.reduce_mean(tf.sqrt(batch_var))
+                    loss = tf.add_n([cross_entropy, regularizer, att_std_mask], name='LOSS')
+                elif self.p.get('att_ent_mask'):
+                    epsilon = self.p.get('epsilon')
+                    a = tf.squeeze(alpha, 1)
+                    batch_ent = ent_by_len(a, tf.reshape(seq_len, [-1,1]))
+                    att_ent_mask = -1 * epsilon * tf.reduce_mean(batch_ent)
+                    loss = tf.add_n([cross_entropy, regularizer, att_ent_mask], name='LOSS')
                 elif self.p.get('att_enh'):
                     # TODO: Review
                     gamma = self.p.get('gamma')
