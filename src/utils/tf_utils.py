@@ -46,3 +46,44 @@ def seq_length(sequence):
     length = tf.cast(length, tf.int32)
     return length
 
+
+def var_by_len(a, l):
+
+    n_items = tf.shape(a)[0]
+    init_ary = tf.TensorArray(dtype=tf.float32,
+                              size=n_items,
+                              infer_shape=False)
+    def _variances(i, ta, begin=tf.convert_to_tensor([0], tf.int32)):
+        mean, varian = tf.nn.moments(
+            tf.slice(input_=a[i], begin=begin, size=l[i]),
+            axes=[0]) # <-- compute variance
+        ta = ta.write(i, varian) # <-- write variance of each row to `TensorArray`
+        return i+1, ta
+
+    _, variances = tf.while_loop(lambda i, ta: i < n_items,
+                                 _variances,
+                                 [ 0, init_ary])
+    variances = variances.stack() # <-- read from `TensorArray` to `Tensor`
+
+    return variances
+
+
+def ent_by_len(a, l):
+
+    n_items = tf.shape(a)[0]
+    init_ary = tf.TensorArray(dtype=tf.float32,
+                              size=n_items,
+                              infer_shape=False)
+
+    def _entropy(i, ta, begin=tf.convert_to_tensor([0], tf.int32)):
+        s = tf.slice(input_=a[i], begin=begin, size=l[i])
+        ent = -1 * tf.reduce_sum(s * tf.log(s))
+        ta = ta.write(i, ent)
+        return i+1, ta
+
+    _, variances = tf.while_loop(lambda i, ta: i < n_items,
+                                 _entropy,
+                                 [ 0, init_ary])
+    variances = variances.stack() # <-- read from `TensorArray` to `Tensor`
+
+    return variances
