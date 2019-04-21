@@ -204,7 +204,7 @@ class ATLX(BaseModel):
                     epsilon = self.p.get('epsilon')
                     a = tf.squeeze(alpha, 1)
                     batch_var = var_by_len(a, tf.reshape(seq_len, [-1,1]))
-                    att_std_mask = epsilon * tf.reduce_mean(tf.sqrt(batch_var))
+                    att_std_mask = epsilon * tf.reduce_mean(batch_var)
                     loss = tf.add_n([cross_entropy, regularizer, att_std_mask], name='LOSS')
                 elif self.p.get('att_ent_mask'):
                     epsilon = self.p.get('epsilon')
