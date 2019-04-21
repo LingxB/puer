@@ -166,7 +166,7 @@ exp_15:
   hyperparams:
     <<: *h1
     att_std_mask: True
-    epsilon: 0.5 #[1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001]
+    epsilon: 0.001 #[1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001]
 
 exp_16:
   description: >
