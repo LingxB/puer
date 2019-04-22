@@ -194,8 +194,8 @@ exp_18:
 
 exp_19:
   description: >
-    exp_3 + att_std_mask (VAR)
+    exp_3 + att_std_mask
   hyperparams:
     <<: *h3
     att_std_mask: True
-    epsilon: [1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001]
+    epsilon: [1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001]
