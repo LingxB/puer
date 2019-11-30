@@ -10,6 +10,7 @@ mpqa = pd.read_csv('data/processed/lexicon/MPQA.csv')
 opener = pd.read_csv('data/processed/lexicon/opener.csv')
 ol = pd.read_csv('data/processed/lexicon/opinion-lexicon-English.csv')
 vader = pd.read_csv('data/processed/lexicon/vader.csv')
+v2 = pd.read_csv('data/processed/lexicon_v2/lexicon_table_v2.csv')
 
 
 c_train = Counter()
@@ -34,7 +35,7 @@ mpqa_words = set(mpqa.WORD.unique())
 opener_words = set(opener.WORD.unique())
 ol_words = set(ol.WORD.unique())
 vader_words = set(vader.WORD.unique())
-
+v2_words = set(v2.WORD.unique())
 
 len(train_words) # 4435
 len(test_words) # 2199
@@ -43,7 +44,7 @@ len(opener_words) # 6885
 len(mpqa_words) # 6886
 len(ol_words) # 6787
 len(vader_words) # 7503
-
+len(v2_words) # 13297
 
 def check_coverage(data: {}, lexicon: {} or []):
     if isinstance(lexicon, list):
@@ -61,6 +62,29 @@ check_coverage(corpus_words, opener_words) # Data: 5175 tokens, lexicon: 6885 to
 check_coverage(corpus_words, mpqa_words) # Data: 5175 tokens, lexicon: 6886 tokens, 908 words in data, coverage: 17.55%
 check_coverage(corpus_words, ol_words) # Data: 5175 tokens, lexicon: 6787 tokens, 732 words in data, coverage: 14.14%
 check_coverage(corpus_words, vader_words) # Data: 5175 tokens, lexicon: 7503 tokens, 656 words in data, coverage: 12.68%
+check_coverage(corpus_words, v2_words) # Data: 5175 tokens, lexicon: 13297 tokens, 1234 words in data, coverage: 23.85%
+
+_mpqa = mpqa[['WORD','MPQA']].drop_duplicates().groupby('WORD').mean()
+_mpqa.MPQA.value_counts()
+
+_opener = opener[['WORD','OPENER']].drop_duplicates().groupby('WORD').mean()
+_opener.OPENER.value_counts()
+
+_ol = ol.drop_duplicates().groupby('WORD').mean()
+_ol.OL.value_counts()
+
+_vader = vader[['WORD','VADER']].drop_duplicates().groupby('WORD').mean()
+(_vader.VADER > 0).value_counts() # 3333
+(_vader.VADER == 0).value_counts() # 0
+(_vader.VADER < 0).value_counts() # 4170
+
+
+(v2.set_index('WORD').mean(axis=1) > 0).value_counts()
+(v2.set_index('WORD').mean(axis=1) == 0).value_counts()
+(v2.set_index('WORD').mean(axis=1) < 0).value_counts()
+
+
+
 
 check_coverage(corpus_words, opener_words) # v4
 # Data: 5175 tokens, lexicon: 6885 tokens, 908 words in data, coverage: 17.55%
