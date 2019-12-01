@@ -1,0 +1,846 @@
+EA,CLS,SENT,ASP
+RESTAURANT#GENERAL,1,love al di la,general
+RESTAURANT#GENERAL,1,i recommend this place to everyone .,general
+FOOD#QUALITY,1,great food .,quality
+RESTAURANT#GENERAL,1,one of my favorite places in brooklyn .,general
+FOOD#QUALITY,1,"the pastas are incredible , the risottos ( particularly the sepia ) are fantastic and the braised rabbit is amazing .",quality
+FOOD#QUALITY,1,"the pastas are incredible , the risottos ( particularly the sepia ) are fantastic and the braised rabbit is amazing .",quality
+FOOD#QUALITY,1,"the pastas are incredible , the risottos ( particularly the sepia ) are fantastic and the braised rabbit is amazing .",quality
+FOOD#QUALITY,1,"the pastas are incredible , the risottos ( particularly the sepia ) are fantastic and the braised rabbit is amazing .",quality
+FOOD#PRICES,-1,overpriced and not tasty,prices
+FOOD#QUALITY,-1,overpriced and not tasty,quality
+FOOD#QUALITY,-1,the food here was mediocre at best .,quality
+FOOD#PRICES,-1,it was totally overpriced- fish and chips was about $ 15 ... .,prices
+FOOD#PRICES,-1,it was totally overpriced- fish and chips was about $ 15 ... .,prices
+FOOD#QUALITY,1,tasty dog !,quality
+FOOD#QUALITY,1,"an awesome organic dog , and a conscious eco friendly establishment .",quality
+RESTAURANT#MISCELLANEOUS,1,"an awesome organic dog , and a conscious eco friendly establishment .",miscellaneous
+FOOD#QUALITY,1,one of the best hot dogs i have ever eaten .,quality
+RESTAURANT#GENERAL,1,ca n't wait to go back .,general
+RESTAURANT#GENERAL,1,the cypriot restaurant has a lot going for it .,general
+FOOD#QUALITY,1,but the best pork souvlaki i ever had is the main thing .,quality
+RESTAURANT#GENERAL,1,run do n't walk .,general
+FOOD#QUALITY,1,super yummy pizza !,quality
+AMBIENCE#GENERAL,1,i was visiting new york city with a friend and we discovered this really warm and inviting restaurant .,general
+FOOD#QUALITY,1,"i looove their eggplant pizza , as well as their pastas !",quality
+FOOD#QUALITY,1,"i looove their eggplant pizza , as well as their pastas !",quality
+FOOD#STYLE_OPTIONS,1,"we had half/half pizza , mine was eggplant and my friend had the buffalo and it was sooo huge for a small size pizza !",options
+RESTAURANT#GENERAL,1,"we had fun eating in there , we were there like around 3 a.m. in the morning !",general
+RESTAURANT#GENERAL,1,"will comeback for sure , wish they have it here in la..",general
+FOOD#QUALITY,1,"excellent food , although the interior could use some help .",quality
+AMBIENCE#GENERAL,-1,"excellent food , although the interior could use some help .",general
+AMBIENCE#GENERAL,-1,"the space kind of feels like an alice in wonderland setting , without it trying to be that .",general
+FOOD#QUALITY,1,"i paid just about $ 60 for a good meal , though : )",quality
+FOOD#PRICES,1,"i paid just about $ 60 for a good meal , though : )",prices
+DRINKS#QUALITY,1,great sake !,quality
+FOOD#QUALITY,1,"reliable , fresh sushi",quality
+FOOD#QUALITY,1,the sashimi is always fresh and the rolls are innovative and delicious .,quality
+FOOD#STYLE_OPTIONS,1,the sashimi is always fresh and the rolls are innovative and delicious .,options
+FOOD#QUALITY,1,the sashimi is always fresh and the rolls are innovative and delicious .,quality
+SERVICE#GENERAL,1,have never had a problem with service save a missing rice once .,general
+SERVICE#GENERAL,-1,delivery can be spot on or lacking depending on the weather and the day of the week .,general
+SERVICE#GENERAL,-1,delivery guy sometimes get upset if you do n't tip more than 10 % .,general
+FOOD#QUALITY,1,best . sushi . ever .,quality
+FOOD#QUALITY,1,this place has ruined me for neighborhood sushi .,quality
+FOOD#QUALITY,1,"creative , consistent , fresh .",quality
+FOOD#STYLE_OPTIONS,1,"creative , consistent , fresh .",options
+FOOD#QUALITY,1,"excellent sashimi , and the millennium roll is beyond delicious .",quality
+FOOD#QUALITY,1,"excellent sashimi , and the millennium roll is beyond delicious .",quality
+FOOD#PRICES,-1,not cheap but very yummy .,prices
+FOOD#QUALITY,1,not cheap but very yummy .,quality
+RESTAURANT#GENERAL,1,love it .,general
+RESTAURANT#GENERAL,1,"very , very nice",general
+LOCATION#GENERAL,0,"the place is a bit hidden away , but once you get there , it 's all worth it .",general
+RESTAURANT#GENERAL,1,"the place is a bit hidden away , but once you get there , it 's all worth it .",general
+FOOD#QUALITY,1,not only is the food,quality
+RESTAURANT#GENERAL,1,not only is the food,general
+RESTAURANT#GENERAL,1,loved it,general
+RESTAURANT#GENERAL,1,we had a very nice time .,general
+SERVICE#GENERAL,1,"the waiter was attentive , the food was delicious and the views of the city were great .",general
+FOOD#QUALITY,1,"the waiter was attentive , the food was delicious and the views of the city were great .",quality
+LOCATION#GENERAL,1,"the waiter was attentive , the food was delicious and the views of the city were great .",general
+RESTAURANT#GENERAL,1,i 'd definitely go back again .,general
+AMBIENCE#GENERAL,1,great place to relax and enjoy your dinner,general
+AMBIENCE#GENERAL,1,there is something about their atmosphere that makes me come back nearly every week .,general
+RESTAURANT#MISCELLANEOUS,1,"place is open till late , no dress code .",miscellaneous
+FOOD#QUALITY,1,good food : my favorite is the seafood spaghetti .,quality
+FOOD#QUALITY,1,good food : my favorite is the seafood spaghetti .,quality
+RESTAURANT#GENERAL,1,highly recommended !,general
+FOOD#QUALITY,1,excellent food for great prices,quality
+FOOD#PRICES,1,excellent food for great prices,prices
+RESTAURANT#GENERAL,1,my husband and i have been sold on this from the first visit .,general
+SERVICE#GENERAL,1,the wait staff is very courteous and accomodating .,general
+AMBIENCE#GENERAL,0,"the space is limited so be prepared to wait up to 45 minutes - 1 hour , but be richly rewarded when you savor the delicious indo-chinese food .",general
+RESTAURANT#MISCELLANEOUS,-1,"the space is limited so be prepared to wait up to 45 minutes - 1 hour , but be richly rewarded when you savor the delicious indo-chinese food .",miscellaneous
+FOOD#QUALITY,1,"the space is limited so be prepared to wait up to 45 minutes - 1 hour , but be richly rewarded when you savor the delicious indo-chinese food .",quality
+RESTAURANT#GENERAL,1,there are no negatives to speak of .,general
+RESTAURANT#GENERAL,1,the bestt !,general
+RESTAURANT#GENERAL,1,my favorite place lol,general
+FOOD#QUALITY,1,i love their chicken pasta cant remember the name but is sooo good,quality
+RESTAURANT#GENERAL,0,its alright,general
+RESTAURANT#GENERAL,1,"im not necessarily fanatical about this place , but it was a fun time for low pirces .",general
+RESTAURANT#PRICES,1,"im not necessarily fanatical about this place , but it was a fun time for low pirces .",prices
+FOOD#QUALITY,0,"lobster was good , nothing spectacular .",quality
+RESTAURANT#GENERAL,0,"its just a fun place to go , not a five star restaraunt .",general
+RESTAURANT#GENERAL,-1,way below average,general
+FOOD#QUALITY,-1,i think the pizza is so overrated and was under cooked .,quality
+SERVICE#GENERAL,-1,had no flavor and the staff is rude and not attentive .,general
+FOOD#QUALITY,-1,had no flavor and the staff is rude and not attentive .,quality
+RESTAURANT#GENERAL,-1,would never go back,general
+RESTAURANT#GENERAL,1,i love this place,general
+FOOD#QUALITY,1,i was n't here for the pizza so i ca n't comment on that yet but what i had was very good .,quality
+SERVICE#GENERAL,1,the service was quick and friendly .,general
+SERVICE#GENERAL,1,everyone was smiling so that made me feel welcome .,general
+RESTAURANT#GENERAL,1,i thought the restaurant was nice and clean .,general
+AMBIENCE#GENERAL,1,i thought the restaurant was nice and clean .,general
+FOOD#QUALITY,1,i ordered the vitello alla marsala and i was pretty impressed .,quality
+FOOD#QUALITY,1,the veal and the mushrooms were cooked perfectly .,quality
+FOOD#QUALITY,1,the veal and the mushrooms were cooked perfectly .,quality
+FOOD#QUALITY,1,the potato balls were not dry at all ... in fact it was buttery .,quality
+RESTAURANT#MISCELLANEOUS,-1,the only downside ... they only take cash which is ok if you know about it ahead of time .,miscellaneous
+RESTAURANT#GENERAL,1,i 'll be back for sure .,general
+RESTAURANT#GENERAL,-1,worst place on smith street in brooklyn,general
+SERVICE#GENERAL,-1,"very immature bartender , didnt know how to make specific drinks , service was so slowwwww , the food was not fresh or warm , waitresses were busy flirting with men at the bar and werent very attentive to all the customers .",general
+SERVICE#GENERAL,-1,"very immature bartender , didnt know how to make specific drinks , service was so slowwwww , the food was not fresh or warm , waitresses were busy flirting with men at the bar and werent very attentive to all the customers .",general
+FOOD#QUALITY,-1,"very immature bartender , didnt know how to make specific drinks , service was so slowwwww , the food was not fresh or warm , waitresses were busy flirting with men at the bar and werent very attentive to all the customers .",quality
+SERVICE#GENERAL,-1,"very immature bartender , didnt know how to make specific drinks , service was so slowwwww , the food was not fresh or warm , waitresses were busy flirting with men at the bar and werent very attentive to all the customers .",general
+RESTAURANT#GENERAL,-1,i would never recommend this place to anybody even for a casual dinner .,general
+RESTAURANT#MISCELLANEOUS,-1,i would never recommend this place to anybody even for a casual dinner .,miscellaneous
+RESTAURANT#GENERAL,1,awesome,general
+FOOD#QUALITY,1,the food is always fresh ...,quality
+FOOD#PRICES,-1,overpriced japanese food with mediocre service,prices
+SERVICE#GENERAL,0,overpriced japanese food with mediocre service,general
+RESTAURANT#GENERAL,-1,went here on sat 1/26 and was disappointed .,general
+FOOD#STYLE_OPTIONS,-1,chicken teriyaki had tomato or pimentos on top ? ?,options
+FOOD#QUALITY,-1,food was luke warm .,quality
+SERVICE#GENERAL,-1,the waitress was not attentive at all .,general
+FOOD#STYLE_OPTIONS,-1,i was looking for banana tempura for dessert and they dont have .,options
+RESTAURANT#PRICES,-1,not because you are `` the four seasons '' ... – you are allowed to charge an arm and a leg for a romatic dinner .,prices
+FOOD#QUALITY,1,"the food was excellent as well as service , however , i left the four seasons very dissappointed .",quality
+SERVICE#GENERAL,1,"the food was excellent as well as service , however , i left the four seasons very dissappointed .",general
+RESTAURANT#GENERAL,-1,"the food was excellent as well as service , however , i left the four seasons very dissappointed .",general
+FOOD#PRICES,-1,i do not think dinner in manhattan should cost $ 400.00 where i am not swept off my feet .,prices
+FOOD#QUALITY,1,"red dragon roll - my favorite thing to eat , of any food group - hands down",quality
+RESTAURANT#GENERAL,1,just go to yamato and order the red dragon roll .,general
+FOOD#QUALITY,1,just go to yamato and order the red dragon roll .,quality
+FOOD#QUALITY,1,"if you do n't like it , i do n't know what to tell you .",quality
+FOOD#QUALITY,1,the seafood dynamite is also otherworldly .,quality
+FOOD#QUALITY,1,i 'm not even going to bother to describe it ; it speaks for itself .,quality
+FOOD#QUALITY,1,favorite sushi in nyc,quality
+AMBIENCE#GENERAL,1,"an unpretentious spot in park slope , the sushi is consistently good , the service is pleasant , effective and unassuming .",general
+FOOD#QUALITY,1,"an unpretentious spot in park slope , the sushi is consistently good , the service is pleasant , effective and unassuming .",quality
+SERVICE#GENERAL,1,"an unpretentious spot in park slope , the sushi is consistently good , the service is pleasant , effective and unassuming .",general
+AMBIENCE#GENERAL,1,"in the summer months , the back garden area is really nice .",general
+FOOD#STYLE_OPTIONS,1,the rolls are creative and i have yet to find another sushi place that serves up more inventive yet delicious japanese food .,options
+FOOD#STYLE_OPTIONS,1,the rolls are creative and i have yet to find another sushi place that serves up more inventive yet delicious japanese food .,options
+FOOD#QUALITY,1,the rolls are creative and i have yet to find another sushi place that serves up more inventive yet delicious japanese food .,quality
+FOOD#QUALITY,1,"the dancing , white river and millenium rolls are musts .",quality
+RESTAURANT#GENERAL,1,so good,general
+RESTAURANT#GENERAL,1,i can eat here every day of the week really lol love this place ... ),general
+FOOD#QUALITY,-1,gross food – wow-,quality
+FOOD#QUALITY,-1,i ca n't remember the last time i had such gross food in new york .,quality
+FOOD#QUALITY,-1,my quesadilla tasted like it had been made by a three-year old with no sense of proportion or flavor .,quality
+FOOD#STYLE_OPTIONS,-1,my quesadilla tasted like it had been made by a three-year old with no sense of proportion or flavor .,options
+FOOD#QUALITY,-1,and $ 11 for a plate of bland guacamole ?,quality
+FOOD#PRICES,-1,and $ 11 for a plate of bland guacamole ?,prices
+DRINKS#QUALITY,-1,"do n't get me started on the margaritas , either .",quality
+DRINKS#QUALITY,-1,mine tasted like the bartender had forgotten to add the tequila .,quality
+RESTAURANT#GENERAL,-1,save your money and your time and go somewhere else .,general
+RESTAURANT#GENERAL,-1,"oh , and i never write reviews -- i just was so moved by how bad this place was , i felt it was my duty to spread the word .",general
+FOOD#QUALITY,1,great indian food !,quality
+SERVICE#GENERAL,1,when i got there the place was packed but they made sure to seat me quickly .,general
+FOOD#QUALITY,1,"the food was good , the place was clean and affordable .",quality
+AMBIENCE#GENERAL,1,"the food was good , the place was clean and affordable .",general
+RESTAURANT#PRICES,1,"the food was good , the place was clean and affordable .",prices
+RESTAURANT#MISCELLANEOUS,1,i noticed alot of indian people eatting there which is a great sign for an indian place !,miscellaneous
+RESTAURANT#GENERAL,1,"this is one of my favorite spot , very relaxing the food is great all the times , celebrated my engagement and my wedding here , it was very well organized .",general
+AMBIENCE#GENERAL,1,"this is one of my favorite spot , very relaxing the food is great all the times , celebrated my engagement and my wedding here , it was very well organized .",general
+FOOD#QUALITY,1,"this is one of my favorite spot , very relaxing the food is great all the times , celebrated my engagement and my wedding here , it was very well organized .",quality
+RESTAURANT#MISCELLANEOUS,1,"this is one of my favorite spot , very relaxing the food is great all the times , celebrated my engagement and my wedding here , it was very well organized .",miscellaneous
+SERVICE#GENERAL,1,the staff is very good .,general
+DRINKS#STYLE_OPTIONS,1,love their drink menu .,options
+AMBIENCE#GENERAL,1,i highly recommend this beautiful place .,general
+RESTAURANT#GENERAL,1,i highly recommend this beautiful place .,general
+RESTAURANT#MISCELLANEOUS,1,nice for one time special occasion .,miscellaneous
+SERVICE#GENERAL,1,they honored reservation on sunday afternoon very well .,general
+DRINKS#PRICES,-1,we were offered water for the table but were not told the voss bottles of water were $ 8 a piece .,prices
+FOOD#QUALITY,0,food was ok .,quality
+LOCATION#GENERAL,1,nice view of river and nyc .,general
+RESTAURANT#GENERAL,1,i come here enjoy very much with husband .,general
+RESTAURANT#MISCELLANEOUS,1,remind me of home .,miscellaneous
+SERVICE#GENERAL,1,great survice,general
+FOOD#QUALITY,1,mmmmmmmmmmmmmmm so delicious,quality
+AMBIENCE#GENERAL,1,a beautifully designed dreamy egyptian restaurant that gets sceney at night .,general
+FOOD#QUALITY,1,watch the talented belly dancers as you enjoy delicious baba ganoush that 's more lemony than smoky .,quality
+AMBIENCE#GENERAL,1,watch the talented belly dancers as you enjoy delicious baba ganoush that 's more lemony than smoky .,general
+AMBIENCE#GENERAL,1,"oh , and there 's hookah .",general
+SERVICE#GENERAL,1,raymond the bartender rocks !,general
+RESTAURANT#MISCELLANEOUS,1,pacifico is a great place to casually hang out .,miscellaneous
+DRINKS#QUALITY,1,"the drinks are great , especially when made by raymond .",quality
+SERVICE#GENERAL,1,"the drinks are great , especially when made by raymond .",general
+FOOD#QUALITY,1,the omlette for brunch is great ...,quality
+FOOD#QUALITY,1,"the spinach is fresh , definately not frozen ...",quality
+FOOD#QUALITY,1,"quacamole at pacifico is yummy , as are the wings with chimmichuri .",quality
+FOOD#QUALITY,1,"quacamole at pacifico is yummy , as are the wings with chimmichuri .",quality
+FOOD#QUALITY,-1,a weakness is the chicken in the salads .,quality
+FOOD#QUALITY,-1,"it 's just average , just shredded , no seasoning on it .",quality
+FOOD#QUALITY,-1,"also , i personally was n't a fan of the portobello and asparagus mole .",quality
+FOOD#QUALITY,0,"overall , decent food at a good price , with friendly people .",quality
+FOOD#PRICES,1,"overall , decent food at a good price , with friendly people .",prices
+SERVICE#GENERAL,1,"overall , decent food at a good price , with friendly people .",general
+RESTAURANT#GENERAL,1,best indian restaurant in the city,general
+AMBIENCE#GENERAL,-1,decor needs to be upgraded but the food is amazing !,general
+FOOD#QUALITY,1,decor needs to be upgraded but the food is amazing !,quality
+FOOD#QUALITY,1,this small astoria souvlaki spot makes what many consider the best gyros in new york .,quality
+FOOD#QUALITY,1,"what really makes it shine is the food , which is aggressively seasoned with cyrpriot spices , and all made in-house ( even the gyro meat and sausages ) , and made of much higher quality ingredients that might otherwise be expected .",quality
+FOOD#QUALITY,1,"what really makes it shine is the food , which is aggressively seasoned with cyrpriot spices , and all made in-house ( even the gyro meat and sausages ) , and made of much higher quality ingredients that might otherwise be expected .",quality
+FOOD#QUALITY,1,"what really makes it shine is the food , which is aggressively seasoned with cyrpriot spices , and all made in-house ( even the gyro meat and sausages ) , and made of much higher quality ingredients that might otherwise be expected .",quality
+FOOD#QUALITY,1,"what really makes it shine is the food , which is aggressively seasoned with cyrpriot spices , and all made in-house ( even the gyro meat and sausages ) , and made of much higher quality ingredients that might otherwise be expected .",quality
+FOOD#QUALITY,1,"all the various greek and cypriot dishes are excellent , but the gyro is the reason to come -- if you do n't eat one your trip was wasted .",quality
+FOOD#QUALITY,1,"all the various greek and cypriot dishes are excellent , but the gyro is the reason to come -- if you do n't eat one your trip was wasted .",quality
+RESTAURANT#GENERAL,1,best restaurant in brooklyn,general
+RESTAURANT#GENERAL,1,the best !,general
+FOOD#QUALITY,1,"great food , amazing service , this place is a class act .",quality
+SERVICE#GENERAL,1,"great food , amazing service , this place is a class act .",general
+RESTAURANT#GENERAL,1,"great food , amazing service , this place is a class act .",general
+FOOD#QUALITY,1,the veal was incredible last night .,quality
+FOOD#QUALITY,1,"fresh , mind blowing flavors .",quality
+RESTAURANT#GENERAL,1,this place is a must visit !,general
+FOOD#QUALITY,1,"delicious , creative and fun .",quality
+FOOD#STYLE_OPTIONS,1,"delicious , creative and fun .",options
+RESTAURANT#MISCELLANEOUS,1,got a date ? go here !,miscellaneous
+RESTAURANT#MISCELLANEOUS,1,every time i have a special occasion with my boyfriend i have a hard time going anywhere else .,miscellaneous
+AMBIENCE#GENERAL,1,it is so romantic .,general
+AMBIENCE#GENERAL,1,"its dark , and cozy.. there is always jazz music playing when we go .",general
+AMBIENCE#GENERAL,1,most of the booths allow you to sit next to eachother without looking like 'that ' couple .,general
+FOOD#STYLE_OPTIONS,1,the food is all shared so we get to order together and eat together .,options
+FOOD#QUALITY,1,i 've enjoyed 99 % of the dishes we 've ordered with the only exceptions being the occasional too-authentic-for-me dish ( i 'm a daring eater but not that daring ) .,quality
+FOOD#QUALITY,-1,i 've enjoyed 99 % of the dishes we 've ordered with the only exceptions being the occasional too-authentic-for-me dish ( i 'm a daring eater but not that daring ) .,quality
+RESTAURANT#MISCELLANEOUS,1,once you try it for a special occasion beware.. you ca n't stop !,miscellaneous
+RESTAURANT#MISCELLANEOUS,1,"you 'll be ther for every anniversary , birthday , valentines day ...",miscellaneous
+RESTAURANT#MISCELLANEOUS,1,for a fabulous wedding !,miscellaneous
+RESTAURANT#MISCELLANEOUS,1,my daughter 's wedding reception at water 's edge received the highest compliments from our guests .,miscellaneous
+AMBIENCE#GENERAL,1,everyone raved about the atmosphere ( elegant rooms and absolutely incomparable views ) and the fabulous food !,general
+AMBIENCE#GENERAL,1,everyone raved about the atmosphere ( elegant rooms and absolutely incomparable views ) and the fabulous food !,general
+LOCATION#GENERAL,1,everyone raved about the atmosphere ( elegant rooms and absolutely incomparable views ) and the fabulous food !,general
+FOOD#QUALITY,1,everyone raved about the atmosphere ( elegant rooms and absolutely incomparable views ) and the fabulous food !,quality
+SERVICE#GENERAL,1,service was wonderful ;,general
+SERVICE#GENERAL,1,everyone was cheerfully cooperative and helpful .,general
+SERVICE#GENERAL,1,"paul , the maitre d ' , was totally professional and always on top of things .",general
+RESTAURANT#GENERAL,1,thank you everyone at water 's edge .,general
+RESTAURANT#GENERAL,-1,would not go back .,general
+SERVICE#GENERAL,-1,"service ok but unfriendly , filthy bathroom .",general
+AMBIENCE#GENERAL,-1,"service ok but unfriendly , filthy bathroom .",general
+LOCATION#GENERAL,0,the high prices you 're going to pay is for the view not for the food .,general
+FOOD#QUALITY,-1,the high prices you 're going to pay is for the view not for the food .,quality
+RESTAURANT#PRICES,-1,the high prices you 're going to pay is for the view not for the food .,prices
+DRINKS#QUALITY,-1,"the bar drinks were eh , ok to say the least .",quality
+FOOD#QUALITY,-1,the stuff tilapia was horrid ... tasted like cardboard .,quality
+FOOD#QUALITY,-1,"we thought the dessert would be better , wrong !",quality
+RESTAURANT#GENERAL,-1,$ 170 down the toilet ...,general
+RESTAURANT#PRICES,-1,$ 170 down the toilet ...,prices
+AMBIENCE#GENERAL,-1,"oh speaking of bathroom , the mens bathroom was disgusting .",general
+AMBIENCE#GENERAL,-1,"the floor was wet , the trash can filled with hand towels n all over the floor , no soap , and no hand towels left .",general
+RESTAURANT#GENERAL,1,good experience,general
+DRINKS#STYLE_OPTIONS,1,the wine list was extensive - though the staff did not seem knowledgeable about wine pairings .,options
+SERVICE#GENERAL,-1,the wine list was extensive - though the staff did not seem knowledgeable about wine pairings .,general
+FOOD#QUALITY,-1,the bread we received was horrible - rock hard and cold - and the `` free '' appetizer of olives was disappointing .,quality
+FOOD#QUALITY,-1,the bread we received was horrible - rock hard and cold - and the `` free '' appetizer of olives was disappointing .,quality
+FOOD#PRICES,0,the bread we received was horrible - rock hard and cold - and the `` free '' appetizer of olives was disappointing .,prices
+FOOD#QUALITY,1,"however , our main course was wonderful .",quality
+FOOD#QUALITY,1,i had fish and my husband had the filet - both of which exceeded our expectations .,quality
+FOOD#QUALITY,1,i had fish and my husband had the filet - both of which exceeded our expectations .,quality
+FOOD#QUALITY,1,"the dessert ( we had a pear torte ) was good - but , once again , the staff was unable to provide appropriate drink suggestions .",quality
+SERVICE#GENERAL,-1,"the dessert ( we had a pear torte ) was good - but , once again , the staff was unable to provide appropriate drink suggestions .",general
+SERVICE#GENERAL,-1,when we inquired about ports - the waitress listed off several but did not know taste variations or cost .,general
+SERVICE#GENERAL,-1,not what i would expect for the price and prestige of this location .,general
+RESTAURANT#PRICES,0,not what i would expect for the price and prestige of this location .,prices
+RESTAURANT#MISCELLANEOUS,0,not what i would expect for the price and prestige of this location .,miscellaneous
+RESTAURANT#GENERAL,1,"all in all , i would return - as it was a beautiful restaurant - but i hope the staff pays more attention to the little details in the future .",general
+AMBIENCE#GENERAL,1,"all in all , i would return - as it was a beautiful restaurant - but i hope the staff pays more attention to the little details in the future .",general
+SERVICE#GENERAL,-1,"all in all , i would return - as it was a beautiful restaurant - but i hope the staff pays more attention to the little details in the future .",general
+AMBIENCE#GENERAL,1,"short and sweet – seating is great : it 's romantic , cozy and private .",general
+AMBIENCE#GENERAL,1,the boths are not as small as some of the reviews make them out to look they 're perfect for 2 people .,general
+SERVICE#GENERAL,1,the service was extremely fast and attentive ( thanks to the service button on your table ) but i barely understood 1 word when the waiter took our order .,general
+SERVICE#GENERAL,1,the service was extremely fast and attentive ( thanks to the service button on your table ) but i barely understood 1 word when the waiter took our order .,general
+SERVICE#GENERAL,-1,the service was extremely fast and attentive ( thanks to the service button on your table ) but i barely understood 1 word when the waiter took our order .,general
+FOOD#QUALITY,0,the food was ok and fair nothing to go crazy .,quality
+AMBIENCE#GENERAL,1,over all the looks of the place exceeds the actual meals .,general
+FOOD#QUALITY,-1,over all the looks of the place exceeds the actual meals .,quality
+RESTAURANT#PRICES,-1,so what you really end up paying for is the restaurant not the food .,prices
+AMBIENCE#GENERAL,0,so what you really end up paying for is the restaurant not the food .,general
+FOOD#QUALITY,-1,so what you really end up paying for is the restaurant not the food .,quality
+RESTAURANT#GENERAL,-1,will prob . not return but it is a great dinning experience to try atleast once .,general
+RESTAURANT#GENERAL,1,will prob . not return but it is a great dinning experience to try atleast once .,general
+RESTAURANT#GENERAL,1,impressed ...,general
+FOOD#QUALITY,1,subtle food and service,quality
+SERVICE#GENERAL,1,subtle food and service,general
+SERVICE#GENERAL,1,noodle pudding is exactly the type of service and food i enjoy .,general
+FOOD#QUALITY,1,noodle pudding is exactly the type of service and food i enjoy .,quality
+SERVICE#GENERAL,1,"servers are all different , greg is my favorite .",general
+SERVICE#GENERAL,1,"sometimes tables do n't understand his sense of humor but it 's refreshing to have a server who has personality , professionalism , and respects the privacy of your dinner .",general
+SERVICE#GENERAL,1,this is the first place i 've been that a runner remembers my order ... hope he likes his job because i have half a mind to steal him for my restaurant .,general
+FOOD#PRICES,1,prices are fair across the board for both food and bev .,prices
+DRINKS#PRICES,1,prices are fair across the board for both food and bev .,prices
+SERVICE#GENERAL,1,"i go out to eat and like my courses , servers are patient and never rush courses or force another drink .",general
+FOOD#QUALITY,1,amazing fresh dogs but best of all endless toppings ! ! !,quality
+FOOD#STYLE_OPTIONS,1,amazing fresh dogs but best of all endless toppings ! ! !,options
+FOOD#STYLE_OPTIONS,1,this place had all the trimmings and i mean all .,options
+FOOD#STYLE_OPTIONS,1,"peppers , onions , relish , chilli , cheeses , you name it .",options
+RESTAURANT#GENERAL,1,amazing fun for hot dog lovers of all ages please do yourself a favor and check this place out ! ! ! !,general
+FOOD#QUALITY,1,amazing fun for hot dog lovers of all ages please do yourself a favor and check this place out ! ! ! !,quality
+RESTAURANT#GENERAL,1,best dining experience in the west village !,general
+RESTAURANT#GENERAL,1,stepping into casa la femme last night was a true experience unlike any other in new york !,general
+AMBIENCE#GENERAL,1,highly impressed from the decor to the food to the hospitality to the great night i had !,general
+FOOD#QUALITY,1,highly impressed from the decor to the food to the hospitality to the great night i had !,quality
+SERVICE#GENERAL,1,highly impressed from the decor to the food to the hospitality to the great night i had !,general
+RESTAURANT#GENERAL,1,highly impressed from the decor to the food to the hospitality to the great night i had !,general
+DRINKS#QUALITY,1,the have a great cocktail with citrus vodka and lemon and lime juice and mint leaves that is to die for !,quality
+FOOD#QUALITY,1,"food took some time to prepare , all worth waiting for .",quality
+SERVICE#GENERAL,0,"food took some time to prepare , all worth waiting for .",general
+AMBIENCE#GENERAL,1,we were drawn into the belly dancing show that captivated the crowd .,general
+RESTAURANT#GENERAL,1,i never write on these sites but this restaurant is def worth commending !,general
+RESTAURANT#GENERAL,1,great find in the west village !,general
+FOOD#QUALITY,-1,maggot in the food !,quality
+FOOD#STYLE_OPTIONS,1,"the menu looked great , and the waiter was very nice , but when the food came , it was average .",options
+SERVICE#GENERAL,1,"the menu looked great , and the waiter was very nice , but when the food came , it was average .",general
+FOOD#QUALITY,0,"the menu looked great , and the waiter was very nice , but when the food came , it was average .",quality
+FOOD#QUALITY,-1,"nevertheless , i finished my plate , and that 's when i found a maggot in mushroom sauce at the bottom .",quality
+SERVICE#GENERAL,1,"i showed it to the manager , and he smilingly apologized and brought us two free desserts ( but did not ask us what we wanted and so brought the last two desserts we would have asked for ) .",general
+SERVICE#GENERAL,-1,"i showed it to the manager , and he smilingly apologized and brought us two free desserts ( but did not ask us what we wanted and so brought the last two desserts we would have asked for ) .",general
+SERVICE#GENERAL,-1,"when the bill came , nothing was comped , so i told the manager very politely that we were willing to pay for the wine , but i did n't think i should have to pay for food with a maggot in it .",general
+SERVICE#GENERAL,-1,"the manager finally said he would comp the two glasses of wine ( which cost less than the food ) , and made it seem like a big concession .",general
+SERVICE#GENERAL,-1,we paid and left because we did n't feel like arguing any more .,general
+FOOD#QUALITY,-1,"i have worked in restaurants and cook a lot , and there is no way a maggot should be able to get into well prepared food .",quality
+RESTAURANT#MISCELLANEOUS,1,"for a restaurant with such a good reputation and that is usually so packed , there was no reason for such a lack of intelligent customer service .",miscellaneous
+SERVICE#GENERAL,-1,"for a restaurant with such a good reputation and that is usually so packed , there was no reason for such a lack of intelligent customer service .",general
+FOOD#QUALITY,-1,unhygienic,quality
+RESTAURANT#GENERAL,-1,i do not recommend .,general
+FOOD#QUALITY,-1,i got hair in my food 2 times of then !,quality
+RESTAURANT#GENERAL,1,"great place , great value .",general
+RESTAURANT#PRICES,1,"great place , great value .",prices
+FOOD#QUALITY,1,"the food is flavorful , plentiful and reasonably priced .",quality
+FOOD#STYLE_OPTIONS,1,"the food is flavorful , plentiful and reasonably priced .",options
+FOOD#PRICES,1,"the food is flavorful , plentiful and reasonably priced .",prices
+AMBIENCE#GENERAL,1,the atmosphere is relaxed and casual .,general
+RESTAURANT#MISCELLANEOUS,1,it 's a great place to order from or sit-in .,miscellaneous
+RESTAURANT#GENERAL,1,awesome,general
+RESTAURANT#PRICES,1,"inexpensive , unassuming , great time !",prices
+AMBIENCE#GENERAL,1,"inexpensive , unassuming , great time !",general
+RESTAURANT#GENERAL,1,"inexpensive , unassuming , great time !",general
+FOOD#QUALITY,1,sushi experience was unbelievable with my fiance .,quality
+RESTAURANT#GENERAL,1,try it !,general
+RESTAURANT#GENERAL,1,very pleased,general
+FOOD#QUALITY,1,good creative rolls !,quality
+FOOD#STYLE_OPTIONS,1,good creative rolls !,options
+RESTAURANT#MISCELLANEOUS,1,"yamato is an excellent place to go if youre not into sashimi , or if you have friends who doesnt like sushi much .",miscellaneous
+FOOD#QUALITY,1,"they have great rolls , the triple color and norwegetan rolls , are awesome and filling .",quality
+FOOD#QUALITY,1,"they have great rolls , the triple color and norwegetan rolls , are awesome and filling .",quality
+FOOD#STYLE_OPTIONS,1,"they have great rolls , the triple color and norwegetan rolls , are awesome and filling .",options
+FOOD#QUALITY,1,"one special roll and one regular roll is enough to fill you up , but save room for dessert !",quality
+FOOD#STYLE_OPTIONS,1,"one special roll and one regular roll is enough to fill you up , but save room for dessert !",options
+FOOD#STYLE_OPTIONS,1,"one special roll and one regular roll is enough to fill you up , but save room for dessert !",options
+FOOD#QUALITY,1,"they have a delicious banana chocolate dessert , as well as a great green tea tempura .",quality
+FOOD#QUALITY,1,"they have a delicious banana chocolate dessert , as well as a great green tea tempura .",quality
+FOOD#QUALITY,1,the appetizers are also delicious !,quality
+FOOD#QUALITY,1,amazing food .,quality
+AMBIENCE#GENERAL,-1,mazing interior .,general
+FOOD#QUALITY,1,great food !,quality
+FOOD#QUALITY,1,i 've had my fair share of modern japanese and this spot delivers .,quality
+AMBIENCE#GENERAL,-1,"the atmosphere was pretty nice but had a bit lacking , which it tries to make up for with a crazy scheme of mirrors .",general
+AMBIENCE#GENERAL,-1,"the atmosphere was pretty nice but had a bit lacking , which it tries to make up for with a crazy scheme of mirrors .",general
+AMBIENCE#GENERAL,-1,"if you 're into being lost when you 're just five feet from your table then hey , that 's a good thing .",general
+FOOD#QUALITY,1,despite the confusing mirrors this will likely be my go-to for modern japanese food for the foreseeable future .,quality
+AMBIENCE#GENERAL,-1,despite the confusing mirrors this will likely be my go-to for modern japanese food for the foreseeable future .,general
+FOOD#QUALITY,1,"indo chinese food , pretty good ...",quality
+AMBIENCE#GENERAL,0,not a very fancy place but very good chinese style indian food .,general
+FOOD#QUALITY,1,not a very fancy place but very good chinese style indian food .,quality
+FOOD#QUALITY,1,"the chicken lollipop is my favorite , most of the dishes ( i have to agree with a previous reviewer ) are quite oily and very spicy , espeically the chilli chicken .",quality
+FOOD#QUALITY,-1,"the chicken lollipop is my favorite , most of the dishes ( i have to agree with a previous reviewer ) are quite oily and very spicy , espeically the chilli chicken .",quality
+FOOD#QUALITY,-1,"the chicken lollipop is my favorite , most of the dishes ( i have to agree with a previous reviewer ) are quite oily and very spicy , espeically the chilli chicken .",quality
+FOOD#QUALITY,-1,"my mom originally introduced me to this place , but even she ( being indian ) feels the food can be somewhat over the top spicy and far too oily .",quality
+RESTAURANT#GENERAL,1,still we keep going back : ),general
+FOOD#QUALITY,-1,i was speechless by the horrible food .,quality
+FOOD#QUALITY,-1,"i attended a holiday dinner at the restaurant , and the food was majorly disappointing .",quality
+SERVICE#GENERAL,-1,"rather than preparing vegetarian dish , the chef presented me with a plate of steamed vegetables ( minus sauce , seasoning , or any form or aesthetic presentation ) .",general
+FOOD#QUALITY,-1,"rather than preparing vegetarian dish , the chef presented me with a plate of steamed vegetables ( minus sauce , seasoning , or any form or aesthetic presentation ) .",quality
+FOOD#STYLE_OPTIONS,-1,"rather than preparing vegetarian dish , the chef presented me with a plate of steamed vegetables ( minus sauce , seasoning , or any form or aesthetic presentation ) .",options
+RESTAURANT#GENERAL,-1,"i was so stunned , and i left the dinner hungry and majorly disappointing .",general
+RESTAURANT#MISCELLANEOUS,-1,this place survives on reputation alone .,miscellaneous
+RESTAURANT#GENERAL,-1,i will never return .,general
+RESTAURANT#GENERAL,1,best in all of nyc,general
+RESTAURANT#GENERAL,1,"this is the most wonderful restaurant in all of new york city , not just brooklyn ...",general
+FOOD#QUALITY,1,"for 7 years they have put out the most tasty , most delicious food and kept it that way ...",quality
+RESTAURANT#GENERAL,1,"never swaying , never a bad meal , never bad service ...",general
+FOOD#QUALITY,1,"never swaying , never a bad meal , never bad service ...",quality
+SERVICE#GENERAL,1,"never swaying , never a bad meal , never bad service ...",general
+RESTAURANT#GENERAL,1,you should travel from the bronx to try it ...,general
+FOOD#QUALITY,1,"great food , great wine list , great service in a great neighborhood ...",quality
+DRINKS#STYLE_OPTIONS,1,"great food , great wine list , great service in a great neighborhood ...",options
+SERVICE#GENERAL,1,"great food , great wine list , great service in a great neighborhood ...",general
+LOCATION#GENERAL,1,"great food , great wine list , great service in a great neighborhood ...",general
+FOOD#QUALITY,1,so delicious ! ! ! ! ! !,quality
+RESTAURANT#GENERAL,1,patsy 's pizza = true love,general
+FOOD#QUALITY,1,hands down the best pizza on the planet .,quality
+FOOD#QUALITY,1,"in about 12 minutes , the thing is gone .",quality
+FOOD#QUALITY,1,great hot dogs..,quality
+FOOD#QUALITY,1,the hot dogs were juicy and tender inside and had plenty of crunch and snap on the outside .,quality
+FOOD#QUALITY,1,great toppings definitely a place you need to check out for late night munchies or a mid day boost !,quality
+RESTAURANT#MISCELLANEOUS,1,great toppings definitely a place you need to check out for late night munchies or a mid day boost !,miscellaneous
+FOOD#QUALITY,1,great taste,quality
+FOOD#QUALITY,1,"great , original taste .",quality
+FOOD#QUALITY,-1,"for me dishes a little oily , but overall dining experience good .",quality
+RESTAURANT#GENERAL,1,"for me dishes a little oily , but overall dining experience good .",general
+SERVICE#GENERAL,1,helpful service and average price per dish $ 10 .,general
+FOOD#PRICES,0,helpful service and average price per dish $ 10 .,prices
+AMBIENCE#GENERAL,-1,the only thing that strikes you is the decor ? ( not very pleasant ) .,general
+FOOD#QUALITY,1,great food,quality
+FOOD#QUALITY,1,this place has great indian chinese food .,quality
+FOOD#QUALITY,1,the flavors are amazing and the value is phenomenal .,quality
+FOOD#PRICES,1,the flavors are amazing and the value is phenomenal .,prices
+RESTAURANT#MISCELLANEOUS,-1,"be prepared to wait , because the place is pretty tiny .",miscellaneous
+AMBIENCE#GENERAL,-1,"be prepared to wait , because the place is pretty tiny .",general
+RESTAURANT#MISCELLANEOUS,0,"also , they do not take credit card so come with cash !",miscellaneous
+AMBIENCE#GENERAL,-1,"even though the place is not beautiful , the food speaks for itself .",general
+FOOD#QUALITY,1,"even though the place is not beautiful , the food speaks for itself .",quality
+FOOD#QUALITY,1,"best indian chinese in the city , by far !",quality
+RESTAURANT#GENERAL,1,amazing my favorite ! ! !,general
+RESTAURANT#GENERAL,1,"i came across village underground by accident , now i go there all the time .",general
+DRINKS#QUALITY,1,the martinis are amazing and very fairly priced .,quality
+DRINKS#PRICES,1,the martinis are amazing and very fairly priced .,prices
+SERVICE#GENERAL,1,"the service is amazing , i 've had different waiters and they were all nice , which is a rare thing in nyc .",general
+SERVICE#GENERAL,1,"the service is amazing , i 've had different waiters and they were all nice , which is a rare thing in nyc .",general
+AMBIENCE#GENERAL,1,"the dj is awesome , i have been there for my birthday and a bunch of other times with friends and i keep going back .",general
+RESTAURANT#GENERAL,1,"the dj is awesome , i have been there for my birthday and a bunch of other times with friends and i keep going back .",general
+SERVICE#GENERAL,1,you can get a table without a reservation if you get there early i they do n't make you by bottles .,general
+SERVICE#GENERAL,1,which lets face it ... .at times it 's a good thing .,general
+RESTAURANT#PRICES,1,in the end you end up with a fair tab and nothing but a great time ! ! !,prices
+RESTAURANT#GENERAL,1,in the end you end up with a fair tab and nothing but a great time ! ! !,general
+RESTAURANT#GENERAL,1,highly recommended !,general
+RESTAURANT#GENERAL,1,"one of the best , if not the best , restaurants in park slope ( and ny in general )",general
+FOOD#QUALITY,1,everything on the menu is great .,quality
+RESTAURANT#GENERAL,1,this establishment is the real deal .,general
+AMBIENCE#GENERAL,1,"wish ny had more of these kind of places : intimate , superb food , homey , top notch all the way around , certainly worth the wait .",general
+FOOD#QUALITY,1,"wish ny had more of these kind of places : intimate , superb food , homey , top notch all the way around , certainly worth the wait .",quality
+RESTAURANT#GENERAL,1,"wish ny had more of these kind of places : intimate , superb food , homey , top notch all the way around , certainly worth the wait .",general
+FOOD#PRICES,-1,but $ 500 for a dinner for two that did n't include wine ?,prices
+FOOD#QUALITY,1,"look , the appetizers were really good .",quality
+FOOD#QUALITY,1,the entree was also very good .,quality
+FOOD#PRICES,-1,"ca n't argue about that , but they are clearly over priced .",prices
+AMBIENCE#GENERAL,0,what you are paying for is the environment and the name .,general
+RESTAURANT#MISCELLANEOUS,0,what you are paying for is the environment and the name .,miscellaneous
+RESTAURANT#PRICES,-1,what you are paying for is the environment and the name .,prices
+AMBIENCE#GENERAL,1,"yes , the place is classy and beautiful , but they most certainly target the uber whealthy not the common joe that wants to go all out every once in a while .",general
+RESTAURANT#PRICES,-1,"yes , the place is classy and beautiful , but they most certainly target the uber whealthy not the common joe that wants to go all out every once in a while .",prices
+FOOD#QUALITY,-1,which of course is not real kobe but wagyu beef .,quality
+RESTAURANT#MISCELLANEOUS,-1,surprised that a place of this caliber would advertise it as kobe .,miscellaneous
+FOOD#QUALITY,0,vanison was good but not amazing .,quality
+FOOD#QUALITY,1,bison was quite excellent however .,quality
+FOOD#QUALITY,-1,dessert : pure disaster .,quality
+FOOD#QUALITY,-1,just not good at all .,quality
+FOOD#STYLE_OPTIONS,-1,some pineapple covered in a glaze of some kind and some pear tart thing not impressive at all .,options
+FOOD#QUALITY,-1,some pineapple covered in a glaze of some kind and some pear tart thing not impressive at all .,quality
+RESTAURANT#PRICES,-1,"i read reviews that called the restaurant too expensive and i thought to myself , but may be it is worth it .",prices
+RESTAURANT#GENERAL,-1,"i read reviews that called the restaurant too expensive and i thought to myself , but may be it is worth it .",general
+RESTAURANT#MISCELLANEOUS,0,"the four seasons has history and it is a sort of landmark of new york city restaurants , but trust me , they will charge you through the nose just so that you can say `` i 've been to the four seasons restaurant '' .",miscellaneous
+RESTAURANT#PRICES,-1,"the four seasons has history and it is a sort of landmark of new york city restaurants , but trust me , they will charge you through the nose just so that you can say `` i 've been to the four seasons restaurant '' .",prices
+RESTAURANT#GENERAL,-1,"i wanted to go there to see if it was worth it and sadly , curiousity got the best of me and i paid dearly for it .",general
+RESTAURANT#PRICES,-1,"i wanted to go there to see if it was worth it and sadly , curiousity got the best of me and i paid dearly for it .",prices
+FOOD#QUALITY,1,"all in all , the food was great ( except for the dessserts ) .",quality
+FOOD#QUALITY,-1,"all in all , the food was great ( except for the dessserts ) .",quality
+AMBIENCE#GENERAL,0,the environment is very upscale and you will see a lot of rich guys with trophy wives or just highly paid escorts .,general
+RESTAURANT#MISCELLANEOUS,0,the environment is very upscale and you will see a lot of rich guys with trophy wives or just highly paid escorts .,miscellaneous
+FOOD#QUALITY,-1,"if you are going for the food , it will not be worth it .",quality
+SERVICE#GENERAL,-1,"you would think they would make up for it with service , sadly , no .",general
+SERVICE#GENERAL,-1,"service was just ok , it is not what you 'd expect for $ 500 .",general
+RESTAURANT#PRICES,-1,"service was just ok , it is not what you 'd expect for $ 500 .",prices
+RESTAURANT#GENERAL,-1,terrible waste of money.. scammers,general
+RESTAURANT#PRICES,-1,terrible waste of money.. scammers,prices
+RESTAURANT#GENERAL,-1,i agree that dining at casa la femme is like no other dining experience !,general
+RESTAURANT#GENERAL,-1,i am actually offended to have spent so much money on such a bad experience .,general
+RESTAURANT#PRICES,-1,i am actually offended to have spent so much money on such a bad experience .,prices
+RESTAURANT#GENERAL,-1,i literally just got back home after visiting casa la femme and was so offended by my visit felt it necessary to try and warn other diners who value their money and time .,general
+RESTAURANT#PRICES,-1,i literally just got back home after visiting casa la femme and was so offended by my visit felt it necessary to try and warn other diners who value their money and time .,prices
+RESTAURANT#GENERAL,-1,"our visit their to say the least , was an unpleasant and costly experience !",general
+RESTAURANT#PRICES,-1,"our visit their to say the least , was an unpleasant and costly experience !",prices
+RESTAURANT#GENERAL,-1,and even more so unpleasant because it was so costly for such an unpleasant experience .,general
+RESTAURANT#PRICES,-1,and even more so unpleasant because it was so costly for such an unpleasant experience .,prices
+SERVICE#GENERAL,0,we did arrive late for our reservation so i can not complain too much about the wait for a table .,general
+SERVICE#GENERAL,-1,although we were told 10-15 minutes and it was more like 45 minutes .,general
+RESTAURANT#GENERAL,1,we were ushered to the bar to wait momentarily and upon arrival were so excited .,general
+AMBIENCE#GENERAL,1,the place is beautiful !,general
+SERVICE#GENERAL,1,the hostess was very pleasant .,general
+DRINKS#QUALITY,-1,"however , our $ 14 drinks were were horrible !",quality
+DRINKS#PRICES,-1,"however , our $ 14 drinks were were horrible !",prices
+SERVICE#GENERAL,-1,"once we finally got a table , despite indicating we wanted an alla carte menu we were pushed into a table that was only price fixed !",general
+RESTAURANT#GENERAL,-1,our experience did not ever get any better .,general
+SERVICE#GENERAL,-1,for each course we waited over 1/2 hour to 45 minutes and were never offered a drink .,general
+SERVICE#GENERAL,-1,we also asked for hooka six times and the waiter kept telling us one minute and never returning with the hooka .,general
+SERVICE#GENERAL,-1,after the 4th time i asked again and the waiter than said after our dinner .,general
+SERVICE#GENERAL,-1,we asked for beverages and never received them .,general
+SERVICE#GENERAL,-1,we asked for sides which the waiter than admitted that he forgot to put in that part of our order .,general
+FOOD#QUALITY,-1,my chicken was inedible as there were so many fatty lumps which i had to keep spitting out into my napkin .,quality
+FOOD#QUALITY,-1,i would not expect this for a $ 55 dinner .,quality
+FOOD#PRICES,-1,i would not expect this for a $ 55 dinner .,prices
+SERVICE#GENERAL,-1,by the time we finished our dinner we still had not received one beverage nor hooka !,general
+SERVICE#GENERAL,-1,what we did do was waste 3 hours being trapped in a table waiting and waiting for food and drinks and hooka.. some of which we never received !,general
+SERVICE#GENERAL,-1,the only beverage we did receive was water in dirty glasses !,general
+SERVICE#GENERAL,-1,to top it all off.. the main reason we came to your restaurant was for the belly dancers and missed the first show as we were not seated yet and the 2nd belly dancer only danced at two tables in the back of the restaurant and never made it around to the other half of the restaurant .,general
+RESTAURANT#MISCELLANEOUS,-1,to top it all off.. the main reason we came to your restaurant was for the belly dancers and missed the first show as we were not seated yet and the 2nd belly dancer only danced at two tables in the back of the restaurant and never made it around to the other half of the restaurant .,miscellaneous
+FOOD#QUALITY,-1,"by the time we left our wallets were empy and so were our stomachs and we missed the show we were supposed to see following our dinner , which would have been acceptable if we got to enjoy the experience of good food and belly dancers !",quality
+RESTAURANT#PRICES,-1,"by the time we left our wallets were empy and so were our stomachs and we missed the show we were supposed to see following our dinner , which would have been acceptable if we got to enjoy the experience of good food and belly dancers !",prices
+RESTAURANT#MISCELLANEOUS,-1,"by the time we left our wallets were empy and so were our stomachs and we missed the show we were supposed to see following our dinner , which would have been acceptable if we got to enjoy the experience of good food and belly dancers !",miscellaneous
+FOOD#QUALITY,-1,if it seemed possible to do so while there i would have fought my bill since my dinner portion of my meal was inedible !,quality
+RESTAURANT#PRICES,-1,if it seemed possible to do so while there i would have fought my bill since my dinner portion of my meal was inedible !,prices
+RESTAURANT#GENERAL,-1,"i have never left a restaurant feeling as if i was abused , and wasted my hard earned money .",general
+RESTAURANT#PRICES,-1,"i have never left a restaurant feeling as if i was abused , and wasted my hard earned money .",prices
+RESTAURANT#GENERAL,-1,my husbands birthday and my sons was not as it was intended ... and we drove two hours to spend too much money to be treated terribly !,general
+RESTAURANT#PRICES,-1,my husbands birthday and my sons was not as it was intended ... and we drove two hours to spend too much money to be treated terribly !,prices
+SERVICE#GENERAL,-1,my husbands birthday and my sons was not as it was intended ... and we drove two hours to spend too much money to be treated terribly !,general
+RESTAURANT#GENERAL,-1,i wish i could be refunded !,general
+RESTAURANT#MISCELLANEOUS,-1,do n't go with a larger group than 4 !,miscellaneous
+SERVICE#GENERAL,1,"at first we were a little taken aback , as this seemed to present a problem , although the restaurant looked fairly empty , but they hastily put the table together for us .",general
+FOOD#STYLE_OPTIONS,0,the menu is fairly simple without much descriptions .,options
+DRINKS#STYLE_OPTIONS,-1,"there was no tap beer that evening , which was a disappointment .",options
+DRINKS#STYLE_OPTIONS,-1,"not much of a selection of bottled beer either , we went with brahma .",options
+FOOD#QUALITY,1,the appetizers we ordered were served quickly - an order of fried oysters and clams were delicious but a tiny portion ( maybe 3 of each ) .,quality
+FOOD#STYLE_OPTIONS,-1,the appetizers we ordered were served quickly - an order of fried oysters and clams were delicious but a tiny portion ( maybe 3 of each ) .,options
+SERVICE#GENERAL,1,the appetizers we ordered were served quickly - an order of fried oysters and clams were delicious but a tiny portion ( maybe 3 of each ) .,general
+FOOD#STYLE_OPTIONS,0,"the lobster knuckles ( special of the day ) were ok , but pretty tasteless .",options
+FOOD#QUALITY,-1,"the lobster knuckles ( special of the day ) were ok , but pretty tasteless .",quality
+FOOD#STYLE_OPTIONS,-1,i believe there were 2 shrimp in the `` salt encrusted shrimp '' appetizer .,options
+SERVICE#GENERAL,-1,"she replied `` well it would be more convenient for us if you ordered now , since you are a larger party , and it might get crowded . ''",general
+SERVICE#GENERAL,0,the food arrived in about 15 minutes .,general
+FOOD#QUALITY,1,i had the thai style fried sea bass ... which was very good .,quality
+FOOD#QUALITY,1,"everyone seemed generally happy with their food , except my brother who had the grilled mahi mahi , seemingly drenched in grapfruit juice !",quality
+FOOD#QUALITY,-1,"everyone seemed generally happy with their food , except my brother who had the grilled mahi mahi , seemingly drenched in grapfruit juice !",quality
+FOOD#STYLE_OPTIONS,-1,"everyone seemed generally happy with their food , except my brother who had the grilled mahi mahi , seemingly drenched in grapfruit juice !",options
+FOOD#QUALITY,1,i heard the lobster roll was excellent .,quality
+SERVICE#GENERAL,-1,"they seemed to continue to rush us along , taking plates without asking if we were done ( my sister still had her fork in hand ) .",general
+FOOD#QUALITY,1,"all in all the food was good - a little on the expensive side , but fresh .",quality
+FOOD#PRICES,-1,"all in all the food was good - a little on the expensive side , but fresh .",prices
+SERVICE#GENERAL,-1,service not the friendliest to our `` large party '' !,general
+RESTAURANT#GENERAL,-1,probably would not go back here .,general
+FOOD#QUALITY,1,great indian food,quality
+FOOD#QUALITY,1,"food was amazing - i love indian food and eat it quite regularly , but i can say this is one of the best i 've had .",quality
+FOOD#STYLE_OPTIONS,0,"very `` normal indian food '' , but done really well .",options
+FOOD#QUALITY,1,"very `` normal indian food '' , but done really well .",quality
+RESTAURANT#GENERAL,1,"i have it a 4 instead of 5 because of the price ( just chicken tikka masala - no bread of rice - is $ 25 ) , which i would expect at a upscale indian restaurant but this place does n't have an upscale feel .",general
+RESTAURANT#PRICES,-1,"i have it a 4 instead of 5 because of the price ( just chicken tikka masala - no bread of rice - is $ 25 ) , which i would expect at a upscale indian restaurant but this place does n't have an upscale feel .",prices
+FOOD#PRICES,-1,"i have it a 4 instead of 5 because of the price ( just chicken tikka masala - no bread of rice - is $ 25 ) , which i would expect at a upscale indian restaurant but this place does n't have an upscale feel .",prices
+AMBIENCE#GENERAL,-1,"i have it a 4 instead of 5 because of the price ( just chicken tikka masala - no bread of rice - is $ 25 ) , which i would expect at a upscale indian restaurant but this place does n't have an upscale feel .",general
+SERVICE#GENERAL,-1,"also , waiters try to push more food on you , like suggest things as if they are complimentary when they actually cost $ .",general
+SERVICE#GENERAL,-1,i do n't appreciate places or people that try to drive up the bill without the patron 's knowledge so that was a huge turnoff ( more than the price ) .,general
+RESTAURANT#PRICES,-1,i do n't appreciate places or people that try to drive up the bill without the patron 's knowledge so that was a huge turnoff ( more than the price ) .,prices
+FOOD#QUALITY,1,"but if you 're prepared to spend some $ and remember to ask if something they offer is complimentary , then this is the place to go for indian food",quality
+RESTAURANT#PRICES,-1,"but if you 're prepared to spend some $ and remember to ask if something they offer is complimentary , then this is the place to go for indian food",prices
+RESTAURANT#GENERAL,1,one of the best,general
+RESTAURANT#GENERAL,1,"bukhara grill , the tagline says it all.. `` indian spice rave ''",general
+FOOD#PRICES,-1,the lunch buffet is expensive but is deff worth it .,prices
+FOOD#QUALITY,1,the lunch buffet is expensive but is deff worth it .,quality
+SERVICE#GENERAL,1,we have gone for dinner only a few times but the same great quality and service is given .,general
+FOOD#QUALITY,1,we have gone for dinner only a few times but the same great quality and service is given .,quality
+RESTAURANT#GENERAL,1,bukhara is on my top 5 indian places in nyc,general
+RESTAURANT#GENERAL,-1,wretched and retching,general
+FOOD#QUALITY,-1,i have never been so disgusted by both food an service .,quality
+SERVICE#GENERAL,-1,i have never been so disgusted by both food an service .,general
+SERVICE#GENERAL,-1,for starters they delivered us someone else 's order .,general
+FOOD#QUALITY,-1,"however , once i received my predictably mediocre order of what dokebi thinks passes as korean fair , ( sometimes you have to settle when it 's your only option ) , i got through about half my kimchee before i found a piece of random lettuce accompanied by a far more disgusting , slimy , clearly bad piece of fish skin .",quality
+FOOD#QUALITY,-1,"however , once i received my predictably mediocre order of what dokebi thinks passes as korean fair , ( sometimes you have to settle when it 's your only option ) , i got through about half my kimchee before i found a piece of random lettuce accompanied by a far more disgusting , slimy , clearly bad piece of fish skin .",quality
+FOOD#QUALITY,-1,"my main concern was the sanity of the food that was being sent out to myself and others , but i would be lying is i said that as someone who has worked in restaurants since the age of fifteen i was expecting at least a minimal effort on the part of the restaurant to amend the situation .",quality
+SERVICE#GENERAL,-1,"my main concern was the sanity of the food that was being sent out to myself and others , but i would be lying is i said that as someone who has worked in restaurants since the age of fifteen i was expecting at least a minimal effort on the part of the restaurant to amend the situation .",general
+SERVICE#GENERAL,-1,none was made so i hung up .,general
+FOOD#QUALITY,-1,less than three minutes passed before i found myself doubled over the toilet .,quality
+FOOD#QUALITY,-1,"my girlfriend , being slightly more aggressive , and having been equally disgusted causing her to throw out the remainder of her barely eaten meal , called back only to be informed that i was probably wrong and that it was most likely an oyster , and that we were also blacklisted from their restaurant .",quality
+SERVICE#GENERAL,-1,"my girlfriend , being slightly more aggressive , and having been equally disgusted causing her to throw out the remainder of her barely eaten meal , called back only to be informed that i was probably wrong and that it was most likely an oyster , and that we were also blacklisted from their restaurant .",general
+RESTAURANT#GENERAL,-1,"it was n't as if this restaurant had any major bragging points before hand , but now it 's simply repulsive .",general
+FOOD#QUALITY,-1,eat at your own risk .,quality
+AMBIENCE#GENERAL,1,gorgeous place ideal for a romantic dinner,general
+RESTAURANT#MISCELLANEOUS,1,gorgeous place ideal for a romantic dinner,miscellaneous
+FOOD#QUALITY,1,i book a gorgeous white organza tent which included a four course prix fix menu which we enjoyed a lot .,quality
+AMBIENCE#GENERAL,1,i book a gorgeous white organza tent which included a four course prix fix menu which we enjoyed a lot .,general
+SERVICE#GENERAL,1,the service was spectacular as the waiter knew everything about the menu and his recommendations were amazing !,general
+SERVICE#GENERAL,1,the service was spectacular as the waiter knew everything about the menu and his recommendations were amazing !,general
+RESTAURANT#MISCELLANEOUS,1,i completely recommend casa la femme for any special occasion and to really impress your date .,miscellaneous
+RESTAURANT#GENERAL,-1,more williamsburg garbage,general
+SERVICE#GENERAL,-1,the dishes came out around 5 minutes apart .,general
+FOOD#QUALITY,0,"the bibimbap was average , but the stone bowl was n't even close to sizzling .",quality
+FOOD#QUALITY,-1,"the bibimbap was average , but the stone bowl was n't even close to sizzling .",quality
+FOOD#PRICES,-1,too bad i had paid an extra $ 2 for the stone bowl .,prices
+FOOD#QUALITY,-1,the nakgi-bokum was horrible .,quality
+FOOD#QUALITY,-1,easily the worst stir-fried squid i 've ever tasted .,quality
+FOOD#QUALITY,-1,the sauce tasted more like chinese fast food than decent korean .,quality
+FOOD#QUALITY,0,"the side dishes were passable , and i did get a refill upon request .",quality
+FOOD#STYLE_OPTIONS,1,"the side dishes were passable , and i did get a refill upon request .",options
+SERVICE#GENERAL,-1,the real problem i had with this place was the complete lack of service .,general
+SERVICE#GENERAL,-1,she just nodded and walked off .,general
+SERVICE#GENERAL,-1,"as to my comment about the food , no apology or acknowledgment was made .",general
+FOOD#QUALITY,-1,my wife had barely touched that mess of a dish .,quality
+SERVICE#GENERAL,-1,we were charged full price .,general
+RESTAURANT#GENERAL,1,lives up to the hype,general
+RESTAURANT#MISCELLANEOUS,0,we 've tried before but it always packed and does n't take reservations .,miscellaneous
+RESTAURANT#GENERAL,1,it was well worth the wait .,general
+FOOD#QUALITY,1,the wife had the risotto which was amazing .,quality
+FOOD#STYLE_OPTIONS,-1,"it does n't look appetizing as it 's covered in squid ink and it turns your lips and teeth black , but the taste was phenomenal .",options
+FOOD#QUALITY,1,"it does n't look appetizing as it 's covered in squid ink and it turns your lips and teeth black , but the taste was phenomenal .",quality
+FOOD#QUALITY,1,the farro salad and the mashed yukon potatoes were also extremely tasty .,quality
+FOOD#QUALITY,1,the farro salad and the mashed yukon potatoes were also extremely tasty .,quality
+RESTAURANT#GENERAL,1,i love margherita pizza – i looove east village pizza,general
+FOOD#QUALITY,1,i love margherita pizza – i looove east village pizza,quality
+RESTAURANT#GENERAL,1,"love this place , every time we are in the city this is one of the places we always go .",general
+FOOD#QUALITY,0,a quintessential slice of nyc pizza .,quality
+FOOD#QUALITY,1,"the crust has a great bite and a good chew , the sauce is light with a nice acidity to it , the salt from the cheese is great , really heightens the flavor of all the other components .",quality
+FOOD#QUALITY,1,"the crust has a great bite and a good chew , the sauce is light with a nice acidity to it , the salt from the cheese is great , really heightens the flavor of all the other components .",quality
+FOOD#QUALITY,1,"the crust has a great bite and a good chew , the sauce is light with a nice acidity to it , the salt from the cheese is great , really heightens the flavor of all the other components .",quality
+FOOD#QUALITY,1,"personally i like the margherita pizza better , but they are all good .",quality
+FOOD#QUALITY,1,"personally i like the margherita pizza better , but they are all good .",quality
+AMBIENCE#GENERAL,1,possibly the most romantic restaurant in the city,general
+RESTAURANT#GENERAL,1,"this is undoubtedly my favorite modern japanese brasserie ( that don ’ t serve sushi ) , and in my opinion , one of the most romantic restaurants in the city !",general
+AMBIENCE#GENERAL,1,"this is undoubtedly my favorite modern japanese brasserie ( that don ’ t serve sushi ) , and in my opinion , one of the most romantic restaurants in the city !",general
+LOCATION#GENERAL,0,"not only is it an adventure getting to this somewhat hidden spot , once you enter the unmarked wooden doors , the zen and intimate décor will make you feel like you ’ re no longer in the city .",general
+AMBIENCE#GENERAL,1,"not only is it an adventure getting to this somewhat hidden spot , once you enter the unmarked wooden doors , the zen and intimate décor will make you feel like you ’ re no longer in the city .",general
+AMBIENCE#GENERAL,1,"not only is it an adventure getting to this somewhat hidden spot , once you enter the unmarked wooden doors , the zen and intimate décor will make you feel like you ’ re no longer in the city .",general
+AMBIENCE#GENERAL,1,"if you ’ re planning to come here , make sure that your date is someone whom you really like since you ’ ll be ushered to private booths where there will be no people or food watching ( choose the ones on the ground level that have glass ceilings so you may see the stars in the sky ! ) .",general
+AMBIENCE#GENERAL,1,"if you ’ re planning to come here , make sure that your date is someone whom you really like since you ’ ll be ushered to private booths where there will be no people or food watching ( choose the ones on the ground level that have glass ceilings so you may see the stars in the sky ! ) .",general
+AMBIENCE#GENERAL,1,it ’ s just you and your date and an occasional cute ‘ excuse me ’ before the waiter opens the little curtain to your booth !,general
+SERVICE#GENERAL,1,it ’ s just you and your date and an occasional cute ‘ excuse me ’ before the waiter opens the little curtain to your booth !,general
+FOOD#PRICES,1,"my party had the bbe $ 29 fixe prix menu , which was such a wonderful deal since it also came with a flight of sake !",prices
+FOOD#STYLE_OPTIONS,1,"my party had the bbe $ 29 fixe prix menu , which was such a wonderful deal since it also came with a flight of sake !",options
+FOOD#QUALITY,1,we started off with a delightful sashimi amuse bouche .,quality
+FOOD#QUALITY,1,"i picked the grilled black cod as my entree , which i absolutely devoured while someone commented that the grilled salmon dish was better .",quality
+FOOD#QUALITY,1,"i picked the grilled black cod as my entree , which i absolutely devoured while someone commented that the grilled salmon dish was better .",quality
+FOOD#STYLE_OPTIONS,0,the entrees were served with miso soup and rice .,options
+DRINKS#QUALITY,1,the sake ’ s complimented the courses very well and is successfully easing me into the sake world .,quality
+FOOD#QUALITY,0,"for desserts , we tried the frozen black sesame mousse ( interesting but not extraordinary ) and matcha ( powdered green tea ) and blueberry cheesecake , which was phenomenal .",quality
+FOOD#QUALITY,1,"for desserts , we tried the frozen black sesame mousse ( interesting but not extraordinary ) and matcha ( powdered green tea ) and blueberry cheesecake , which was phenomenal .",quality
+RESTAURANT#GENERAL,1,"maybe it was the great company ( i had friends visiting from philly – yes , it was not a date this time ) or the super reasonable price point , but i just can ’ t say enough good things about this brasserie .",general
+RESTAURANT#PRICES,1,"maybe it was the great company ( i had friends visiting from philly – yes , it was not a date this time ) or the super reasonable price point , but i just can ’ t say enough good things about this brasserie .",prices
+RESTAURANT#GENERAL,1,"i don ’ t usually visit the same establishment more than once , what more twice , but i ’ ll come to zenkichi anytime for a quiet , unhurried and memorable dinner .",general
+AMBIENCE#GENERAL,1,"i don ’ t usually visit the same establishment more than once , what more twice , but i ’ ll come to zenkichi anytime for a quiet , unhurried and memorable dinner .",general
+RESTAURANT#GENERAL,-1,terrible would be a compliment !,general
+SERVICE#GENERAL,-1,"the service leaves much to be desired , from feeling like you are rushed the place your order , to being ignored the rest of the night .",general
+SERVICE#GENERAL,-1,we paid a fixed pricce but got nothing ! !,general
+SERVICE#GENERAL,-1,we never ate because by close to 2 in the monring we were not served and were too upset ad tired to start eating .,general
+SERVICE#GENERAL,-1,"they are extremely rude , not even apologizing for the horrible service we got and handing us a bill well over $ 500 for some drinks adn their pita bread !",general
+DRINKS#PRICES,-1,"they are extremely rude , not even apologizing for the horrible service we got and handing us a bill well over $ 500 for some drinks adn their pita bread !",prices
+FOOD#PRICES,-1,"they are extremely rude , not even apologizing for the horrible service we got and handing us a bill well over $ 500 for some drinks adn their pita bread !",prices
+SERVICE#GENERAL,-1,"they are extremely rude , not even apologizing for the horrible service we got and handing us a bill well over $ 500 for some drinks adn their pita bread !",general
+RESTAURANT#GENERAL,-1,stay away,general
+FOOD#QUALITY,1,great shabu shabu,quality
+RESTAURANT#GENERAL,1,i love it .,general
+FOOD#QUALITY,0,i tried a couple other dishes but was n't too impressed .,quality
+FOOD#QUALITY,1,"but for the shabu shabu , you wo n't find much better in ny .",quality
+FOOD#QUALITY,1,"the meat is fresh , the sauces are great , you get kimchi and a salad free with your meal and service is good too .",quality
+FOOD#QUALITY,1,"the meat is fresh , the sauces are great , you get kimchi and a salad free with your meal and service is good too .",quality
+SERVICE#GENERAL,1,"the meat is fresh , the sauces are great , you get kimchi and a salad free with your meal and service is good too .",general
+FOOD#STYLE_OPTIONS,1,"the meat is fresh , the sauces are great , you get kimchi and a salad free with your meal and service is good too .",options
+FOOD#PRICES,1,"the meat is fresh , the sauces are great , you get kimchi and a salad free with your meal and service is good too .",prices
+FOOD#PRICES,1,"the meat is fresh , the sauces are great , you get kimchi and a salad free with your meal and service is good too .",prices
+FOOD#QUALITY,1,dokebi gives williamsburg the right one-two punch of classic korean food and fusion twists like pork belly tacos .,quality
+FOOD#QUALITY,1,dokebi gives williamsburg the right one-two punch of classic korean food and fusion twists like pork belly tacos .,quality
+FOOD#QUALITY,1,dokebi gives williamsburg the right one-two punch of classic korean food and fusion twists like pork belly tacos .,quality
+FOOD#QUALITY,1,"the hot dogs are good , yes , but the reason to get over here is the fantastic pork croquette sandwich , perfect on its supermarket squishy bun .",quality
+FOOD#QUALITY,1,"the hot dogs are good , yes , but the reason to get over here is the fantastic pork croquette sandwich , perfect on its supermarket squishy bun .",quality
+FOOD#QUALITY,1,"the hot dogs are good , yes , but the reason to get over here is the fantastic pork croquette sandwich , perfect on its supermarket squishy bun .",quality
+LOCATION#GENERAL,0,restaurant with a view,general
+FOOD#QUALITY,1,the food tasted very good .,quality
+FOOD#QUALITY,1,the family seafood entree was very good .,quality
+FOOD#QUALITY,1,the main entree was also very good .,quality
+FOOD#QUALITY,1,"price is high but the food is good , so i would come back again .",quality
+FOOD#PRICES,-1,"price is high but the food is good , so i would come back again .",prices
+RESTAURANT#GENERAL,1,"price is high but the food is good , so i would come back again .",general
+RESTAURANT#GENERAL,-1,this place does n't make any sense,general
+RESTAURANT#GENERAL,-1,just want to warn you all - do n't waste your time and money .,general
+AMBIENCE#GENERAL,-1,"this place has totally weird decor , stairs going up with mirrored walls - i am surprised how no one yet broke their head or fall off the stairs - mirrored walls make you dizzy and delusional ...",general
+AMBIENCE#GENERAL,-1,"this place has totally weird decor , stairs going up with mirrored walls - i am surprised how no one yet broke their head or fall off the stairs - mirrored walls make you dizzy and delusional ...",general
+AMBIENCE#GENERAL,-1,this place is not inviting and the food is totally weird .,general
+FOOD#QUALITY,-1,this place is not inviting and the food is totally weird .,quality
+FOOD#STYLE_OPTIONS,-1,the concept of japanese tapas is newly created and clearly does n't work .,options
+FOOD#QUALITY,-1,"the food they serve is not comforting , not appetizing and uncooked .",quality
+FOOD#QUALITY,1,good food,quality
+FOOD#QUALITY,1,"the food was great and tasty , but the sitting space was too small , i do n't like being cramp in a corner .",quality
+AMBIENCE#GENERAL,-1,"the food was great and tasty , but the sitting space was too small , i do n't like being cramp in a corner .",general
+RESTAURANT#GENERAL,1,over all it was a very nice romantic place .,general
+AMBIENCE#GENERAL,1,over all it was a very nice romantic place .,general
+RESTAURANT#GENERAL,1,loved it,general
+RESTAURANT#GENERAL,1,a coworker and i tried pacifico after work a few fridays and loved it .,general
+AMBIENCE#GENERAL,1,the atmosphere was great .,general
+FOOD#QUALITY,1,"the food we ordered was excellent , although i would n't say the margaritas were anything to write home about .",quality
+DRINKS#QUALITY,0,"the food we ordered was excellent , although i would n't say the margaritas were anything to write home about .",quality
+SERVICE#GENERAL,0,"our waitress was n't mean , but not especially warm or attentive either .",general
+RESTAURANT#GENERAL,1,"i must say i am surprised by the bad reviews of the restaurant earlier in the year , though .",general
+AMBIENCE#GENERAL,1,"regardless , we 'll be back and ca n't wait to visit in the summer to take advantage of the patio .",general
+RESTAURANT#GENERAL,1,"regardless , we 'll be back and ca n't wait to visit in the summer to take advantage of the patio .",general
+RESTAURANT#GENERAL,-1,dumbfoundingly poor,general
+RESTAURANT#GENERAL,-1,"this was , from start to finish , a mind-bogglingly uncomfortable experience .",general
+SERVICE#GENERAL,-1,lexicographers take note : a new and fascinating definition of rudeness is alive and flourishing right here in brooklyn .,general
+SERVICE#GENERAL,-1,the servers at flatbush farm appear to have perfected that ghastly technique of making you feel guilty and ashamed for deigning to attract their attention .,general
+SERVICE#GENERAL,-1,polite acknowledgement is out ;,general
+SERVICE#GENERAL,-1,supercilious scorn is in .,general
+SERVICE#GENERAL,-1,"and how many times can you pick up the same perfectly aligned set of napkins , inspect them vapidly and plonk them down in exactly the same place instead of venturing a glance at people who are there to help you make the rent ?",general
+SERVICE#GENERAL,-1,"a different server enhanced the fun , dumping our entrees in front of us halfway through our appetizer ( which was delicious ) .",general
+FOOD#QUALITY,1,"a different server enhanced the fun , dumping our entrees in front of us halfway through our appetizer ( which was delicious ) .",quality
+FOOD#QUALITY,1,"overall the food quality was pretty good , though i hear the salmon is much better when it has n't sat cooling in front of the guest .",quality
+SERVICE#GENERAL,-1,"overall the food quality was pretty good , though i hear the salmon is much better when it has n't sat cooling in front of the guest .",general
+AMBIENCE#GENERAL,1,"the place has a nice fit-out , some attractive furnishings and , from what i could tell , a reasonable wine list ( i was given the food menu when i asked for the carte des vins )",general
+AMBIENCE#GENERAL,1,"the place has a nice fit-out , some attractive furnishings and , from what i could tell , a reasonable wine list ( i was given the food menu when i asked for the carte des vins )",general
+DRINKS#STYLE_OPTIONS,1,"the place has a nice fit-out , some attractive furnishings and , from what i could tell , a reasonable wine list ( i was given the food menu when i asked for the carte des vins )",options
+SERVICE#GENERAL,-1,"the place has a nice fit-out , some attractive furnishings and , from what i could tell , a reasonable wine list ( i was given the food menu when i asked for the carte des vins )",general
+RESTAURANT#PRICES,-1,"at $ 120 for two people , however , this in no way represents value , unless you 're looking to pay by the hour for passive-aggressive torture .",prices
+RESTAURANT#GENERAL,-1,"at $ 120 for two people , however , this in no way represents value , unless you 're looking to pay by the hour for passive-aggressive torture .",general
+SERVICE#GENERAL,-1,"at $ 120 for two people , however , this in no way represents value , unless you 're looking to pay by the hour for passive-aggressive torture .",general
+RESTAURANT#GENERAL,-1,"on that scale , it 's a world-beater .",general
+RESTAURANT#GENERAL,-1,how is this palce still open ?,general
+RESTAURANT#GENERAL,-1,i honestly do n't even know where to begin .,general
+SERVICE#GENERAL,1,"we arrived and were seated immediately , which made us both happy .",general
+RESTAURANT#GENERAL,1,everything was going good until we got our meals .,general
+FOOD#QUALITY,-1,everything was going good until we got our meals .,quality
+FOOD#STYLE_OPTIONS,-1,i took one look at the chicken and i was appalled .,options
+FOOD#STYLE_OPTIONS,-1,"it was served with skin , over a bed of extremely undercooked spinach and mashed potatoes .",options
+FOOD#QUALITY,-1,"it was served with skin , over a bed of extremely undercooked spinach and mashed potatoes .",quality
+FOOD#QUALITY,-1,"i took one bite from the $ 24 salmon , and i have never , in the 17 years i have been going to restaurants tasted salmon as fishy , as dry , and as bland as the one in flatbush farms .",quality
+FOOD#PRICES,-1,"i took one bite from the $ 24 salmon , and i have never , in the 17 years i have been going to restaurants tasted salmon as fishy , as dry , and as bland as the one in flatbush farms .",prices
+SERVICE#GENERAL,-1,"at this point , the waitress comes over and asks us if everything was okay , i was literally so shocked that i was speechless and did n't say anything , and guess what , the waitress walked away .",general
+FOOD#QUALITY,-1,"so , i switch with my boyfriend again to see if maybe i could stomach the meat and spinach again , but the spinach was so undercooked that i just could not bite through it .",quality
+FOOD#STYLE_OPTIONS,-1,i could n't even enjoy the mashed potatoes because it was hidden completely under the chicken and spinach .,options
+FOOD#QUALITY,-1,so i decide to report back to the waitress because it was completely inedible .,quality
+SERVICE#GENERAL,-1,"guess what , i waited for twenty minutes before she came over and when she finally did , she says , `` oh well , i wish you would have said something earlier '' no apology , nothing .",general
+SERVICE#GENERAL,-1,"after that she simply took our plates , walked away , came back another twenty minutes later with the bill and the chicken on it ! ! ! ! ! ! ! ! ! ! ! !",general
+SERVICE#GENERAL,-1,"no desert menu , no apology , nothing ! ! ! ! ! !",general
+SERVICE#GENERAL,-1,"this is where it really really gets bad : the manager said , there is absolutely nothing we can do , it 's a matter of taste that she did n't like it , and i can not comp it .",general
+SERVICE#GENERAL,-1,"again , no apology , no is there anything else i can get you , no can i get you a drink to make up for it , nothing ! ! ! !",general
+SERVICE#GENERAL,-1,the level of rudeness was preposterous .,general
+SERVICE#GENERAL,-1,"the manager came to the table and said we can do what we want , so we paid for what we did enjoy , the drinks and appetizers , and walked out .",general
+DRINKS#QUALITY,1,"the manager came to the table and said we can do what we want , so we paid for what we did enjoy , the drinks and appetizers , and walked out .",quality
+FOOD#QUALITY,1,"the manager came to the table and said we can do what we want , so we paid for what we did enjoy , the drinks and appetizers , and walked out .",quality
+RESTAURANT#GENERAL,-1,i have never ever had such an unpleasant experience .,general
+SERVICE#GENERAL,-1,this staff should be fired .,general
+FOOD#QUALITY,1,cirspy crust margherita pizza,quality
+FOOD#QUALITY,1,it was really good pizza .,quality
+FOOD#QUALITY,1,the crust was imazingly cooked well and pizza was fully loaded : ) : ) : ),quality
+FOOD#STYLE_OPTIONS,1,the crust was imazingly cooked well and pizza was fully loaded : ) : ) : ),options
+RESTAURANT#GENERAL,1,you know what i mean all the positives things happening there made mw write this review .,general
+RESTAURANT#GENERAL,-1,single worst restaurant in manhattan,general
+AMBIENCE#GENERAL,1,"i 'll being with a couple of positives : cool decor , good pita and hummus , and grilled octopus that was actually pretty tasty .",general
+FOOD#QUALITY,1,"i 'll being with a couple of positives : cool decor , good pita and hummus , and grilled octopus that was actually pretty tasty .",quality
+FOOD#QUALITY,1,"i 'll being with a couple of positives : cool decor , good pita and hummus , and grilled octopus that was actually pretty tasty .",quality
+FOOD#QUALITY,1,"i 'll being with a couple of positives : cool decor , good pita and hummus , and grilled octopus that was actually pretty tasty .",quality
+RESTAURANT#GENERAL,-1,if i could give 0 stars i would do so for this place .,general
+RESTAURANT#MISCELLANEOUS,-1,the reason there are 4 different results on citysearch for the same place is because they keep trying to start a new thread so they can stock it with positive reviews .,miscellaneous
+RESTAURANT#GENERAL,-1,well ... they can run but they ca n't hide .,general
+RESTAURANT#GENERAL,-1,this place ... god where do i begin .,general
+AMBIENCE#GENERAL,1,it is quite a spectacular scene i 'll give them that .,general
+AMBIENCE#GENERAL,0,the decor however seems to be the distraction so you wo n't notice that you just payed 300 bucks for some cold eggplant that took 2 frickin hours to come ! ! ! !,general
+FOOD#QUALITY,-1,the decor however seems to be the distraction so you wo n't notice that you just payed 300 bucks for some cold eggplant that took 2 frickin hours to come ! ! ! !,quality
+FOOD#PRICES,-1,the decor however seems to be the distraction so you wo n't notice that you just payed 300 bucks for some cold eggplant that took 2 frickin hours to come ! ! ! !,prices
+SERVICE#GENERAL,-1,the decor however seems to be the distraction so you wo n't notice that you just payed 300 bucks for some cold eggplant that took 2 frickin hours to come ! ! ! !,general
+RESTAURANT#GENERAL,-1,"how this place survives the competitive west village market in this economy , or any other for that matter , is beyond me .",general
+FOOD#QUALITY,1,great hot dogs !,quality
+FOOD#QUALITY,1,"though it 's been crowded most times i 've gone here , bark always delivers on their food .",quality
+RESTAURANT#MISCELLANEOUS,0,"though it 's been crowded most times i 've gone here , bark always delivers on their food .",miscellaneous
+FOOD#QUALITY,1,"the hot dogs are top notch , and they 're slamwich is amazing !",quality
+FOOD#QUALITY,1,"the hot dogs are top notch , and they 're slamwich is amazing !",quality
+RESTAURANT#GENERAL,1,"going to bark is always worth the train ride , and will make your tongue and belly very happy !",general
+FOOD#QUALITY,1,"going to bark is always worth the train ride , and will make your tongue and belly very happy !",quality
+FOOD#PRICES,-1,only complaint is the pricing -- i believe it would be more reasonable to pay a dollar less on each item listed on the menu .,prices
+RESTAURANT#GENERAL,1,"but nonetheless -- great spot , great food .",general
+FOOD#QUALITY,1,"but nonetheless -- great spot , great food .",quality
+FOOD#QUALITY,1,fabulous food - if the front of house staff do n't put you off –,quality
+SERVICE#GENERAL,-1,fabulous food - if the front of house staff do n't put you off –,general
+RESTAURANT#PRICES,-1,"it 's a little out of our price range for dining there except on special occasions , but we 've eaten there 6 times in the last 2 years .",prices
+SERVICE#GENERAL,1,"each time we 've been , the front of house staff ( not the waiters - they 're fantastic - but the people who greet and seat you ) has been so hideous to us that were it not for the exceptional fish dishes i would never return .",general
+SERVICE#GENERAL,-1,"each time we 've been , the front of house staff ( not the waiters - they 're fantastic - but the people who greet and seat you ) has been so hideous to us that were it not for the exceptional fish dishes i would never return .",general
+FOOD#QUALITY,1,"each time we 've been , the front of house staff ( not the waiters - they 're fantastic - but the people who greet and seat you ) has been so hideous to us that were it not for the exceptional fish dishes i would never return .",quality
+RESTAURANT#MISCELLANEOUS,-1,"as bfc does n't take reservations you almost always have to wait by the bar - and be abused by the front of house staff until you are seated , which can be over an hour later !",miscellaneous
+SERVICE#GENERAL,-1,"as bfc does n't take reservations you almost always have to wait by the bar - and be abused by the front of house staff until you are seated , which can be over an hour later !",general
+SERVICE#GENERAL,-1,"as bfc does n't take reservations you almost always have to wait by the bar - and be abused by the front of house staff until you are seated , which can be over an hour later !",general
+SERVICE#GENERAL,-1,the frizzy retro girl ( with winged/ dame edna glasses ) will yell at you if you try to order a drink .,general
+SERVICE#GENERAL,-1,i was almost amused by the fact that she was turning away customers at 9pm on a friday night because she `` had a bbq to go to '' that night - wtf ? ?,general
+SERVICE#GENERAL,-1,i 'd be horrified if my staff were turning away customers so early and so rudely !,general
+SERVICE#GENERAL,-1,"there 's another girl who i ca n't describe , she is about 5'6 '' with brown hair , who eavesdrops on your conversation and chimes in - except she only hears the last part of what you said , so her uninvited opinions are often out of context and nothing to do with what you 're *really* talking about .",general
+SERVICE#GENERAL,-1,"i 'm a friendly person , so i would n't mind had she not been so nasty and gotten so personal .",general
+SERVICE#GENERAL,-1,"again , i 'd be super upset if that were my employee .",general
+SERVICE#GENERAL,-1,"considering you will spend at least $ 60 a head , i expect better service .",general
+RESTAURANT#PRICES,-1,"considering you will spend at least $ 60 a head , i expect better service .",prices
+SERVICE#GENERAL,-1,"so , if you 're walking by and thinking about dining , you might want to see who 's going to be seating you first ...",general
+SERVICE#GENERAL,-1,maitre-d- '' eat and get out '',general
+FOOD#QUALITY,1,"the food and service were fine , however the maitre-d was incredibly unwelcoming and arrogant .",quality
+SERVICE#GENERAL,1,"the food and service were fine , however the maitre-d was incredibly unwelcoming and arrogant .",general
+SERVICE#GENERAL,-1,"the food and service were fine , however the maitre-d was incredibly unwelcoming and arrogant .",general
+DRINKS#QUALITY,1,"while finishing our meals which included a high-end bottle of wine , our son 's fiance joined us for a glass of wine and dessert .",quality
+SERVICE#GENERAL,-1,"this guy refused to seat her and she left , followed shortly by the four of us , but not before i told him that in my 40 years of world travel , including paris , that i had never seen such a display of bad behavior by a frontman in a restaurant .",general
+SERVICE#GENERAL,-1,"his response was smug , arrogant , and condescending , totally consistent with his deportment on display all evening .",general
+SERVICE#GENERAL,-1,"a word to the wise : you ca n't dine here and disturb the maitre-d 's sense of `` table turnover '' , as whacked as it is , or else .",general
+SERVICE#GENERAL,-1,"if you go here , do it on his off-night .",general
+FOOD#QUALITY,1,best meal in a long time !,quality
+FOOD#QUALITY,1,mussles and calamari were superb saturday evening .,quality
+FOOD#QUALITY,1,mussles and calamari were superb saturday evening .,quality
+FOOD#QUALITY,1,i had the lamb special which was perfect .,quality
+FOOD#QUALITY,1,"my father had the flank steak which was very good , and my mother had the swordfish .",quality
+RESTAURANT#GENERAL,1,the four seasons restaurant is a great experience .,general
+FOOD#QUALITY,1,the food is great and the environment is even better .,quality
+AMBIENCE#GENERAL,1,the food is great and the environment is even better .,general
+RESTAURANT#GENERAL,1,everyone must come here at least once .,general
+RESTAURANT#GENERAL,1,highly recommend it !,general
+FOOD#QUALITY,1,taking hot dogs to the next level,quality
+RESTAURANT#PRICES,-1,"at first glance this place seems a bit pricey for a hot dog joint , but at bark you do n't just get your average hot dog .",prices
+FOOD#QUALITY,1,"at first glance this place seems a bit pricey for a hot dog joint , but at bark you do n't just get your average hot dog .",quality
+FOOD#QUALITY,1,here the hot dog is elevated to the level of a real entree with numerous variations available .,quality
+FOOD#STYLE_OPTIONS,1,here the hot dog is elevated to the level of a real entree with numerous variations available .,options
+AMBIENCE#GENERAL,1,great atmosphere,general
+FOOD#QUALITY,1,"i highly recommend the fish tacos , everything else was ok .",quality
+FOOD#QUALITY,0,"i highly recommend the fish tacos , everything else was ok .",quality
+AMBIENCE#GENERAL,1,"cool atmosphere , the fire place in the back really ads to it but needs a bit more heat throughout on a cold night .",general
+AMBIENCE#GENERAL,1,"cool atmosphere , the fire place in the back really ads to it but needs a bit more heat throughout on a cold night .",general
+AMBIENCE#GENERAL,-1,"cool atmosphere , the fire place in the back really ads to it but needs a bit more heat throughout on a cold night .",general
+SERVICE#GENERAL,-1,poor service and management,general
+SERVICE#GENERAL,-1,poor service and management,general
+RESTAURANT#GENERAL,-1,don ’ t go to this place !,general
+RESTAURANT#GENERAL,-1,had an awful experience at casa la femme on a saturday dinner .,general
+SERVICE#GENERAL,-1,appetizers took nearly an hour .,general
+SERVICE#GENERAL,-1,when the main course finally arrived ( another 45mins ) half of our order was missing .,general
+SERVICE#GENERAL,-1,never got an explanation as to what was going on .,general
+SERVICE#GENERAL,-1,the manager was rude and handled the situation extremely poorly .,general
+SERVICE#GENERAL,-1,"when we threatened to leave , we were offered a meager discount even though half the order was missing .",general
+SERVICE#GENERAL,-1,"on the way out , we heard of other guests complaining about similar issues .",general
+RESTAURANT#PRICES,-1,can ’ t believe how an expensive nyc restaurant can be so disrespectful to its clients .,prices
+SERVICE#GENERAL,-1,can ’ t believe how an expensive nyc restaurant can be so disrespectful to its clients .,general
+RESTAURANT#GENERAL,-1,what a hassle !,general
+FOOD#QUALITY,0,"the food is very good , but not outstanding .",quality
+SERVICE#GENERAL,-1,"there is no way it justifies the accolades it receives , the attitude of the staff or the wait for a table .",general
+FOOD#QUALITY,-1,"there is no way it justifies the accolades it receives , the attitude of the staff or the wait for a table .",quality
+SERVICE#GENERAL,-1,"there is no way it justifies the accolades it receives , the attitude of the staff or the wait for a table .",general
+SERVICE#GENERAL,-1,"on our last visit , they skipped over our name on the list , leaving us waiting an extra hour for a table .",general
+SERVICE#GENERAL,-1,"mistakes happen , but they are usually accompanied by an apology , perhaps even a glass of wine ... but not the grunt that we received from the al di la staff .",general
+RESTAURANT#PRICES,-1,expensive,prices
+FOOD#QUALITY,-1,"the bread was stale , the salad was overpriced and empty .",quality
+FOOD#PRICES,-1,"the bread was stale , the salad was overpriced and empty .",prices
+FOOD#STYLE_OPTIONS,-1,"the bread was stale , the salad was overpriced and empty .",options
+FOOD#QUALITY,1,"the pasta was well cooked , did n't have enough sauce though or flavor .",quality
+FOOD#QUALITY,-1,"the pasta was well cooked , did n't have enough sauce though or flavor .",quality
+FOOD#STYLE_OPTIONS,-1,"the pasta was well cooked , did n't have enough sauce though or flavor .",options
+SERVICE#GENERAL,-1,so rude ! ! !,general
+RESTAURANT#GENERAL,-1,i was one of the people that went for this horrible experience .,general
+SERVICE#GENERAL,-1,the hostess was rude and i got a distinct feeling that they did not want to serve us .,general
+SERVICE#GENERAL,-1,the hostess was rude and i got a distinct feeling that they did not want to serve us .,general
+SERVICE#GENERAL,-1,the only thing that my friend left out is that when we sat down at the bar the bartender disappeared .,general
+SERVICE#GENERAL,-1,i asked for a menu and the same waitress looked at my like i was insane .,general
+SERVICE#GENERAL,-1,"i was shocked that my friends wanted to stay after the waitress said , `` can i help you '' and `` how many are in your party . ''",general
+SERVICE#GENERAL,-1,the three of us standing in front of her should have been an indication of how many of us there were .,general
+RESTAURANT#MISCELLANEOUS,-1,we did n't look like the other patrons in there so unfortunately i think that may have been part of the problem .,miscellaneous
+SERVICE#GENERAL,-1,shame on this place for the horrible rude staff and non-existent customer service .,general
+SERVICE#GENERAL,-1,shame on this place for the horrible rude staff and non-existent customer service .,general
+SERVICE#GENERAL,-1,bad staff,general
+RESTAURANT#GENERAL,1,i generally like this place .,general
+FOOD#QUALITY,1,the food is good .,quality
+AMBIENCE#GENERAL,1,the design of the space is good .,general
+SERVICE#GENERAL,-1,but the service is horrid !,general
+SERVICE#GENERAL,-1,"i was there for brunch recently , and we were tag teamed by a waitress and a waiter .",general
+SERVICE#GENERAL,-1,"i was there for brunch recently , and we were tag teamed by a waitress and a waiter .",general
+SERVICE#GENERAL,-1,the waiter delivered our food while holding what appeared to be a plastic bag of garbage in one hand .,general
+SERVICE#GENERAL,-1,"i ca n't believe that it was , but please put the bag down before delivering food !",general
+SERVICE#GENERAL,-1,"the waitress came to check in on us every few minutes , and began to clear the plates while half of us were still eating ( a big pet peeve of mine that happens almost everywhere , so i try to ignore it ) .",general
+SERVICE#GENERAL,-1,"i could n't ignore the fact that she reach over the plate of one of my friends , who was in mid bite , to clear the table .",general
+SERVICE#GENERAL,-1,"she then put the check down without asking if we were done , and came to check on the bill every two minutes , even though we were one of three occupied tables .",general
+RESTAURANT#GENERAL,-1,"i wish i could like this place more , and i wish someone would retrain the staff .",general
+SERVICE#GENERAL,-1,"i wish i could like this place more , and i wish someone would retrain the staff .",general
