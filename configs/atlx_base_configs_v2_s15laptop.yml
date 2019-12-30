@@ -19,7 +19,7 @@ lexicon_table:
 
 model:
 # ----
-  savepath: models/atlx/SemEval15/
+  savepath: models/atlx/SemEval15_laptop/
 
 exp_configs:
 # ----------
