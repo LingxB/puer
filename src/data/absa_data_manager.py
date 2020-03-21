@@ -82,7 +82,7 @@ class AbsaDataManager(object):
             raise IndexError('Label must be {-1, 0, 1}')
         return a
 
-    def token2lex(self, sents):
+    def token2lex(self, sents, asps=None):
         """
 
         Parameters
@@ -93,7 +93,7 @@ class AbsaDataManager(object):
         -------
 
         """
-        return self.lm.pad_transform(sents)
+        return self.lm.pad_transform(sents, asps=asps)
 
     def batch_symbolizer(self, batch_df):
 
@@ -106,7 +106,11 @@ class AbsaDataManager(object):
             _a = None
 
         if self.lm is not None:
-            _lx = self.token2lex(batch_df[self.x_col].str.split())
+            if not self.lm.asp_lx:
+                _lx = self.token2lex(batch_df[self.x_col].str.split())
+            else:
+                _asps = batch_df[self.asp_col]
+                _lx = self.token2lex(batch_df[self.x_col].str.split(), _asps)
         else:
             _lx = None
 

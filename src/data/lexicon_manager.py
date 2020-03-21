@@ -11,7 +11,7 @@ logger = Logger(__fn__())
 class LexiconManager(object):
 
 
-    def __init__(self, lx_path=None, usecol=-1, lx_size=-1, append_neg=False):
+    def __init__(self, lx_path=None, usecol=-1, lx_size=-1, append_neg=False, asp_lx=False):
         """
 
         Parameters
@@ -24,12 +24,14 @@ class LexiconManager(object):
         self.usecol = usecol
         self.lx_size = lx_size
         self.append_neg = append_neg
+        self.asp_lx = asp_lx
         if lx_path is None:
             configs = read_config(get_envar('CONFIG_PATH')+'/'+get_envar('BASE_CONFIG'), obj_view=True)
             self.lx_path = configs.lexicon_table.path + '.csv'
             self.usecol = configs.lexicon_table.usecol
             self.lx_size = configs.lexicon_table.lx_size
             self.append_neg = configs.lexicon_table.append_neg
+            self.asp_lx = configs.lexicon_table.asp_lx
         else:
             self.lx_path = lx_path + '.csv'
         self.__initialize()
@@ -38,8 +40,8 @@ class LexiconManager(object):
     def __initialize(self):
         logger.info('Loading lexicon table from {}'.format(self.lx_path))
         self.lx = pd.read_csv(self.lx_path)
-        assert not self.lx.duplicated().any(), 'Lexicon table has duplicated keys.'
-        self.lx = self.lx.set_index('WORD')
+        assert not self.lx.duplicated().any(), 'Lexicon table has duplicated rows.'
+        self.lx = self.lx.set_index(['WORD', 'ASP']) if self.asp_lx else self.lx.set_index('WORD')
 
         if self.usecol == -1:
             pass
@@ -68,17 +70,28 @@ class LexiconManager(object):
         logger.info('Using lexicon: \n{}'.format(self.lx.tail()))
         logger.info('Lexicon size: {}'.format(self.lx.shape))
 
-    def pad_transform(self, sents):
-        return pad_sequences([self.transform(s) for s in sents], padding='post')
+    def pad_transform(self, sents: list, asps: list = None):
+        if asps is None:
+            return pad_sequences([self.transform(s) for s in sents], padding='post')
+        else:
+            assert len(sents) == len(asps)
+            return pad_sequences([self.transform(s, a) for s,a in zip(sents, asps)], padding='post')
 
 
-    def transform(self, sent):
-        return np.array(list(map(self.loc_word_pol, sent)))
+    def transform(self, sent: list, a: str = None):
+        if a is None:
+            return np.array(list(map(self.loc_word_pol, sent)))
+        else:
+            a = [a] * len(sent)
+            return np.array(list(map(self.loc_word_pol, zip(sent, a))))
 
 
-    def loc_word_pol(self, w):
+    def loc_word_pol(self, w, a=None):
         try:
-            wp = self.lx.loc[w, :].values
+            if a is None:
+                wp = self.lx.loc[w, :].values
+            else:
+                wp = self.lx.loc[(w,a), :].values
         except KeyError:
             wp = np.empty(self.lx.shape[1])
             wp[:] = np.nan
