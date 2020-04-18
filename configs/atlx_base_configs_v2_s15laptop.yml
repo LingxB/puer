@@ -12,7 +12,7 @@ embedding_table:
 
 lexicon_table:
 # ------------
-  path: data/processed/dalx/lexicon_table_dalx_07_thres0.7_C10_concat
+  path: data/processed/dalx/lexicon_table_dalx_asp_12_thres0.7_C10_add
   usecol: 3
   lx_size: -1
   append_neg: False
