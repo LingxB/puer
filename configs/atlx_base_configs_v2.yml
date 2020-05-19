@@ -13,6 +13,7 @@ embedding_table:
 lexicon_table:
 # ------------
   # path: data/processed/lexicon_v2/lexicon_table_v2
+  # path: data/processed/dalx/yelp_lexicon_table_dalx_20_thres0.7_C10
   path: data/processed/dalx/yelp_lexicon_table_dalx_14_thres0.7_C10
   usecol: 3
   lx_size: -1

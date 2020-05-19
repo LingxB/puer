@@ -12,11 +12,11 @@ embedding_table:
 
 lexicon_table:
 # ------------
-  path: data/processed/dalx/lexicon_table_dalx_asp_12_thres0.7_C10_add
+  path: data/processed/lexicon_v2/lexicon_table_v2
   usecol: 3
   lx_size: -1
   append_neg: False
-  asp_lx: True
+  asp_lx: False
 
 model:
 # ----
