@@ -1,13 +1,9 @@
 import pandas as pd
 import numpy as np
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-import plotly.graph_objs as go
-from plotly.figure_factory import create_annotated_heatmap
 from src.visualization.plots import str2array, lx_get
-from plotly import tools
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-import matplotlib.gridspec as gridspec
+
 
 
 base = pd.read_csv('data/score/SemEval14_test_baseline_v1.csv')
